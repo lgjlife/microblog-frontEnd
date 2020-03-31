@@ -1,11 +1,11 @@
 <template>
   <div id="index">
     <layout/>
-    
+   
   </div>
 </template>
 
-<script>
+<script >
 
 import layout from "@/pages/layout"
 

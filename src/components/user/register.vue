@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'Register',
+
   props: {
     msg: String
   }

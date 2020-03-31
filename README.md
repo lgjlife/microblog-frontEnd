@@ -1,6 +1,6 @@
 # microblog-frontEnd
 
-本项目是[microblog项目的前端项目]()，使用vue＋element-ui进行开发．
+本项目是[microblog项目](https://github.com/lgjlife/micro-blog)的前端项目，使用vue＋element-ui进行开发．
 
 ## 环境配置
 
@@ -16,6 +16,8 @@ npm install axios
 
 #安装vue-router
 npm install vue-router
+
+#cnpm install node-sass
 ```
 
 ## 运行打包
