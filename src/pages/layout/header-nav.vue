@@ -19,8 +19,8 @@
 
             <!--登录按钮-->
             <el-col :span="1"　:offset="-2">
-                <el-button type="text" @click="loginDialogVisible = true">登录</el-button>
-                    <el-dialog :visible.sync="loginDialogVisible" width="400px">
+                <el-button type="text" @click="loginDialogVisible = true" >登录</el-button>
+                    <el-dialog :visible.sync="loginDialogVisible" width="400px" :modal-append-to-body='false'>
                     <login/>
                 </el-dialog>
             </el-col>

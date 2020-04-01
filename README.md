@@ -12,12 +12,13 @@ npm install
 npm install element-ui -S
 
 #安装axios
-npm install axios
+npm install axios --save
 
 #安装vue-router
 npm install vue-router
 
-#cnpm install node-sass
+#
+cnpm install node-sass
 ```
 
 ## 运行打包

@@ -3,6 +3,9 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
+import axios from 'axios'
+Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
+
 
 //VueRouter
 import VueRouter from 'vue-router';

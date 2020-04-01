@@ -10,6 +10,25 @@
             <el-input v-model="login.password" placeholder="密码" show-password></el-input>
           </el-form-item>
           <el-form-item >
+              <el-row :gutter="20" style="margin-bottom: 0px;">
+
+                  <el-col :span="30" :offset="3">
+                      <el-button type="text" @click="dialogVisible = true">点击图片验证</el-button>
+                  
+                      <el-dialog
+                        title="提示"
+                        :visible.sync="dialogVisible"                
+                        :before-close="handleClose"
+                        width="300px"
+                        height="360"
+                        :modal-append-to-body='false'
+                        >
+                        
+                        <slidingImage ref="slidingImageData"/> 
+                    　</el-dialog>
+                  </el-col>
+              </el-row> 
+
               <el-row :gutter="2">
                 <el-col :span="6">
                   <div class="grid-content bg-purple"><el-checkbox v-model="login.checked">记住我</el-checkbox></div>
@@ -33,7 +52,8 @@
               </el-col>
           </el-row>
           
-
+           
+  
           <el-row :gutter="2">
               <el-col :span="6">
                 <div class="grid-content bg-purple">其他登录方式:</div>
@@ -53,11 +73,14 @@
             
             <span id="qqLoginBtn"></span>
             
-            
+         
             
         </el-form>
 
-        <slidingImage/>
+          
+
+         
+
     </div>
     
 </template>
@@ -71,6 +94,8 @@ export default {
 
   data() {
       return {
+        dialogVisible: false,
+        loginDialogVisible: false,
         labelPosition: 'right',
         login: {
           name: '',
@@ -82,6 +107,11 @@ export default {
   },
   methods: {
     
+    handleClose(done) {
+      done();
+        console.log(this.$refs.slidingImageData.imageMsg.cutImageWidth)
+      },
+
      openWindow(url, width, height)
       {
         width = width || 600;
