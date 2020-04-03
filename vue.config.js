@@ -50,7 +50,7 @@ module.exports = {
  publicPath: process.env.NODE_ENV === "production" ? "./" : "/",
  productionSourceMap: false,
  // 入口设置
- pages,
+ //pages,
 
  devServer: {
   //index: '/aa', // 运行时，默认打开application1页面

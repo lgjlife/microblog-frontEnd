@@ -1,7 +1,7 @@
 <template>
     <div >
 
-         <el-row　:gutter="0">
+         <el-row :gutter="0">
             <el-col :span="1"　:offset="1">
                 <div class="grid-content bg-purple">
                     <i class="el-icon-s-home"></i>
@@ -20,7 +20,7 @@
             <!--登录按钮-->
             <el-col :span="1"　:offset="-2">
                 <el-button type="text" @click="loginDialogVisible = true" >登录</el-button>
-                    <el-dialog :visible.sync="loginDialogVisible" width="400px" :modal-append-to-body='false'>
+                    <el-dialog :visible.sync="loginDialogVisible" width="400px" :modal-append-to-body="false" :modal="false">
                     <login/>
                 </el-dialog>
             </el-col>
@@ -29,7 +29,9 @@
 
             <!--注册按钮-->
             <el-col :span="1"　:offset="-2">
-                    <el-button type="text" @click="registerDialogVisible = true">注册</el-button>
+                <!--@click="registerDialogVisible = true"-->
+                <router-link to="/register">注册</router-link>
+                    <el-button type="text" ><router-link to="/register">注册</router-link></el-button>
                     <el-dialog :visible.sync="registerDialogVisible" width="400px">
                         <register/>
                 </el-dialog>

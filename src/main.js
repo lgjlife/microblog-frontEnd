@@ -25,16 +25,25 @@ const router = new VueRouter({
   routes: routers
 })
 
-Vue.config.productionTip = false
-
-/* eslint-disable no-new */
-new Vue({
- el: "#app",
- router,
- render: h => h(app)
+router.beforeEach((to,from,next)=>{
+    if(to.meta.title){
+        document.title = to.meta.title;
+    }
+    next();
 })
 
 
+Vue.config.productionTip = false
+
+/* eslint-disable no-new */
+// new Vue({
+//  el: "#app",
+//  router,
+//  render: h => h(app)
+// })
+
+
 new Vue({
+    router,
   render: h => h(App),
 }).$mount('#app')

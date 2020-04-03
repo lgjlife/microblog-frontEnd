@@ -13,11 +13,16 @@ Vue.use(ElementUI);
 
 import routers from './router/router.js';
 
+import login from '@/components/user/login.vue'
 
+const routes1 = [
+    { path: '/', component: index },
+    { path: '/login', component: login }
+]
 
 const router = new VueRouter({
   mode: 'history',
-  routes: routers
+  routes: routes1
 })
 
 Vue.config.productionTip = false

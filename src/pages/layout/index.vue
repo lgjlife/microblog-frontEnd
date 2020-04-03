@@ -4,22 +4,25 @@
         <el-container>
             <el-header><headerNav/></el-header>
             <el-container>
-                    <el-aside width="200px">Aside</el-aside>
-                    <el-container>                            
+                <el-aside width="200px">Aside</el-aside>
+                    <el-container>
                         <el-container>
-                                <el-aside width="200px">Aside</el-aside>
-                                <el-container>
-                                        <el-header>Header</el-header>
-                                        <el-main>Main</el-main>
-                                </el-container>                                    
-                        </el-container>                            
+                            <el-aside width="200px">Aside</el-aside>
+                            <el-container>
+                                <el-header>Header</el-header>
+                                <el-main>Main</el-main>
+                            </el-container>
+                        </el-container>
                         <el-footer>Footer</el-footer>
                     </el-container>
-                    <el-aside width="200px">Aside</el-aside>
-                    <el-aside width="200px">Aside</el-aside>
-            </el-container>            
+                <el-aside width="200px">Aside</el-aside>
+                <el-aside width="200px">Aside</el-aside>
+            </el-container>
         </el-container>
-        <button>分享</button>         
+        <button>分享</button>
+        <router-link to="/login">Go to login</router-link>
+        <router-view></router-view>
+        {{ $route.params.id }}
     </div>
 </template>
 

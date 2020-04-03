@@ -1,12 +1,13 @@
 //整个页面是个弹窗 visible 控制弹窗的显示关闭 默认打开
 
 <template>
-    <div id="captchaContainer">
+    <div id="captchaContainer" >
 
 
         <!-- 标题栏　-->
         <div class="header">
             <span class="headerText">图片滑动验证</span>
+            <span class="closeIcon" @click="closeCaptchaContainer()"/>
             <span class="refreshIcon" @click="refreshImage"/>
         </div> 
 
@@ -54,8 +55,7 @@ var MIN_MOVE = 0;
 var MAX_MOVE = 0;
 //鼠标按下标志
 var mousedownFlag=false;
-//滑块移动的距离
-var moveX;
+
 //滑块位置检测允许的误差，正负２
 var MOVE_CHECK_ERROR = 2;
 //滑块滑动使能
@@ -69,7 +69,9 @@ export default {
 
     data() {
         return{
+            dialogVisible: true,
             //滑动图片验证结果
+            //success fail ""
             verifiFlag: "",
             cutImgStyle:{
                 width: "",
@@ -83,9 +85,13 @@ export default {
                 left: "",   
             },
 
+
+            //滑块移动的距离
+            movex: 0,
+
             imageMsg: {
                 //抠图的坐标
-                xpos: "",
+                xpos: "179",
                 ypos: "5",
                 //抠图的大小
                 cutImageWidth: "60",
@@ -106,15 +112,21 @@ export default {
     
     methods: {
 
+        closeCaptchaContainer(){
+
+            console.log("close")
+            this.$emit('imageclose');
+        },
+
         　//加载页面时进行初始化
         init(){
 
-            console.log("init")
+            console.log("子组件初始化init")
 
             moveEnable = true;
             mousedownFlag=false;
 
-
+            this.verifiFlag = "";
             this.$data.sliderStyle.left = "0px";
             //initClass();
 
@@ -208,16 +220,16 @@ export default {
             return
             }
 
-            moveX = event.clientX - sliderInitOffset;
+            this.movex = event.clientX - sliderInitOffset;
 
-            console.log("MAX_MOVE = " + MAX_MOVE);
-            console.log("moveX = " + moveX);
+           // console.log("MAX_MOVE = " + MAX_MOVE);
+           // console.log("this.movex = " + this.movex);
 
-            moveX<MIN_MOVE?moveX=MIN_MOVE:moveX=moveX;
-            moveX>MAX_MOVE?moveX=MAX_MOVE:moveX=moveX;
+            this.movex<MIN_MOVE?this.movex=MIN_MOVE:this.movex=this.movex;
+            this.movex>MAX_MOVE?this.movex=MAX_MOVE:this.movex=this.movex;
 
-            this.$data.cutImgStyle.left = moveX + "px";
-            this.$data.sliderStyle.left = moveX + "px";
+            this.$data.cutImgStyle.left = this.movex + "px";
+            this.$data.sliderStyle.left = this.movex + "px";
 
         },
         //滑块鼠标弹起操作
@@ -226,7 +238,7 @@ export default {
             sliderInitOffset = 0;
         // $(this).off("mousemove");
             mousedownFlag=false;
-            console.log("moveX　＝　" + moveX)
+            console.log("this.movex　＝　" + this.movex)
             this.checkLocation();
             
         },
@@ -236,27 +248,19 @@ export default {
             moveEnable = false;
             //后端请求检测滑块位置
             //this.requestVerification();
+            if(( this.imageMsg.xpos > ( this.movex - MOVE_CHECK_ERROR))
+            && (this.imageMsg.xpos < ( this.movex + MOVE_CHECK_ERROR))){
+                console.log("验证成功");
+                this.$data.verifiFlag = "success"
+            }
+            else{
+                console.log("验证失败");
+                this.$data.verifiFlag = "fail"
 
+            }
 
         },
-        /*
-        checkSuccessHandle(){
-            $(".sliderContainer").addClass("sliderContainer_success");
-            $(".slider").addClass("slider_success");
-        },
-        checkFailHandle(){
-            $(".sliderContainer").addClass("sliderContainer_fail");
-            $(".slider").addClass("slider_success");
-        },
-
-        initClass(){
-            $(".sliderContainer").removeClass("sliderContainer_success");
-            $(".slider").removeClass("slider_success");
-
-            $(".sliderContainer").removeClass("sliderContainer_fail");
-            $(".slider").removeClass("slider_fail");
-        }
-        */
+   
     },
 
     mounted() {
