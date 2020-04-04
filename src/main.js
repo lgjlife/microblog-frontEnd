@@ -11,6 +11,11 @@ Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
 import VueRouter from 'vue-router';
 Vue.use(VueRouter); //挂载属性
 
+import "@/assets/icon/ali/iconfont.css"
+import "@/assets/icon/ali/iconfont.js"
+
+
+
 //ElementUI
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';

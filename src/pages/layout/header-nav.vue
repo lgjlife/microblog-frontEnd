@@ -19,10 +19,7 @@
 
             <!--登录按钮-->
             <el-col :span="1"　:offset="-2">
-                <el-button type="text" @click="loginDialogVisible = true" >登录</el-button>
-                    <el-dialog :visible.sync="loginDialogVisible" width="400px" :modal-append-to-body="false" :modal="false">
-                    <login/>
-                </el-dialog>
+                <router-link to="/login">登录</router-link>
             </el-col>
             
             
@@ -31,10 +28,6 @@
             <el-col :span="1"　:offset="-2">
                 <!--@click="registerDialogVisible = true"-->
                 <router-link to="/register">注册</router-link>
-                    <el-button type="text" ><router-link to="/register">注册</router-link></el-button>
-                    <el-dialog :visible.sync="registerDialogVisible" width="400px">
-                        <register/>
-                </el-dialog>
             </el-col>
             
             <el-col :span="1"　:offset="-2">

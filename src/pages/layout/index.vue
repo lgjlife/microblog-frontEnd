@@ -2,15 +2,20 @@
     <div >
 
         <el-container>
+            <!--页首-->
             <el-header><headerNav/></el-header>
             <el-container>
                 <el-aside width="200px">Aside</el-aside>
                     <el-container>
                         <el-container>
-                            <el-aside width="200px">Aside</el-aside>
+                            <el-aside width="200px" style="background-color: rebeccapurple">Aside</el-aside>
                             <el-container>
-                                <el-header>Header</el-header>
-                                <el-main>Main</el-main>
+                                <!--微博编辑-->
+                                <el-header width="100%" height="200px" style="background-color: #9a6e3ared; margin: 0px; padding: 0px;" >
+                                    <BlogPublish/>
+                                </el-header>
+                                <!--微博显示-->
+                                <el-main style=" margin: 0px; padding: 0px;" >Main</el-main>
                             </el-container>
                         </el-container>
                         <el-footer>Footer</el-footer>
@@ -19,10 +24,6 @@
                 <el-aside width="200px">Aside</el-aside>
             </el-container>
         </el-container>
-        <button>分享</button>
-        <router-link to="/login">Go to login</router-link>
-        <router-view></router-view>
-        {{ $route.params.id }}
     </div>
 </template>
 
@@ -30,7 +31,7 @@
     
 import headerNav from './header-nav.vue'
 import footerNav from './footer-nav.vue'
-
+import BlogPublish from '@/components/blog/BlogPublish'
 ///import { mapState } from 'vuex'
 export default {
     data() {
@@ -43,7 +44,8 @@ export default {
         //头部菜单组件
         headerNav,
         //页底组件
-        footerNav
+        footerNav,
+        BlogPublish
     }
 }
 </script>

@@ -33,9 +33,9 @@
                 <el-col :span="6">
                   <div class="grid-content bg-purple"><el-checkbox v-model="login.checked">记住我</el-checkbox></div>
                 </el-col>
-                <el-col :span="8">
+                <el-col :span="12">
                   <div class="grid-content bg-purple">
-                      <i>没有帐号?<el-link type="primary">注册</el-link></i>
+                      <i>没有帐号?<el-link type="primary">注册</el-link></i>    <router-link to="/">返回首页</router-link>
                   </div>
                 </el-col>
 
@@ -58,7 +58,7 @@
 
             <!--其他登录方式-->
           <el-row :gutter="2">
-              <el-col :span="6">
+              <el-col :span="7">
                 <div class="grid-content bg-purple">其他登录方式:</div>
               </el-col>
               <el-col :span="2">
@@ -72,8 +72,6 @@
                 </div>
               </el-col>
             </el-row>
-
-          <router-link to="/">Go to home</router-link>
         </el-form>
     </div>
     
@@ -204,5 +202,12 @@ export default {
 
   
 <style  scoped>
-  
+
+
+.el-form{
+    position: absolute;
+    top: 50px;
+    left: 35%;
+    width: 400px;
+}
 </style>

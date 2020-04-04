@@ -1,0 +1,79 @@
+{
+  "id": "1733626",
+  "name": "element-icon",
+  "font_family": "iconfont",
+  "css_prefix_text": "element-icon-ali",
+  "description": "element-icon",
+  "glyphs": [
+    {
+      "icon_id": "2084131",
+      "name": "表情",
+      "font_class": "biaoqing",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "2115112",
+      "name": "创建话题",
+      "font_class": "chuangjianhuati",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "3816381",
+      "name": "视频",
+      "font_class": "tubiaozhizuomoban-",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "3847437",
+      "name": "视频",
+      "font_class": "shipin1",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "12899642",
+      "name": "图片",
+      "font_class": "tupian1",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "8163868",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "9371337",
+      "name": "文章",
+      "font_class": "wenzhang",
+      "unicode": "e760",
+      "unicode_decimal": 59232
+    },
+    {
+      "icon_id": "11937081",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "12097446",
+      "name": "话题",
+      "font_class": "huati",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "13479242",
+      "name": "表情",
+      "font_class": "B",
+      "unicode": "e70d",
+      "unicode_decimal": 59149
+    }
+  ]
+}
