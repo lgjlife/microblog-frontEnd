@@ -14,6 +14,11 @@ Vue.use(VueRouter); //挂载属性
 import "@/assets/icon/ali/iconfont.css"
 import "@/assets/icon/ali/iconfont.js"
 
+//视频播放
+import VideoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
+Vue.use(VideoPlayer)
 
 
 //ElementUI

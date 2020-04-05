@@ -69,6 +69,9 @@
                 this.submitToParent();
             },
             submit(){
+                if(this.topic == ""){
+                    return
+                }
                 this.topic = this.createTopic(this.topic)
                 this.submitToParent();
             },

@@ -19,6 +19,13 @@ npm install vue-router
 
 #
 cnpm install node-sass
+
+#视频播放
+npm install video.js --save
+npm install vue-video-player --save
+npm install videojs-contrib-hls --save
+
+
 ```
 
 ## 运行打包

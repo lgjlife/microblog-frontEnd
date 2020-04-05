@@ -9,6 +9,8 @@ import Emotion from '@/components/common/Emotion.vue'
 
 import Upload from '@/components/common/Upload.vue'
 import HotTopic from '@/components/blog/HotTopic.vue'
+import BlogDisplay from '@/components/blog/BlogDisplay.vue'
+import Video from '@/components/video/Video.vue'
 
 
 const routers = [
@@ -53,6 +55,20 @@ const routers = [
         component: HotTopic,
         meta: {
             title: "热门话题"
+        }
+    },
+    {
+        path: '/display',
+        component: BlogDisplay,
+        meta: {
+            title: "博客内容显示"
+        }
+    },
+    {
+        path: '/video',
+        component: Video,
+        meta: {
+            title: "博客内容显示"
         }
     },
 

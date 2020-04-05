@@ -15,7 +15,9 @@
                                     <BlogPublish/>
                                 </el-header>
                                 <!--微博显示-->
-                                <el-main >Main</el-main>
+                                <el-main >
+                                    <BlogDisplay></BlogDisplay>
+                                </el-main>
                             </el-container>
                         </el-container>
                         <el-footer>Footer</el-footer>
@@ -32,6 +34,7 @@
 import headerNav from './header-nav.vue'
 import footerNav from './footer-nav.vue'
 import BlogPublish from '@/components/blog/BlogPublish'
+import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 ///import { mapState } from 'vuex'
 export default {
     data() {
@@ -45,7 +48,8 @@ export default {
         headerNav,
         //页底组件
         footerNav,
-        BlogPublish
+        BlogPublish,
+        BlogDisplay
     }
 }
 </script>

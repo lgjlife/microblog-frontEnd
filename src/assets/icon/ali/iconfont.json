@@ -6,6 +6,62 @@
   "description": "element-icon",
   "glyphs": [
     {
+      "icon_id": "1766251",
+      "name": "操作-评论",
+      "font_class": "pinglun",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "3705476",
+      "name": "评论",
+      "font_class": "pinglun1",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "3872055",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "5344808",
+      "name": "点赞",
+      "font_class": "zan",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "6874063",
+      "name": "收藏",
+      "font_class": "shoucang1",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "10651911",
+      "name": "转发",
+      "font_class": "zhuanfa-",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "12240035",
+      "name": "收藏",
+      "font_class": "shoucang2",
+      "unicode": "e6c7",
+      "unicode_decimal": 59079
+    },
+    {
+      "icon_id": "13763281",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
       "icon_id": "2084131",
       "name": "表情",
       "font_class": "biaoqing",
