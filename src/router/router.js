@@ -7,6 +7,10 @@ import register from '@/components/user/register.vue'
 import login from '@/components/user/login.vue'
 import Emotion from '@/components/common/Emotion.vue'
 
+import Upload from '@/components/common/Upload.vue'
+import HotTopic from '@/components/blog/HotTopic.vue'
+
+
 const routers = [
     {
         path: '/',
@@ -36,7 +40,22 @@ const routers = [
         meta: {
             title: "表情包"
         }
-    }
+    },
+    {
+        path: '/upload',
+        component: Upload,
+        meta: {
+            title: "上传"
+        }
+    },
+    {
+        path: '/topic',
+        component: HotTopic,
+        meta: {
+            title: "热门话题"
+        }
+    },
+
 
 ]
 
