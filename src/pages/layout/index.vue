@@ -8,7 +8,9 @@
                 <el-aside width="200px">Aside</el-aside>
                     <el-container>
                         <el-container>
-                            <el-aside width="200px" style="background-color: rebeccapurple">Aside</el-aside>
+                            <el-aside width="100px" >
+                                <LeftSideNav></LeftSideNav>
+                            </el-aside>
                             <el-container>
                                 <!--微博编辑-->
                                 <el-header width="100%" height="200px" >
@@ -20,19 +22,27 @@
                                 </el-main>
                             </el-container>
                         </el-container>
-                        <el-footer>Footer</el-footer>
+
                     </el-container>
-                <el-aside width="200px"  style="background-color: indianred; margin: 2px; padding: 2px;" >Aside</el-aside>
+                <el-aside width="300px"  style=" margin: 2px; padding: 2px;" >
+                    <UserInfoNav></UserInfoNav>
+                    <HotTopicNav></HotTopicNav>
+                </el-aside>
                 <el-aside width="200px">Aside</el-aside>
             </el-container>
+            <el-footer>Footer</el-footer>
         </el-container>
     </div>
 </template>
 
 <script>
-    
+
 import headerNav from './header-nav.vue'
 import footerNav from './footer-nav.vue'
+import LeftSideNav from './LeftSideNav.vue'
+import UserInfoNav from './UserInfoNav.vue'
+import HotTopicNav from './HotTopicNav.vue'
+
 import BlogPublish from '@/components/blog/BlogPublish'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 ///import { mapState } from 'vuex'
@@ -48,8 +58,15 @@ export default {
         headerNav,
         //页底组件
         footerNav,
+        //左侧
+        LeftSideNav,
+        UserInfoNav,
+        HotTopicNav,
+
+        //微博发布
         BlogPublish,
-        BlogDisplay
+        //微博显示
+        BlogDisplay,
     }
 }
 </script>

@@ -6,6 +6,34 @@
   "description": "element-icon",
   "glyphs": [
     {
+      "icon_id": "13087816",
+      "name": "设 置1",
+      "font_class": "shezhi",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "3705285",
+      "name": "头像",
+      "font_class": "touxiang",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "9337291",
+      "name": "消息",
+      "font_class": "ziyuan",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "9666577",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
       "icon_id": "1766251",
       "name": "操作-评论",
       "font_class": "pinglun",

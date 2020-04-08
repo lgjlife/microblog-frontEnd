@@ -51,6 +51,20 @@ module.exports = {
  productionSourceMap: false,
  // 入口设置
  //pages,
+ // webpack配置 - 简单配置方式
+ configureWebpack: {
+  resolve: {
+   alias: {
+    // 别名
+    vue$: "vue/dist/vue.esm.js", //加上这一句
+    "@api": path.resolve(__dirname, "./src/api"),
+    "@utils": path.resolve(__dirname, "./src/utils")
+   }
+  }
+ },
+ runtimeCompiler: true,
+
+
 
  devServer: {
   //index: '/aa', // 运行时，默认打开application1页面
@@ -62,6 +76,15 @@ module.exports = {
   hotOnly: false,
   // 配置首页 入口链接
 
+  proxy: {
+   '/api':{
+    target: 'https://www.baidu.com',
+    changeOrigin: true,
+    pathRewrite:{
+     '^/api': "/api"
+    }
+   }
+  },
 /*
   before: app => {
    app.get('/', (req, res, next) => {

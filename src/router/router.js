@@ -11,7 +11,9 @@ import Upload from '@/components/common/Upload.vue'
 import HotTopic from '@/components/blog/HotTopic.vue'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 import Video from '@/components/video/Video.vue'
-
+import Search from '@/components/search/Search.vue'
+import Chat from '@/components/chat/Chat.vue'
+import test from '@/components/test/test.vue'
 
 const routers = [
     {
@@ -69,6 +71,27 @@ const routers = [
         component: Video,
         meta: {
             title: "博客内容显示"
+        }
+    },
+    {
+        path: '/search',
+        component: Search,
+        meta: {
+            title: "搜索"
+        }
+    },
+    {
+        path: '/chat',
+        component: Chat,
+        meta: {
+            title: "私信"
+        }
+    },
+    {
+        path: '/test',
+        component: test,
+        meta: {
+            title: "test"
         }
     },
 

@@ -1,10 +1,14 @@
 <template>
     <div class="video-cantainer">
-        <span class="displayCount">播放次数</span>
+        <span class="displayCount" v-if="playFlag">播放次数:1234次</span>
         <video-player  class="video-player vjs-custom-skin"
                        ref="videoPlayer"
                        :playsinline="true"
                        :options="playerOptions"
+                       @play="onPlayerPlay($event)"
+                       @pause="onPlayerPause($event)"
+                       @ready="playerReadied"
+
         ></video-player>
 
 
@@ -22,7 +26,12 @@
 
     export default {
         data () {
+
             return {
+
+                playFlag: "true",
+
+
                 playerOptions: {
                     playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
                     autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -42,11 +51,34 @@
                     controlBar: {
                         timeDivider: true,
                         durationDisplay: true,
-                        remainingTimeDisplay: false,
+                        remainingTimeDisplay: true,
                         fullscreenToggle: true  //全屏按钮
                     },
                     width: "200px",
                 }
+            }
+        },
+        methods: {
+            // listen event
+            onPlayerPlay(player) {
+                this.playFlag = false;
+                 console.log('player play!', player)
+            },
+            onPlayerPause(player) {
+                 console.log('player pause!', player)
+            },
+            // ...player event
+
+            //播放时触发　  <!--@statechanged="playerStateChanged($event)"-->
+            playerStateChanged(playerCurrentState) {
+                 console.log('player current update state', playerCurrentState)
+            },
+
+            // player is ready
+            playerReadied(player) {
+                console.log('the player is readied', player)
+                // you can use it to do something...
+                // player.[methods]
             }
         }
     }
@@ -59,9 +91,8 @@
         width: 500px;
     }
     .displayCount{
-        position: absolute;
-        top: 220px;
-
+        position: relative;
+        top: 270px;
         color: red;
         left: 10px;
         z-index: 9999;

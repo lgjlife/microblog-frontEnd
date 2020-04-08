@@ -1,16 +1,23 @@
 <template>
-    <div id="blogEdit">
-      <h1>微博编辑</h1>
-    </div>
-    
+
 </template>
 
 <script>
 export default {
-  name: 'blogEdit',
-  props: {
-    msg: String
-  }
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+
+    },
+
+    mounted:{
+
+    }
+
+
 }
 </script>
 

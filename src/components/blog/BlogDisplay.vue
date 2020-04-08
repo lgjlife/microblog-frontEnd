@@ -1,8 +1,6 @@
 <template>
     <div id="blog-display">
         <div>
-
-
             <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
                 <el-menu-item index="1">全部</el-menu-item>
                 <el-menu-item index="2">原创</el-menu-item>
@@ -10,14 +8,11 @@
                 <el-menu-item index="4">视频</el-menu-item>
                 <el-menu-item index="5">音乐</el-menu-item>
                 <el-menu-item index="6">文章</el-menu-item>
-                <el-menu-item index="7"><div style="margin-top: 15px;">
-
-                </div></el-menu-item>
+                <el-button>更多设置</el-button>
             </el-menu>
 
             <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
 
-                <el-button slot="suffix" icon="el-icon-search" style="height: 100%;margin-right: 0px"></el-button>
                 <el-button slot="append" icon="el-icon-search" style="height: 100%"></el-button>
             </el-input>
 
@@ -47,7 +42,14 @@
                                 <!--图片显示-->
                                 <div class="square-inner grid" v-if="blog.imageFlag">
                                     <div @click.self="addPhiz" v-for="(url, index) in blog.images" :key="index">
-                                        <img width="280px"  :src=url />
+
+                                        <div class="demo-image__preview">
+                                            <el-image
+                                                    style="width: 280px; height: 279px"
+                                                    :src="url"
+                                                    :preview-src-list="blog.images">
+                                            </el-image>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -69,7 +71,7 @@
                                 <el-col :span="6">
                                     <div class="grid-content bg-purple">
                                         <svg class="iconfont" aria-hidden="true">
-                                            <use xlink:href="#element-icon-alizhuanfa-" >收藏</use>
+                                            <use xlink:href="#element-icon-alizhuanfa-" ></use>
                                         </svg>
                                         转发
                                     </div>
@@ -77,7 +79,7 @@
                                 <el-col :span="6">
                                     <div class="grid-content bg-purple">
                                         <svg class="iconfont" aria-hidden="true">
-                                            <use xlink:href="#element-icon-alipinglun" >收藏</use>
+                                            <use xlink:href="#element-icon-alipinglun" ></use>
                                         </svg>
                                         评论
                                     </div>
@@ -85,7 +87,7 @@
                                 <el-col :span="6">
                                     <div class="grid-content bg-purple">
                                         <svg class="iconfont" aria-hidden="true">
-                                            <use xlink:href="#element-icon-alidianzan" >收藏</use>
+                                            <use xlink:href="#element-icon-alidianzan" ></use>
                                         </svg>
                                         点赞
                                     </div>
@@ -133,15 +135,15 @@
                         like: "",
                         imageFlag: true,
                         images: [
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
+                            "/img/test/1.jpg",
+                            "/img/test/2.jpg",
+                            "/img/test/3.jpg",
+                            "/img/test/4.jpg",
+                            "/img/test/5.jpg",
+                            "/img/test/6.jpg",
+                            "/img/test/7.jpg",
+                            "/img/test/8.jpg",
+                            "/img/test/9.jpg",
                         ],
 
                         videoFlag: false,
@@ -168,15 +170,15 @@
 
                         imageFlag: false,
                         images: [
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
-                            "/img/user/ori.png",
+                            "/img/test/1.png",
+                            "/img/test/2.png",
+                            "/img/test/3.png",
+                            "/img/test/4.png",
+                            "/img/test/5.png",
+                            "/img/test/6.png",
+                            "/img/test/7.png",
+                            "/img/test/8.png",
+                            "/img/test/9.png",
                         ],
                         videoFlag: true,
                         video:{
@@ -229,7 +231,7 @@
     font-size: 20px;
     width: 20px;
 
-    line-height: 2;
+    line-height: 0;
     text-align: center;
     /*background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);*/
 }
