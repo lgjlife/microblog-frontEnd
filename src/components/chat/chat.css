@@ -74,6 +74,7 @@
     float: right;
     top: 20px;
     right: 20px;
+
 }
 
 .right-nav{
@@ -191,7 +192,8 @@
     float: right;
     right: 60px;
     width: auto;
-    white-space:pre-wrap;word-wrap : break-word ;
+    white-space:pre-wrap;
+    word-wrap : break-word ;
 
 
 }

@@ -14,6 +14,7 @@ import Video from '@/components/video/Video.vue'
 import Search from '@/components/search/Search.vue'
 import Chat from '@/components/chat/Chat.vue'
 import test from '@/components/test/test.vue'
+import security from '@/components/security/security.vue'
 
 const routers = [
     {
@@ -92,6 +93,13 @@ const routers = [
         component: test,
         meta: {
             title: "test"
+        }
+    },
+    {
+        path: '/security',
+        component: security,
+        meta: {
+            title: "帐号与安全"
         }
     },
 
