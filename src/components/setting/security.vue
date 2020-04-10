@@ -1,3 +1,7 @@
+<!--
+帐号设置页面
+
+-->
 <template>
     <div>
         <headerNav></headerNav>
@@ -17,7 +21,7 @@
                     >{{option}}</li>
                 </ul>
             </div>
-            <div class="interface">
+            <div class="right-nav1">
                 <!--修改密码-->
                 <div v-if="curItem == 0">
                     <el-form ref="password" :model="password" label-width="80px">
@@ -56,22 +60,40 @@
                             <span style="color: red;position: relative;　left: 21%">{{modifyPhoneWarning}}</span>
                         </div>
                     </el-form>
-
-
                 </div>
 
-                <!--陌生登录提醒-->
+                <!--修改邮箱-->
                 <div v-else-if="curItem == 2">
+                    <span style="font-size: small; margin: 100px 5px 50px 50px;">当前邮箱:</span>dfghj@163.com<span></span>
+                    <el-form ref="email" :model="email" label-width="100px">
+                        <el-form-item label="新邮箱">
+                            <el-input v-model="email.email" style="width: 200px"></el-input>
+                            <el-button style="position: relative;" @click="getVerifyCode">获取验证码</el-button>
+                        </el-form-item>
+
+                        <el-form-item label="验证码">
+                            <el-input v-model="email.verifyCode" style="width: 200px"></el-input>
+                        </el-form-item>
+                        <el-button style="position: relative;left: 21%" @click="modifyEmail">确认修改</el-button>
+                        <div>
+                            <span style="color: red;position: relative;　left: 21%">{{modifyEmailWarning}}</span>
+                        </div>
+                    </el-form>
+                </div>
+
+
+                <!--陌生登录提醒-->
+                <div v-else-if="curItem == 3">
                     陌生登录提醒
                 </div>
 
                 <!--双重登录验证-->
-                <div v-else-if="curItem == 3">
+                <div v-else-if="curItem == 4">
                     双重登录验证
                 </div>
 
                 <!--最近登录记录-->
-                <div v-else-if="curItem == 4">
+                <div v-else-if="curItem == 5">
                     最近登录记录
                 </div>
 
@@ -84,7 +106,7 @@
 
 <script>
 
-    import headerNav from '@/pages/layout/header-nav.vue'
+    import HeaderNav from '@/pages/layout/Header-nav.vue'
     import axios from 'axios'
     import "./security.css"
     import formValidation from "@/components/user/formValidation.js"
@@ -96,6 +118,7 @@
                 optionItems:[
                     "修改密码",
                     "手机号码",
+                    "修改邮箱",
                     "陌生登录提醒",
                     "双重登录验证",
                     "最近登录记录",
@@ -109,10 +132,16 @@
                     newPassword: "",
                     newPasswordAgain: "",
                 },
-
+                //电话
                 modifyPhoneWarning:"",
                 phone:{
                     newPhoneNum: "",
+                    verifyCode: "",
+                },
+                //邮箱
+                modifyEmailWarning:"",
+                email:{
+                    newEmail: "",
                     verifyCode: "",
                 }
             }
@@ -221,18 +250,54 @@
                 .catch((error) =>{
 
                     console.log(error)//请求失败返回的数
-                    this.warning = "修改手机好吗失败"
+                    this.warning = "修改手机号码失败"
                 } )
 
+            },
+
+            /**
+             * 修改手机号码
+             */
+            modifyEmail(){
+                if(this.email.newEmail == ""){
+                    this.modifyEmailWarning  = "请输入邮箱地址";
+                    return
+                }
+                if(this.email.verifyCode == ""){
+                    this.modifyEmailWarning  = "请输入验证码";
+                    return
+                }
+                if(formValidation.isEmail(this.email.newEmail) == fasle){
+                    this.modifyEmailWarning  = "邮箱格式错误";
+                    return
+                }
+
+                axios({
+                    method: 'post',
+                    url: "setting/email",
+                    data: this.email,
+
+                })
+                    .then((response) =>{          //这里使用了ES6的语法
+
+                    })
+                    .catch((error) =>{
+
+                        console.log(error)//请求失败返回的数
+                        this.warning = "修改邮箱失败"
+                    } )
+
             }
+
 
         },
 
         created(){
-
+            console.log("index = "+this.$route.params.index)
+            this.curItem = this.$route.params.index;
         },
         components: {
-            headerNav,
+            HeaderNav,
         }
     }
 </script>

@@ -37,7 +37,7 @@
 
 <script>
 
-import headerNav from './header-nav.vue'
+import HeaderNav from './Header-nav.vue'
 import footerNav from './footer-nav.vue'
 import LeftSideNav from './LeftSideNav.vue'
 import UserInfoNav from './UserInfoNav.vue'
@@ -55,7 +55,7 @@ export default {
     },
     components: {
         //头部菜单组件
-        headerNav,
+        HeaderNav,
         //页底组件
         footerNav,
         //左侧
@@ -73,6 +73,10 @@ export default {
 
 <style>
 
+
+    body{
+        width: 1200px;
+    }
 #layout{
     margin:0px;
     width:100%;

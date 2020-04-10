@@ -46,7 +46,7 @@ import HotTopicNav from '@/pages/layout/HotTopicNav.vue'
 import BlogPublish from '@/components/blog/BlogPublish'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 import Cache from "@/common/cache/Cache.js"
-import headerNav from '@/pages/layout/header-nav.vue'
+import headerNav from '@/pages/layout/Header-nav.vue'
 
 export default {
 

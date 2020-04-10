@@ -48,10 +48,11 @@
     background-color: #ec3655;
 }
 /******************************************/
-.interface{
+.right-nav1{
     position: absolute;
     width: 600px;
     height: 370px;
     bottom: 0px;
     right: 0px;
+    background-color: #66c523;
 }
