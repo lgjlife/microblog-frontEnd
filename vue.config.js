@@ -76,15 +76,15 @@ module.exports = {
   hotOnly: false,
   // 配置首页 入口链接
 
-  proxy: {
-   '/api':{
-    target: 'https://www.baidu.com',
-    changeOrigin: true,
-    pathRewrite:{
-     '^/api': "/api"
-    }
-   }
-  },
+  // proxy: {
+  //  '/api':{
+  //   target: 'https://www.baidu.com',
+  //   changeOrigin: true,
+  //   pathRewrite:{
+  //    '^/api': "/api"
+  //   }
+  //  }
+  // },
 /*
   before: app => {
    app.get('/', (req, res, next) => {

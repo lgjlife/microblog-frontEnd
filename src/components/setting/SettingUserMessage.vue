@@ -81,7 +81,7 @@
 
         data() {
             return{
-
+                userId: "",
             }
         },
 
@@ -89,8 +89,10 @@
 
         },
 
-        created:{
+        created(){
+            this.userId = this.$route.query.userId;
 
+            console.log("userId = " + this.userId)
         }
     }
 

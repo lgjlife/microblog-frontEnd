@@ -139,6 +139,7 @@ const routers = [
             },
             {
                 path: 'user/info',
+                name: "info",
                 component: SettingUserInfo,
             },
             {

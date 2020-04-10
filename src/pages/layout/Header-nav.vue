@@ -79,14 +79,12 @@
                                 </svg>
                         </span>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>帐号设置</el-dropdown-item>
-                            <el-dropdown-item>会员中心</el-dropdown-item>
-                            <el-dropdown-item>帐号安全</el-dropdown-item>
-                            <el-dropdown-item>隐私设置</el-dropdown-item>
-                            <el-dropdown-item>屏蔽设置</el-dropdown-item>
-                            <el-dropdown-item>消息设计</el-dropdown-item>
-                            <el-dropdown-item>帮助中心</el-dropdown-item>
-                            <el-dropdown-item>退出</el-dropdown-item>
+                            <el-dropdown-item
+                                    v-for="(option,index) in setOptions" @click.native="setSelect(index)"
+                            >
+                                {{option.name}}
+                            </el-dropdown-item>
+
                         </el-dropdown-menu>
                     </el-dropdown>
                 </div>
@@ -117,6 +115,42 @@ export default {
 
             userId: "",
             userName: "快乐的小王",
+
+            setOptions: [
+
+                {
+                    name: "帐号设置",
+                    path: "/setting",
+                },
+                {
+                    name: "会员中心",
+                    path: "",
+                },
+                {
+                    name: "帐号安全",
+                    path: "",
+                },
+                {
+                    name: "隐私设置",
+                    path: "",
+                },
+                {
+                    name: "屏蔽设置",
+                    path: "",
+                },
+                {
+                    name: "消息设计",
+                    path: "",
+                },
+                {
+                    name: "帮助中心",
+                    "path": "",
+                },
+                {
+                    name: "退出",
+                    path: "",
+                }
+            ],
             
         }
 
@@ -124,6 +158,12 @@ export default {
     methods: {
         handleClose(done) {
 
+        },
+
+        setSelect(index){
+
+            console.log("选中:")
+            this.$router.push({path: this.setOptions[index].path,query: { userId: 123 }})
         },
 
        /*

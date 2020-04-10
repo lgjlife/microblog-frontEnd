@@ -10,7 +10,7 @@
 
         data() {
             return{
-
+                userId: "",
             }
         },
 
@@ -18,8 +18,10 @@
 
         },
 
-        created:{
+        created(){
+            this.userId = this.$route.params.userId;
 
+            console.log("userId = " + this.userId)
         }
     }
 
