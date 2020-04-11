@@ -26,6 +26,7 @@
                 </div>
                 <router-view class="interface"></router-view>
             </div>
+            <div style="clear:both;"></div>
 
         </div>
     </div>

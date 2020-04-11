@@ -7,7 +7,7 @@
                     <span class="setting-item">屏蔽设置</span>
                     <span class="setting-curVal-item">你可以将用户加入屏蔽名单，并设置屏蔽范围</span>
                 </template>
-                <div style="height: 200px;overflow: auto">
+                <div style="max-height: 400px;overflow: auto">
                     <div>
                         <span>添加屏蔽帐号</span>
                         <el-input v-model="screenUserName" style="width: 250px;"></el-input>

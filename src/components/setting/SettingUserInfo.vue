@@ -6,17 +6,17 @@
                 <template slot="title" >
                     <span class="setting-item">登录名</span>
                     <span class="setting-curVal-item">{{loginName}}</span>
-                    <router-link class="setting-btn" to="/security/0">修改密码</router-link>
+                    <router-link class="setting-btn" :to="{path:'/security',query:{index:0}}">修改密码</router-link>
                 </template>
             </el-collapse-item>
         </el-collapse>
 
         <el-collapse accordion>
-            <el-collapse-item>
-                <template slot="title">
+            <el-collapse-item >
+                <template slot="title" >
                     <span class="setting-item">手机号</span>
-                    <span class="setting-curVal-item">13925716752</span>
-                    <router-link class="setting-btn" to="/security/1">查看</router-link>
+                    <span class="setting-curVal-item">{{phone}}</span>
+                    <router-link class="setting-btn" :to="{path:'/security',query:{index:1}}">查看</router-link>
                 </template>
             </el-collapse-item>
         </el-collapse>
@@ -25,72 +25,17 @@
             <el-collapse-item>
                 <template slot="title">
                     <span class="setting-item">昵称</span>
-                    <span class="setting-curVal-item">天涯</span>
-                    <router-link class="setting-btn" to="/security">编辑</router-link>
+                    <span class="setting-curVal-item">{{curNickName}}</span>
                 </template>
                 <div>
-                    <span>现昵称</span>
-                    <span>sdas</span>
+                    <span style="font-weight: 400;font-size: 15px">现昵称:</span>
+                    <span>{{curNickName}}</span>
                 </div>
                 <div>
-                    <span>新昵称</span>
-                    <el-input></el-input>
+                    <label style="font-weight: 400;font-size: 15px">新昵称:</label>
+                    <el-input v-model="newNickName" style="width:200px"></el-input>
+                    <el-button type="primary" @click="nickNameModify">保存</el-button>
                 </div>
-                <el-button>保存</el-button>
-            </el-collapse-item>
-        </el-collapse>
-
-        <el-collapse accordion>
-            <el-collapse-item>
-                <template slot="title">
-                    <span class="setting-item">个人资料</span>
-                    <span class="setting-curVal-item">完善资料</span>
-                    <router-link class="setting-btn" to="/security">编辑</router-link>
-                </template>
-                <el-form ref="personalData" :model="form" label-width="80px">
-                    <el-form-item label="活动名称">
-                        <el-input v-model="form.name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="活动区域">
-                        <el-select v-model="form.region" placeholder="请选择活动区域">
-                            <el-option label="区域一" value="shanghai"></el-option>
-                            <el-option label="区域二" value="beijing"></el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item label="活动时间">
-                        <el-col :span="11">
-                            <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-                        </el-col>
-                        <el-col class="line" :span="2">-</el-col>
-                        <el-col :span="11">
-                            <el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
-                        </el-col>
-                    </el-form-item>
-                    <el-form-item label="即时配送">
-                        <el-switch v-model="form.delivery"></el-switch>
-                    </el-form-item>
-                    <el-form-item label="活动性质">
-                        <el-checkbox-group v-model="form.type">
-                            <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-                            <el-checkbox label="地推活动" name="type"></el-checkbox>
-                            <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-                            <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
-                        </el-checkbox-group>
-                    </el-form-item>
-                    <el-form-item label="特殊资源">
-                        <el-radio-group v-model="form.resource">
-                            <el-radio label="线上品牌商赞助"></el-radio>
-                            <el-radio label="线下场地免费"></el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                    <el-form-item label="活动形式">
-                        <el-input type="textarea" v-model="form.desc"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="onSubmit">立即创建</el-button>
-                        <el-button>取消</el-button>
-                    </el-form-item>
-                </el-form>
 
             </el-collapse-item>
         </el-collapse>
@@ -98,19 +43,8 @@
         <el-collapse accordion>
             <el-collapse-item>
                 <template slot="title">
-                    <span class="setting-item">教育信息</span>
-                    <span class="setting-curVal-item">完善资料</span>
-                    <router-link class="setting-btn" to="/security">编辑</router-link>
-                </template>
-            </el-collapse-item>
-        </el-collapse>
-
-        <el-collapse accordion>
-            <el-collapse-item>
-                <template slot="title">
-                    <span class="setting-item">职业信息</span>
-                    <span class="setting-curVal-item">完善资料</span>
-                    <router-link class="setting-btn" to="/security">编辑</router-link>
+                    <span class="setting-item">基本信息</span>
+                    <span class="setting-curVal-item">编辑</span>
                 </template>
             </el-collapse-item>
         </el-collapse>
@@ -120,8 +54,27 @@
                 <template slot="title">
                     <span class="setting-item">个人标签</span>
                     <span class="setting-curVal-item">完善资料</span>
-                    <router-link class="setting-btn" to="/security">编辑</router-link>
                 </template>
+                <div >
+                    <div>
+                        <span>标签</span>
+                        <el-input v-model="curAddUserLabel" style="width: 250px;"></el-input>
+                        <el-button  type="primary" style="margin-left: 40%;position: relative; margin-left: 0px" @click="addUserLabel">保存</el-button>
+                    </div>
+                    <div class="square-inner grid">
+                        <div  v-for="(userLabel, index) in userLabels" :index="index">
+                            <div>
+                                <span>
+                                    {{userLabel}}
+                                </span>
+                                <el-link style="width: 40px;height: 30px;color: red;float: right;margin-right: 0px" @click="deleteUserLabel(index)">
+                                    删除
+                                </el-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </el-collapse-item>
         </el-collapse>
 
@@ -137,11 +90,52 @@
         data() {
             return{
                 userId: "",
+
+                loginName: "天堂美景",
+                phone: "13926542331",
+                curNickName:"皮皮虾",
+                newNickName: "",
+
+                curAddUserLabel: "",
+                //个人标签
+                userLabels: ["开心","快乐","幸福","容易知足","快乐1","幸福1","容易知足1","快乐2","幸福2","容易知足2"],
             }
         },
 
         methods:{
 
+
+            nickNameModify(){
+
+
+            },
+            /*
+            增加用户标签
+             */
+            addUserLabel(){
+
+                console.log("增加的标签为:"+this.curAddUserLabel);
+
+                this.curAddUserLabel = this.curAddUserLabel.trim()
+                if(this.curAddUserLabel.length > 5){
+                    alert("标签长度不能超过10")
+                }
+                if(this.curAddUserLabel != ""){
+                    this.userLabels.push(this.curAddUserLabel);
+                }
+
+                for (label in this.userLabels){
+                    console.log("label = " + label);
+                }
+
+            },
+            /*
+            删除用户标签
+             */
+            deleteUserLabel(index){
+
+               console.log("删除的标签为:"+this.userLabels[index]);
+            }
         },
 
         created(){
@@ -155,5 +149,22 @@
 
 <style scoped>
 
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(3, 4fr); /* 相当于 1fr 1fr 1fr */
+        grid-template-rows: repeat(3, 4fr); /* fr单位可以将容器分为几等份 */
+        grid-gap: 1%; /* grid-column-gap 和 grid-row-gap的简写 */
+        grid-auto-flow: row;
+    }
+    .grid>div{
+        color: black;
+        font-size: 15px;
+        width: 180px;
+        line-height: 30px;
+        text-align: left;
+        margin-top: 10px;
+        border: #9a6e3a 1px solid;
+        /*background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);*/
+    }
 
 </style>

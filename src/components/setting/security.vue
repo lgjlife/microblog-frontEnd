@@ -293,8 +293,11 @@
         },
 
         created(){
-            console.log("index = "+this.$route.params.index)
-            this.curItem = this.$route.params.index;
+            console.log("index = "+this.$route.query.index)
+            this.curItem = this.$route.query.index;
+            if(this.curItem == null){
+                this.curItem = 2;
+            }
         },
         components: {
             HeaderNav,

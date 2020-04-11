@@ -106,7 +106,7 @@ const routers = [
         }
     },
     {
-        path: '/security/:index',
+        path: '/security',
         component: security,
         meta: {
             title: "帐号与安全"
