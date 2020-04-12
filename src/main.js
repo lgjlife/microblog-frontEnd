@@ -3,9 +3,17 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-import axios from 'axios'
-Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
+//
+// import axios from '@/util/axios/http.js'
+// Vue.prototype.$axios = axios
 
+Vue.prototype.$appName = 'My App'
+
+
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+import store from "./store/store.js"
 
 //VueRouter
 import VueRouter from 'vue-router';
@@ -27,6 +35,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
 import routers from './router/router.js';
+
 
 
 
@@ -55,5 +64,6 @@ Vue.config.productionTip = false
 
 new Vue({
     router,
+    store,
   render: h => h(App),
 }).$mount('#app')

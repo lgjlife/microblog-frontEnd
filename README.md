@@ -26,6 +26,9 @@ npm install vue-video-player --save
 npm install videojs-contrib-hls --save
 
 
+#　vuex
+npm install vuex --save
+
 ```
 
 ## 运行打包
