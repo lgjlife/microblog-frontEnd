@@ -34,22 +34,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
-import routers from './router/router.js';
+import router from './router/router.js';
 
 
 
 
-const router = new VueRouter({
-  mode: 'history',
-  routes: routers
-})
 
-router.beforeEach((to,from,next)=>{
-    if(to.meta.title){
-        document.title = to.meta.title;
-    }
-    next();
-})
 
 
 Vue.config.productionTip = false

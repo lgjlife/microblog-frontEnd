@@ -158,4 +158,30 @@ const routers = [
 
 
 
-export default routers;
+const router = new VueRouter({
+    mode: 'history',
+    routes: routers
+})
+
+/*
+路由前置过滤器
+ */
+router.beforeEach((to,from,next)=>{
+
+    console.log("from path = " + from.path);
+    console.log("即将访问" + to.path);
+
+
+
+    if(to.meta.title){
+        document.title = to.meta.title;
+    }
+
+    //进入首页
+    if(to.path =="/"){
+
+    }
+    next();
+})
+
+export default router;

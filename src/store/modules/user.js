@@ -5,7 +5,8 @@ const state = {
     userId: "",
     userHeaderImg: "",
 
-
+    Authorization: "",
+    
     items: [],
     checkoutStatus: null
 }

@@ -2,6 +2,12 @@
  * 缓存
  */
 
+export const KEY = {
+    "SEARCH_DATA_KEY": "SEARCH_DATA_KEY",
+}
+
+
+
 export default {
 
     set(key,value){
@@ -34,3 +40,4 @@ export default {
         localStorage.removeItem(key+"time");
     }
 }
+

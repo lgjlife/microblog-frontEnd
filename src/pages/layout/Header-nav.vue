@@ -2,29 +2,65 @@
     <div >
 
          <el-row :gutter="0">
-             <!--主页图标-->
-            <el-col :span="1"　:offset="1">
-                <div class="grid-content bg-purple">
-                    <router-link to="/"><i class="el-icon-s-home"></i></router-link>
-                </div>
-            </el-col>
+
              <!--搜索-->
             <el-col :span="6"　:offset="4">
                 <div class="grid-content bg-purple-light">
-                    <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchData"></el-input>
+                    <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchData"
+                              @keyup.enter.native="searchRequest"
+                              @focus="searchHistoryVisable =true"
+                              @blur="searchInputBlur"
+                    ></el-input>
+                </div>
+                <!--搜索历史-->
+                <div class="search-history" v-if="searchHistoryVisable">
+
+                    <div class="search-history-nav" style="width: 100%">
+                        <span>搜索历史</span>
+                        <span @click="cleanSearchHistoryData"
+                        style="position:absolute;right: 0px">清空</span>
+                    </div>
+
+                    <div v-for="(item,index) in searchHistoryDatas"
+                         class="search-history-item"
+                         :item=item
+                         :index=index
+                         @click="searchData=item;searchHistoryVisable =false"
+                         @mouseenter="curSearchHistoryItemMouseOn = index"
+                         :class="{'search-history-item-active': curSearchHistoryItemMouseOn == index}"
+                    >
+                        <span  >
+                            {{item}}
+                        </span>
+                    </div>
+                </div>
+
+            </el-col>
+             <!--搜索输入  @blur="searchHistoryVisable =false"
+              @click="searchData=item;searchHistoryVisable =false"
+             -->
+            <el-col :span="1" 　:offset="-2">
+                <div class="grid-content bg-purple">
+                    <i  class="search-input"></i>
                 </div>
             </el-col>
-             <!--搜索输入-->
-            <el-col :span="1"　:offset="-2"><div class="grid-content bg-purple"><i  class="search-input"></i></div></el-col>
+
              <!--搜索按钮-->
-            <el-col :span="1"　:offset="-2">
+            <el-col :span="1"　:offset="-2" style="margin-top: 10px">
                 <div class="grid-content bg-purple-light">
                     <i class="el-icon-search" @click="searchRequest"></i>
                 </div>
             </el-col>
-
+             <!--主页图标-->
+             <el-col :span="0.5" >
+                 <router-link to="/">
+                     <svg class="iconfont" aria-hidden="true">
+                         <use xlink:href="#element-icon-alihome-ative" ></use>
+                     </svg>
+                 </router-link>
+             </el-col>
              <!--消息-->
-            <el-col :span="1"　:offset="-2">
+            <el-col :span="1"　>
                 <div class="grid-content bg-purple-light" @click="dialogVisible = !dialogVisible">
                     <svg class="iconfont" aria-hidden="true">
                         <use xlink:href="#element-icon-alixiaoxi" ></use>
@@ -44,32 +80,36 @@
                 </div>
             </el-col>
 
+
              <!--用户头像-->
-             <el-col :span="1"　:offset="-2">
+             <el-col :span="0.5" >
                  <svg class="iconfont" aria-hidden="true">
                      <use xlink:href="#element-icon-alitouxiang"></use>
                  </svg>
+
+             </el-col>
+             <el-col :span="1.9" style="margin-top: 14px">
+                    <div v-if="userName == ''">
+                         <!--登录按钮-->
+                         <el-col :span="1.5">
+                             <router-link to="/login">登录</router-link>
+                         </el-col>
+                        <!--注册按钮-->
+                         <el-col :span="1.5">
+                             <!--@click="registerDialogVisible = true"-->
+                             <router-link to="/register">注册</router-link>
+                         </el-col>
+                     </div>
+                     <div v-else>
+                         <!--用户头像-->
+                         <el-link>{{userName}}</el-link>
+
+                     </div>
              </el-col>
 
-             <div v-if="userName == ''">
-                 <!--登录按钮-->
-                 <el-col :span="1"　:offset="-2">
-                     <router-link to="/login">登录</router-link>
-                 </el-col>
-                 <!--注册按钮-->
-                 <el-col :span="1"　:offset="-2">
-                     <!--@click="registerDialogVisible = true"-->
-                     <router-link to="/register">注册</router-link>
-                 </el-col>
-             </div>
-             <div v-else>
-                 <!--用户头像-->
-                 <el-col :span="2">
-                     <el-link>{{userName}}</el-link>
-                 </el-col>
 
-             </div>
 
+             <!--设置-->
             <el-col :span="1"　:offset="-2">
                 <div class="grid-content bg-purple-light">
                     <el-dropdown>
@@ -99,8 +139,9 @@
 import login from '@/components/user/login.vue'
 import register from '@/components/user/register.vue'
 import share from '@/components/blog/share.vue'
-import axios from 'axios'
 import Cache from "@/common/cache/Cache.js"
+import {KEY} from "@/common/cache/Cache.js"
+
 //import { mapState } from 'vuex'
 
 export default {
@@ -112,9 +153,16 @@ export default {
             searchData: '',
             loginDialogVisible: false,
             registerDialogVisible: false,
+            //搜索历史记录框
+            searchHistoryVisable: false,
+            //
+            searchHistoryDatas:[1],
+            //当前鼠标位于的item
+            curSearchHistoryItemMouseOn: "",
+
 
             userId: "",
-            userName: "快乐的小王",
+            userName: "的身份和节点间了看见大",
 
             setOptions: [
 
@@ -156,14 +204,43 @@ export default {
 
     },
     methods: {
-        handleClose(done) {
+
+        /*
+        鼠标离开输入框
+        */
+        searchInputBlur(){
+            let that = this
+            //延迟执行
+            //避免和click冲突
+            setTimeout(function (){
+                that.searchHistoryVisable = false
+            }, 400);
+
 
         },
 
+        
+        init(){
+            this.searchData = this.$route.query.searchData;
+
+           // console.log("搜索的数据为："+this.searchData);
+            this.searchHistoryDatas = Cache.get(KEY.SEARCH_DATA_KEY)
+
+            console.log("this.searchHistoryDatas = " + JSON.stringify(this.searchHistoryDatas));
+            if( this.searchHistoryDatas == null){
+                console.log("历史数据不存在");
+                this.searchHistoryDatas = new Array(0);
+                Cache.set(KEY.SEARCH_DATA_KEY,this.searchHistoryDatas)
+            }
+            
+        },
         setSelect(index){
 
             console.log("选中:")
             this.$router.push({path: this.setOptions[index].path,query: { userId: 123 }})
+        },
+        trim(str){ //删除左右两端的空格
+            return str.replace(/(^\s*)|(\s*$)/g, "");
         },
 
        /*
@@ -171,31 +248,44 @@ export default {
         */
         searchRequest(){
 
+            this.searchHistoryVisable = false
+
+
+            console.log("搜索内容:"+ this.trim(this.searchData))
+
+          //  console.log("搜索内容:"+ this.searchData)
+            this.searchData  =  this.trim(this.searchData)
             if(this.searchData == ""){
                 return
             }
             else {
-                Cache.set("searchData",this.searchData)
-                this.$router.push({path:"/search"})
+                //添加进历史记录
+                if(this.searchHistoryDatas.length > 5){
+                    //移除数组尾数据
+                    var data = this.searchHistoryDatas.pop()
+                }
+                let index = this.searchHistoryDatas.indexOf(this.searchData);
+                //不存在
+                if(index == -1){
+                    this.searchHistoryDatas.unshift(this.searchData);
+                    Cache.set(KEY.SEARCH_DATA_KEY,this.searchHistoryDatas)
+                }
+                this.$router.push({path:"/search",query:{searchData:this.searchData}})
             }
-            console.log("搜索内容:"+ this.searchData)
-            // axios({
-            //     method: 'get',
-            //     url: "/api/search",
-            //     data: {searchData: this.searchData},
-            //
-            // })
-            // .then((response) =>{          //这里使用了ES6的语法
-            //
-            // })
-            // .catch((error) =>{
-            //     console.log(error)//请求失败返回的数
-            // } )
+
+        },
+        cleanSearchHistoryData(){
+
+            console.log("cleanSearchHistoryData");
+            this.searchHistoryDatas = new Array(0);
+            Cache.set(KEY.SEARCH_DATA_KEY,this.searchHistoryDatas)
         }
+
     },
 
     created() {
-        this.searchData = Cache.get("searchData");
+
+        this.init();
     },
     components: {
         login,
@@ -217,6 +307,30 @@ export default {
         float: left;
 
     }
+
+    .search-history{
+        width: 350px;
+        position: absolute;
+        left: 245px;
+        top: 42px;
+        z-index: 999;
+
+        background-color: white;
+
+        cursor: default;
+
+    }
+
+    .search-history-item{
+        border: solid 1px burlywood;
+        margin: 1px;
+        background-color: #e9e9e9;
+    }
+
+    .search-history-item-active{
+        background-color: #D2B48C;
+    }
+
 
     /**
     消息通知
@@ -250,21 +364,10 @@ export default {
         height: 30px;
         margin-top: 10px;
     }
-    
-    .el-icon-s-home{
-        font-size: 25px;
-    }
+
     .el-icon-search{
         font-size: 25px;
     }
-    .el-icon-user-solid{
-        font-size: 25px;
-    }
-    .el-icon-message-solid{
-        font-size: 25px;
-    }
-    .el-icon-setting{
-        font-size: 25px;
-    }
+
     
 </style>

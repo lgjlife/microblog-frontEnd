@@ -6,6 +6,13 @@
   "description": "element-icon",
   "glyphs": [
     {
+      "icon_id": "12676834",
+      "name": "首 页 (2)",
+      "font_class": "home-ative",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "13087816",
       "name": "设 置1",
       "font_class": "shezhi",

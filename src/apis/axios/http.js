@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 
-
+/*
+基础配置
+ */
 const instance = axios.create({
     baseURL: '/api',
     timeout: 1000,
@@ -18,6 +20,10 @@ const instance = axios.create({
 instance.interceptors.request.use(
     config =>{
         config.headers['Auth'] = "token"
+
+        let Authorization = localStorage.getItem('Authorization')
+
+        if(Authorization != 1);
 
         return config;
     },
