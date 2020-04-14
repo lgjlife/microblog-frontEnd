@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div >
         <!--页头-->
-        <HeaderNav></HeaderNav>
+        <HeaderNav ></HeaderNav>
 
         <div class="setting-container">
             <div class="left-nav">
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-    import "./setting.css"
+
     import HeaderNav from '@/pages/layout/Header-nav.vue'
     import axios from 'axios'
 
@@ -46,41 +46,13 @@
                 curItem: 0,
                 title: "",
                 options:[
-                    {
-                        name: "我的信息",
-                        index:0,
-                        path: '/setting/user/info',
-                    },
-                    {
-                        name: "头像",
-                        index:1,
-                        path: '/setting/header/img',
-                    },
-                    {
-                        name: "隐私设置",
-                        index:2,
-                        path: '/setting/user/privater',
-                    },
-                    {
-                        name: "消息设置",
-                        index:3,
-                        path: '/setting/user/message',
-                    },
-                    {
-                        name: "屏蔽设置",
-                        index:4,
-                        path: '/setting/screen',
-                    },
-                    {
-                        name: "偏好设置",
-                        index:5,
-                        path: '/setting/preference',
-                    },
-                    {
-                        name: "帐号绑定",
-                        index:6,
-                        path: '/setting/bind',
-                    },
+                    {name: "我的信息",index:0,path: '/setting/user/info',},
+                    {name: "头像",index:1,path: '/setting/header/img',},
+                    {name: "隐私设置",index:2,path: '/setting/user/privater',},
+                    {name: "消息设置",index:3,path: '/setting/user/message',},
+                    {name: "屏蔽设置",index:4,path: '/setting/screen',},
+                    {name: "偏好设置",index:5,path: '/setting/preference',},
+                    {name: "帐号绑定",index:6,path: '/setting/bind',},
 
                 ],
 
@@ -110,6 +82,8 @@
     }
 
 </script>
+
+<style scoped src="./setting.css"/>
 
 <style scoped>
 

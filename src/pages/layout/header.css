@@ -1,0 +1,60 @@
+body{
+    margin:0px;
+}
+.search-input{
+    float: left;
+}
+.search-input  .el-input{
+    width: 350px;
+    height: 30px;
+    float: left;
+
+}
+
+.search-history{
+    width: 350px;
+    position: absolute;
+    left: 245px;
+    top: 42px;
+    z-index: 999;
+
+    background-color: white;
+
+    cursor: default;
+
+}
+
+.search-history-item{
+    border: solid 1px burlywood;
+    margin: 1px;
+    background-color: #e9e9e9;
+}
+
+.search-history-item-active{
+    background-color: #D2B48C;
+}
+
+
+/**
+消息通知
+ */
+#message-notice{
+    background-color: red;
+    width: 17px;
+    height: 17px;
+    position: relative;
+    float: left;
+    left: 30px;
+    top: 10px;
+    cursor: default;
+}
+
+.iconfont{
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.el-icon-search{
+    font-size: 25px;
+}

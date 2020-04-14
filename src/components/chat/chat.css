@@ -11,13 +11,15 @@
     top: 5%;
     border: #9a6e3a solid 1px;
 }
-
 .left-nav{
     position: absolute;
     width: 19.8%;
     height: inherit;
     border: #9a6e3a solid 1px;
     float: left;
+
+
+
 }
 .header-nav{
     height: 60px;

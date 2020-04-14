@@ -5,25 +5,28 @@
             <!--页首-->
             <el-header><headerNav/></el-header>
             <el-container>
+                <!--最左侧-->
                 <el-aside width="200px">Aside</el-aside>
+                <!--中间内容-->
+                <el-container>
                     <el-container>
+                        <el-aside width="100px" >
+                            <LeftSideNav></LeftSideNav>
+                        </el-aside>
                         <el-container>
-                            <el-aside width="100px" >
-                                <LeftSideNav></LeftSideNav>
-                            </el-aside>
-                            <el-container>
-                                <!--微博编辑-->
-                                <el-header width="100%" height="200px" >
-                                    <BlogPublish/>
-                                </el-header>
-                                <!--微博显示-->
-                                <el-main >
-                                    <BlogDisplay></BlogDisplay>
-                                </el-main>
-                            </el-container>
+                            <!--微博编辑-->
+                            <el-header width="100%" height="200px" >
+                                <BlogPublish/>
+                            </el-header>
+                            <!--微博显示-->
+                            <el-main >
+                                <BlogDisplay></BlogDisplay>
+                            </el-main>
                         </el-container>
-
                     </el-container>
+
+                </el-container>
+
                 <el-aside width="300px"  style=" margin: 2px; padding: 2px;" >
                     <UserInfoNav></UserInfoNav>
                     <HotTopicNav></HotTopicNav>
@@ -72,17 +75,20 @@ export default {
 </script>
 
 <style>
-
-
-    body{
-        width: 1200px;
+    html,body{
+        margin:0px;
+        min-width: 1300px;
+        height: 100%;
+        background-color: #e7e1cd;
     }
+
 #layout{
     margin:0px;
     width:100%;
     min-width:1500px;
     max-width:100%;
     height:100%;
+
     background-color:#F0F0F0;
 }
 .el-aside{

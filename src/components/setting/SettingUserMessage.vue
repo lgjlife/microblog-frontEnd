@@ -228,6 +228,8 @@
 
 </script>
 
+<style scoped src="./setting.css"/>
+
 <style scoped>
 
 

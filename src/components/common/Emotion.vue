@@ -10,7 +10,7 @@
             </div>
             <div>
                 <el-row class="selector" :gutter="20">
-                    <el-col :span="3" v-for="(value,index) in values" >
+                    <el-col :span="3" v-for="(value,index) in values"  >
                         <div class="grid-content bg-purple" v-on:click="selectEmojiMenu(index)">
                             {{ value }}
                         </div>
@@ -31,7 +31,12 @@
         props: {
             showPhiz: {
                 default: true
+            },
+            index:{
+                default: 123
             }
+
+
         },
         data () {
             return {
@@ -106,7 +111,7 @@
             addPhiz (ev) {
                 console.log('添加表情' + ev.target.innerText)
                 this.selectEmotion = ev.target.innerText;
-                this.$emit('emotionChildSelect',this.selectEmotion);
+                this.$emit('emotionChildSelect',this.selectEmotion,this.index);
 
                 //this.$electron.remote.getCurrentWebContents().insertText(ev.target.innerText)
             }
@@ -119,7 +124,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .emotion{
         background-color: #F8F8FF;
         outline-style: solid;
@@ -178,8 +183,12 @@
     }
 
     .selector{
-        background: beige;
-        margin: 14px;
+        position: relative;
+        background-color: #FFDEAD;
+        left: 8px;
+        margin-top: 15px;
+        margin-left: 0px;
         width: 100%;
+        cursor: default;
     }
 </style>

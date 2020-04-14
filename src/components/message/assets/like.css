@@ -1,0 +1,89 @@
+
+.title-nav{
+    position: relative;
+    max-height: 40px;
+    height: 30px;
+    width: 100%;
+    background-color: #cccccc;
+}
+.input-search{
+    position: absolute;
+    width: 200px;
+    right: 0px;
+    margin-right: 0px;
+    padding-right: 0px;
+
+}
+/*
+
+ */
+.like-blog-li{
+    position: relative;
+    margin-top: 10px;
+    margin-left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: #eeeeee;
+
+    border: #52CCBA solid 1px;
+}
+/**/
+.up{
+    position: relative;
+    height: 100%;
+
+}
+/******************/
+.left{
+    position: relative;
+    width: 10%;
+    float: left;
+    height: 100%;
+
+}
+.header-img{
+    width: 50px;
+    height: 50px;
+}
+/******************/
+
+.right{
+    position: relative;
+    margin-left: 2px;
+    width: 88%;
+    float: right;
+    top: 0px;
+}
+.content{
+    background-color: #E6E6FA;
+}
+/******************/
+.footer{
+    position: relative;
+}
+
+.reply-btn{
+    position: relative;
+    left: 50%;
+    cursor: default;
+}
+
+.reply-btn-active{
+    color: #9a6e3a;
+}
+
+/*******************/
+.extend{
+    height: 95px;
+}
+
+.comment-input{
+
+}
+.comment-bth-submit{
+
+    position: absolute;
+    float: right;
+    left: 85%;
+
+}

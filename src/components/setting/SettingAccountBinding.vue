@@ -1,6 +1,6 @@
 <template>
     <!--帐号绑定-->
-    <div>
+    <div >
 
 
         <el-collapse accordion>
@@ -88,6 +88,8 @@
     }
 
 </script>
+
+<style scoped src="./setting.css"/>
 
 <style scoped>
 

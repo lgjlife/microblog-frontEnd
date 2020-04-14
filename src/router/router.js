@@ -25,6 +25,10 @@ import SettingUserInfo from '@/components/setting/SettingUserInfo.vue'
 import SettingUserMessage from '@/components/setting/SettingUserMessage.vue'
 import SettingUserPrivater from '@/components/setting/SettingUserPrivater.vue'
 
+import message from '@/components/message'
+import at from "@/components/message/at"
+import like from "@/components/message/like"
+import comment from "@/components/message/comment"
 
 const routers = [
     {
@@ -112,6 +116,28 @@ const routers = [
             title: "帐号与安全"
         }
     },
+    {
+        path: '/message',
+        component: message,
+        meta: {
+            title: "消息"
+        },
+        children: [
+            {
+                path: "at",
+                component: at,
+            },
+            {
+                path: "comment",
+                component: comment,
+            },
+            {
+                path: "like",
+                component: like,
+            },
+        ]
+    },
+
 
     {
         path: '/setting',

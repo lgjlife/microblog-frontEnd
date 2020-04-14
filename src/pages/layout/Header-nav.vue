@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div style="background-color: #D2B48C">
 
          <el-row :gutter="0">
 
@@ -59,26 +59,7 @@
                      </svg>
                  </router-link>
              </el-col>
-             <!--消息-->
-            <el-col :span="1"　>
-                <div class="grid-content bg-purple-light" @click="dialogVisible = !dialogVisible">
-                    <svg class="iconfont" aria-hidden="true">
-                        <use xlink:href="#element-icon-alixiaoxi" ></use>
-                    </svg>
-                    <div id="message-notice">
-                        {{messageNums}}
-                    </div>
-                </div>
-                <div v-if="dialogVisible" id="message-nav">
-                    <div class="message-option">@我的</div>
-                    <div class="message-option">评论</div>
-                    <div class="message-option">赞</div>
-                    <div class="message-option">私信</div>
-                    <div class="message-option">未关注人私信</div>
-                    <div class="message-option">群通知</div>
-                    <div class="message-option">消息设置</div>
-                </div>
-            </el-col>
+
 
 
              <!--用户头像-->
@@ -108,6 +89,30 @@
              </el-col>
 
 
+             <!--消息-->
+             <el-col :span="1"　:offset="-2">
+                 <div class="grid-content bg-purple-light">
+                     <el-dropdown>
+                        <span class="el-dropdown-link">
+                                <svg class="iconfont" aria-hidden="true">
+                         <use xlink:href="#element-icon-alixiaoxi" ></use>
+                         </svg>
+                         <div id="message-notice">
+                             {{messageNums}}
+                         </div>
+                        </span>
+                         <el-dropdown-menu slot="dropdown">
+                             <el-dropdown-item
+                                     v-for="(option,index) in messageOptions" @click.native="messageOptionSelect(index)"
+                             >
+                                 {{option.name}}
+                             </el-dropdown-item>
+
+                         </el-dropdown-menu>
+                     </el-dropdown>
+                 </div>
+             </el-col>
+
 
              <!--设置-->
             <el-col :span="1"　:offset="-2">
@@ -120,7 +125,7 @@
                         </span>
                         <el-dropdown-menu slot="dropdown">
                             <el-dropdown-item
-                                    v-for="(option,index) in setOptions" @click.native="setSelect(index)"
+                                    v-for="(option,index) in setOptions" @click.native="setOptionSelect(index)"
                             >
                                 {{option.name}}
                             </el-dropdown-item>
@@ -142,6 +147,7 @@ import share from '@/components/blog/share.vue'
 import Cache from "@/common/cache/Cache.js"
 import {KEY} from "@/common/cache/Cache.js"
 
+import {trim} from "@/util/str/str.js"
 //import { mapState } from 'vuex'
 
 export default {
@@ -164,40 +170,25 @@ export default {
             userId: "",
             userName: "的身份和节点间了看见大",
 
-            setOptions: [
+            //消息的选项
+            messageOptions: [
+                {name: "@我的",path: "/message/at",},
+                {name: "评论",path: "/message/comment",},
+                {name: "赞",path: "/message/like",},
+                {name: "私信",path: "/chat",},
+                {name: "消息设置",path: "/setting",},
+            ],
 
-                {
-                    name: "帐号设置",
-                    path: "/setting",
-                },
-                {
-                    name: "会员中心",
-                    path: "",
-                },
-                {
-                    name: "帐号安全",
-                    path: "",
-                },
-                {
-                    name: "隐私设置",
-                    path: "",
-                },
-                {
-                    name: "屏蔽设置",
-                    path: "",
-                },
-                {
-                    name: "消息设计",
-                    path: "",
-                },
-                {
-                    name: "帮助中心",
-                    "path": "",
-                },
-                {
-                    name: "退出",
-                    path: "",
-                }
+            //设置的选项
+            setOptions: [
+                {name: "帐号设置",path: "/setting",},
+                {name: "会员中心",path: "",},
+                {name: "帐号安全",path: "",},
+                {name: "隐私设置",path: "",},
+                {name: "屏蔽设置",path: "",},
+                {name: "消息设计",path: "",},
+                {name: "帮助中心","path": "",},
+                {name: "退出",path: "",}
             ],
             
         }
@@ -205,8 +196,23 @@ export default {
     },
     methods: {
 
+        init(){
+            this.searchData = this.$route.query.searchData;
+
+            // console.log("搜索的数据为："+this.searchData);
+            this.searchHistoryDatas = Cache.get(KEY.SEARCH_DATA_KEY)
+
+            // console.log("this.searchHistoryDatas = " + JSON.stringify(this.searchHistoryDatas));
+            if( this.searchHistoryDatas == null){
+                console.log("历史数据不存在");
+                this.searchHistoryDatas = new Array(0);
+                Cache.set(KEY.SEARCH_DATA_KEY,this.searchHistoryDatas)
+            }
+
+        },
+
         /*
-        鼠标离开输入框
+        鼠标离开搜索输入框
         */
         searchInputBlur(){
             let that = this
@@ -220,28 +226,7 @@ export default {
         },
 
         
-        init(){
-            this.searchData = this.$route.query.searchData;
 
-           // console.log("搜索的数据为："+this.searchData);
-            this.searchHistoryDatas = Cache.get(KEY.SEARCH_DATA_KEY)
-
-            console.log("this.searchHistoryDatas = " + JSON.stringify(this.searchHistoryDatas));
-            if( this.searchHistoryDatas == null){
-                console.log("历史数据不存在");
-                this.searchHistoryDatas = new Array(0);
-                Cache.set(KEY.SEARCH_DATA_KEY,this.searchHistoryDatas)
-            }
-            
-        },
-        setSelect(index){
-
-            console.log("选中:")
-            this.$router.push({path: this.setOptions[index].path,query: { userId: 123 }})
-        },
-        trim(str){ //删除左右两端的空格
-            return str.replace(/(^\s*)|(\s*$)/g, "");
-        },
 
        /*
        搜索请求
@@ -251,10 +236,10 @@ export default {
             this.searchHistoryVisable = false
 
 
-            console.log("搜索内容:"+ this.trim(this.searchData))
+            console.log("搜索内容:"+ trim(this.searchData))
 
           //  console.log("搜索内容:"+ this.searchData)
-            this.searchData  =  this.trim(this.searchData)
+            this.searchData  =  trim(this.searchData)
             if(this.searchData == ""){
                 return
             }
@@ -274,12 +259,33 @@ export default {
             }
 
         },
+        /**
+         * 清除搜索历史数据
+         */
         cleanSearchHistoryData(){
 
             console.log("cleanSearchHistoryData");
             this.searchHistoryDatas = new Array(0);
             Cache.set(KEY.SEARCH_DATA_KEY,this.searchHistoryDatas)
-        }
+        },
+
+        /*
+        消息选项选中
+        */
+        messageOptionSelect(index){
+
+            console.log("选中:")
+            this.$router.push({path: this.messageOptions[index].path})
+        },
+        /*
+       设置选项选择
+       */
+        setOptionSelect(index){
+
+            console.log("选中:")
+            this.$router.push({path: this.setOptions[index].path,query: { userId: 123 }})
+        },
+
 
     },
 
@@ -296,78 +302,7 @@ export default {
 }
 </script>
 
-<style >
+<style scoped src="./header.css"/>
+<style scoped>
 
-    .search-input{
-        float: left;
-    }
-    .search-input  .el-input{
-        width: 350px;
-        height: 30px;
-        float: left;
-
-    }
-
-    .search-history{
-        width: 350px;
-        position: absolute;
-        left: 245px;
-        top: 42px;
-        z-index: 999;
-
-        background-color: white;
-
-        cursor: default;
-
-    }
-
-    .search-history-item{
-        border: solid 1px burlywood;
-        margin: 1px;
-        background-color: #e9e9e9;
-    }
-
-    .search-history-item-active{
-        background-color: #D2B48C;
-    }
-
-
-    /**
-    消息通知
-     */
-    #message-notice{
-        background-color: red;
-        width: 17px;
-        height: 17px;
-        position: relative;
-        float: left;
-        left: 30px;
-        top: 10px;
-        cursor: default;
-    }
-
-    /**
-    消息菜单
-     */
-    #message-nav{
-        width: 150px;
-        background-color: #F0F8FF;
-        position: relative;
-        left: 20px;
-        z-index: 1000;
-    }
-    .message-option{
-        cursor: default;
-    }
-    .iconfont{
-        width: 30px;
-        height: 30px;
-        margin-top: 10px;
-    }
-
-    .el-icon-search{
-        font-size: 25px;
-    }
-
-    
 </style>

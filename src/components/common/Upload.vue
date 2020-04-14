@@ -40,7 +40,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 
     .upload-container{
         background-color: #e9e9e9;

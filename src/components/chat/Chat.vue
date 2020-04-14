@@ -98,7 +98,7 @@
 
 <script>
 
-    import "./chat.css"
+
 
      import ChatUserLeft from  "@/components/chat/ChatUserLeft.vue"
     import ChatUserRight from  "@/components/chat/ChatUserRight.vue"
@@ -279,8 +279,9 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
 
+<style scoped src="./chat.css"/>
+<style scoped>
 
 .chat-edit-input{
     width: 800px;

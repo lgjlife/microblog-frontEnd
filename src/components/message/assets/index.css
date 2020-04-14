@@ -1,0 +1,58 @@
+html,body,#message-cantainer{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#message-cantainer{
+    background-color: orangered;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+/*******left*************/
+.left-nav{
+    background-color: #eeeeee;
+    height: 100%;
+    margin-bottom: 0px;
+}
+
+.left-nav ul{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.left-nav li{
+    margin: 9px;
+    cursor: default;
+}
+
+.active{
+
+    background-color: #52CCBA;
+}
+
+/************************/
+.title-nav{
+    position: relative;
+    max-height: 30px;
+    width: 100%;
+    background-color: #cccccc;
+}
+
+.content-nav{
+    width: 100%;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.input-search{
+    position: absolute;
+    width: 200px;
+    right: 0px;
+    margin-right: 0px;
+    padding-right: 0px;
+
+}

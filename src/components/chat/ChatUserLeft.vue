@@ -10,7 +10,7 @@
     </div>
 </template>
 <script>
-    import "./chat.css"
+
     export default {
         props: {
             content: {
@@ -24,4 +24,11 @@
 
 
 </script>
+
+<style scoped src="./chat.css"/>
+
+<style scoped>
+
+
+</style>
 
