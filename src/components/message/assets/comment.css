@@ -46,16 +46,34 @@
 /******************/
 .footer{
     position: relative;
+    height: 40px;
+}
+.footer ul{
+    margin: 0px;
+    list-style: none;
+}
+.footer li{
+    display: block;
+    float:left;
+    width: 30%;
+    cursor: default;
+    margin-left: 10px;
+    /*background-color: #ec3655;*/
+}
+
+.footer li span{
+    margin-left: 30%;
+    color: #ec3655;
 }
 
 .reply-btn{
-    position: relative;
-    left: 50%;
-    cursor: default;
+
+
 }
 
 .reply-btn-active{
-    color: #9a6e3a;
+    color:red;
+    background-color: #9a6e3a;
 }
 
 /*******************/

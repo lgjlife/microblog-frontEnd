@@ -1,22 +1,6 @@
 <template>
     <div id="blog-display">
-        <div>
-            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                <el-menu-item index="1">全部</el-menu-item>
-                <el-menu-item index="2">原创</el-menu-item>
-                <el-menu-item index="3">图片</el-menu-item>
-                <el-menu-item index="4">视频</el-menu-item>
-                <el-menu-item index="5">音乐</el-menu-item>
-                <el-menu-item index="6">文章</el-menu-item>
-                <el-button>更多设置</el-button>
-            </el-menu>
 
-            <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
-
-                <el-button slot="append" icon="el-icon-search" style="height: 100%"></el-button>
-            </el-input>
-
-        </div>
         <div class="blog-content" v-for="blog in blogDatas">
 
             <el-container>
@@ -43,16 +27,16 @@
                                 <div class="square-inner grid" v-if="blog.imageFlag">
                                     <div @click.self="addPhiz" v-for="(url, index) in blog.images" :key="index">
 
-                                        <div class="demo-image__preview">
+                                        <div class="demo-image_preview">
                                             <el-image
-                                                    style="width: 280px; height: 279px"
+                                                    style="width: 160px; height: 120px"
                                                     :src="url"
                                                     :preview-src-list="blog.images">
                                             </el-image>
                                         </div>
                                     </div>
                                 </div>
-
+                                <!--视频显示-->
                                 <Video v-if="blog.videoFlag"></Video>
                             </div>
 
@@ -192,9 +176,7 @@
 
         },
         methods:{
-            handleSelect(key, keyPath) {
-                console.log(key, keyPath);
-            }
+
         },
 
         components:{
@@ -225,6 +207,8 @@
     grid-template-rows: repeat(3, 1fr); /* fr单位可以将容器分为几等份 */
     grid-gap: 1%; /* grid-column-gap 和 grid-row-gap的简写 */
     grid-auto-flow: row;
+    width: 480px;
+
 }
 .grid>div{
     color: #f5f2f0;

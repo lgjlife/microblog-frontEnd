@@ -4,11 +4,11 @@
  use:
 
  1. import 多个方法
- import {trim,ltrim} from "@/util/str/str.js"
+ import {trim,ltrim} from "@/util/str/time.js"
  trim(" zxxx ")
 
  2. import 所有方法
- import * as strtools from "@/util/str/str.js"
+ import * as strtools from "@/util/str/time.js"
  strtools.trim(" zxxx ")
 
  */

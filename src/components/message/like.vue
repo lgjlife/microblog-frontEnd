@@ -1,15 +1,7 @@
 <template>
     <div style="margin: 0px ;width: 100% ;padding: 0px; margin-left: 0px">
 
-        <div class="title-nav">
-            <span>收到的点赞</span>
-            <el-input  placeholder="请输入查找内容"  v-model="searchData" size="mini"
-                       class="input-with-select input-search"
-            >
-                <el-button slot="append" icon="el-icon-search" @click="searchBlog"></el-button>
-            </el-input>
-
-        </div>
+        <titleNav title="收到的点赞" ></titleNav>
 
         <div v-for="(item,index) in likeList"
             :index="index"
@@ -22,7 +14,7 @@
                 <div class="right">
                     <router-link style="text-decoration:none; color: #FF8C00"
                                  to="{path:'info',query:{userId:item.likerUserId}">{{item.likerUserName}}</router-link>
-                    <div>{{item.likeTime}} </div>
+                    <div style="font-size: 13px;font-weight: 100;color: gray">{{caculTime(item.likeTime)}} </div>
                     <div style="font-size: 13px">赞了您的评论</div>
                     <div class="content">
                         <router-link style="text-decoration:none; color: #FF8C00" to="{path:'info',query:{userId:item.userId}">@{{item.userName}}</router-link>:回复
@@ -42,6 +34,8 @@
                       @click="replyBlockOpen(item)"
                 >回复</span>
             </div>
+
+            <!--评论扩展部分-->
             <div class="extend" v-if="item.replyBlockVisable == true">
                 <div class="comment-input">
                     <el-input v-model="item.comment"
@@ -73,6 +67,9 @@
 <script>
     import HeaderNav from '@/pages/layout/Header-nav.vue'
     import Emotion from '@/components/common/Emotion.vue'
+    import {TIME_CHANGE} from "@/util/time/time.js"
+
+    import titleNav from "./title.vue"
 
     export default {
         data(){
@@ -92,7 +89,10 @@
                         likerUserId:"3",
                         likerUserName: "明日之后",
                         likerHeaderImg: "/img/test/1.jpg",
-                        likeTime: "2019.1.2",
+                        //2020-04-13 20:29:18 1586780958000
+                        //2020-04-14 20:28:18 1586867298000
+                        //2020-04-14 10:28:18 1586831298000
+                        likeTime: 1586867298000,
 
                         userName: "皮皮虾",
                         userId:"1",
@@ -109,7 +109,7 @@
                         likerUserId:"3",
                         likerUserName: "明日之后1",
                         likerHeaderImg: "/img/test/1.jpg",
-                        likeTime: "2019.1.2",
+                        likeTime: 1586780958000,
 
                         userName: "皮皮虾",
                         userId:"1",
@@ -125,7 +125,22 @@
             }
         },
 
+        created(){
+
+            // console.log("time str = " + TIME_CHANGE(1586831298000));
+        },
+
+        mounted(){
+
+            console.log("................");
+            console.log("time str = " + TIME_CHANGE(1586780958000));
+        },
+
         methods:{
+
+            caculTime(time){
+                return TIME_CHANGE(time)
+            },
 
             /**
              表情包子组件选择表情
@@ -187,8 +202,9 @@
                 'to="{path:\'info\',query:{userId:item.likerUserId}">' + userName + '</router-link>'
             },
 
-            searchBlog(){
-                console.log("搜索："+this.searchData);
+            searchBlog(searchData){
+
+                console.log("搜索：" + searchData);
             }
 
         },
@@ -196,8 +212,8 @@
 
 
         components:{
-            HeaderNav,
             Emotion,
+            titleNav,
         }
 
 

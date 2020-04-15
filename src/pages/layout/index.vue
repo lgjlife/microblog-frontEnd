@@ -20,6 +20,7 @@
                             </el-header>
                             <!--微博显示-->
                             <el-main >
+                                <BlogSearch></BlogSearch>
                                 <BlogDisplay></BlogDisplay>
                             </el-main>
                         </el-container>
@@ -48,6 +49,8 @@ import HotTopicNav from './HotTopicNav.vue'
 
 import BlogPublish from '@/components/blog/BlogPublish'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
+import BlogSearch from '@/components/blog/BlogSearch.vue'
+
 ///import { mapState } from 'vuex'
 export default {
     data() {
@@ -68,8 +71,11 @@ export default {
 
         //微博发布
         BlogPublish,
+        //
+        BlogSearch,
         //微博显示
         BlogDisplay,
+
     }
 }
 </script>
