@@ -16,6 +16,11 @@ import Chat from '@/components/chat/Chat.vue'
 import test from '@/components/test/test.vue'
 import security from '@/components/setting/security.vue'
 
+import user from '@/components/user'
+import UserHome from '@/components/user/home'
+import UserManage from '@/components/user/manage'
+import UserPhoto from '@/components/user/photo'
+
 import setting from '@/components/setting/Setting.vue'
 import SettingAccountBinding from '@/components/setting/SettingAccountBinding.vue'
 import SettingPreference from '@/components/setting/SettingPreference.vue'
@@ -126,14 +131,55 @@ const routers = [
             {
                 path: "at",
                 component: at,
+                meta: {
+                    title: "@我的微博"
+                },
             },
             {
                 path: "comment",
                 component: comment,
+                meta: {
+                    title: "我的评论"
+                },
             },
             {
                 path: "like",
                 component: like,
+                meta: {
+                    title: "我的点赞"
+                },
+            },
+        ]
+    },
+
+    {
+        path: '/user',
+        component: user,
+        meta: {
+            title: "用户"
+        },
+        children :[
+
+            {
+                path: 'home',
+                component: UserHome,
+                meta: {
+                    title: "用户主页"
+                },
+            },
+            {
+                path: 'manage',
+                component: UserManage,
+                meta: {
+                    title: "用户管理"
+                },
+            },
+            {
+                path: 'photo',
+                component: UserPhoto,
+                meta: {
+                    title: "用户相片"
+                },
             },
         ]
     },
@@ -184,7 +230,7 @@ const routers = [
 
 
 
-const router = new VueRouter({
+const router1 = new VueRouter({
     mode: 'history',
     routes: routers
 })
@@ -192,7 +238,7 @@ const router = new VueRouter({
 /*
 路由前置过滤器
  */
-router.beforeEach((to,from,next)=>{
+router1.beforeEach((to, from, next)=>{
 
     console.log("from path = " + from.path);
     console.log("即将访问" + to.path);
@@ -210,4 +256,4 @@ router.beforeEach((to,from,next)=>{
     next();
 })
 
-export default router;
+export default router1;

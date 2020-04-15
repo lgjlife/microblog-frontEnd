@@ -34,7 +34,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
-import router from './router/router.js';
+import router from './router';
 
 
 
@@ -47,13 +47,13 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 // new Vue({
 //  el: "#app",
-//  router,
+//  router1,
 //  render: h => h(app)
 // })
 
 
 new Vue({
-    router,
+    router: router,
     store,
   render: h => h(App),
 }).$mount('#app')

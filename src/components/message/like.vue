@@ -177,7 +177,6 @@
                 console.log("str = " + str);
                 console.log("result = " + result);
 
-                this.result = result
             },
 
             /*
@@ -198,8 +197,8 @@
              */
             getUserLink(userName){
 
-                return '<router-link style="text-decoration:none; color: #FF8C00"\n' +
-                'to="{path:\'info\',query:{userId:item.likerUserId}">' + userName + '</router-link>'
+                return '<router1-link style="text-decoration:none; color: #FF8C00"\n' +
+                'to="{path:\'info\',query:{userId:item.likerUserId}">' + userName + '</router1-link>'
             },
 
             searchBlog(searchData){

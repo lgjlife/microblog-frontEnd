@@ -14,11 +14,7 @@ npm install element-ui -S
 #安装axios
 npm install axios --save
 
-#安装vue-router
-npm install vue-router
-
-#
-cnpm install node-sass
+router1router1nstall vue-routerrouter1pm install node-sass
 
 #视频播放
 npm install video.js --save

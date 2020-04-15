@@ -1,0 +1,44 @@
+.user-info-container{
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586943747458&di=6b1ca60bc665a7840360217c5d776cfb&imgtype=0&src=http%3A%2F%2Fpic2.16pic.com%2F00%2F00%2F96%2F16pic_96661_b.jpg);
+    min-height: 1800px;
+}
+
+.main-nav{
+    width: 980px;
+    height: 300px;
+    position: relative;background-color: #ffffff;
+    left: 20%;
+
+}
+.main-nav-background{
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586933860794&di=14e2b74480dbb5254b8d7dc56d672f6d&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F2003%2F05%2Fc4%2F195593837_1583372967744_1024x1024it.jpg);
+    width: 100%;
+    height: 80%;
+    position: relative;
+    text-align:center;
+}
+.uploadCoverBtn{
+    position: absolute;
+    background-color: #FFFAFA;
+    width: 80px;
+    cursor: default;
+}
+
+.main-nav-option{
+    position: absolute;
+    float: left;
+    width: 100%;
+    margin-bottom: 0px;
+}
+.main-nav-option .el-menu-item{
+    margin-left: 18%;
+}
+
+.main-content{
+    width: 980px;
+    position: relative;
+    left: 20%;
+    height: 100px;
+    margin-top: 10px;
+
+}
