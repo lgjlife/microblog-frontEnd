@@ -7,10 +7,11 @@ import home from "./home"
 import message from "./message"
 import setting from "./setting"
 import user from "./user"
+import test from "./test"
 
 const baseRouters =[];
 
-const routers = baseRouters.concat(home,message,setting,user);
+const routers = baseRouters.concat(home,message,setting,user,test);
 
 
 /*

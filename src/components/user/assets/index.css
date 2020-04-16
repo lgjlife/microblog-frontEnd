@@ -1,5 +1,5 @@
 .user-info-container{
-    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586943747458&di=6b1ca60bc665a7840360217c5d776cfb&imgtype=0&src=http%3A%2F%2Fpic2.16pic.com%2F00%2F00%2F96%2F16pic_96661_b.jpg);
+    background-image: url(/img/background/background.jpeg);
     min-height: 1800px;
 }
 
@@ -11,7 +11,7 @@
 
 }
 .main-nav-background{
-    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586933860794&di=14e2b74480dbb5254b8d7dc56d672f6d&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F2003%2F05%2Fc4%2F195593837_1583372967744_1024x1024it.jpg);
+    background-image: url(/img/background/1.jpeg);
     width: 100%;
     height: 80%;
     position: relative;
@@ -30,8 +30,11 @@
     width: 100%;
     margin-bottom: 0px;
 }
-.main-nav-option .el-menu-item{
+.main-nav-option .itemu-u{
     margin-left: 18%;
+}
+.main-nav-option .itemu-o{
+    margin-left: 26%;
 }
 
 .main-content{

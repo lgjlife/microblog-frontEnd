@@ -3,7 +3,18 @@
         <!--标题-->
         <div>
             <span>粉丝:</span><span>{{fansList.length}}</span>
-            <el-input></el-input>
+            <el-input placeholder="请输入内容"
+                      v-model="searchName"
+                      class="input-with-select"
+                      style="width: 400px;border: sienna solid 1px;float: right"
+
+            >
+                <el-button
+                        slot="append"
+                        icon="el-icon-search"
+                        style="border: sienna solid 1px;float: right;color: red"
+                ></el-button>
+            </el-input>
         </div>
 
         <!--列表-->
@@ -50,7 +61,14 @@
 
             </div>
 
-
+            <!--分页-->
+            <div style="text-align: center">
+                <el-pagination
+                        background
+                        layout="prev, pager, next"
+                        :total="1000">
+                </el-pagination>
+            </div>
         </div>
 
 
@@ -62,6 +80,7 @@
     export default {
         data(){
             return{
+                searchName: "",
                 fansList:[
                     {
                         headerImageUrl: "/img/test/1.jpg",

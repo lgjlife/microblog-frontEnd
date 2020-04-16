@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color: #D2B48C">
+    <div  style="background-color: #fffdef;margin: 0px;margin: 0px;">
 
          <el-row :gutter="0">
 
@@ -83,8 +83,7 @@
                      </div>
                      <div v-else>
                          <!--用户头像-->
-                         <el-link>{{userName}}</el-link>
-
+                         <el-link @click="gotoUserPage">{{userName}}</el-link>
                      </div>
              </el-col>
 
@@ -141,14 +140,18 @@
 </template>
 
 <script>
-import login from '@/components/user/login.vue'
-import register from '@/components/user/register.vue'
+import login from '@/components/user/auth/login.vue'
+import register from '@/components/user/auth/register.vue'
 import share from '@/components/blog/share.vue'
 import Cache from "@/common/cache/Cache.js"
 import {KEY} from "@/common/cache/Cache.js"
 
 import {trim} from "@/util/str/str.js"
 //import { mapState } from 'vuex'
+
+import  * as pathRouter  from "@/apis/common/pathRouter.js"
+
+
 
 export default {
     data() {
@@ -167,7 +170,7 @@ export default {
             curSearchHistoryItemMouseOn: "",
 
 
-            userId: "",
+            userId: "1001",
             userName: "的身份和节点间了看见大",
 
             //消息的选项
@@ -209,6 +212,12 @@ export default {
                 Cache.set(KEY.SEARCH_DATA_KEY,this.searchHistoryDatas)
             }
 
+        },
+
+        gotoUserPage(){
+           // this.$router.push("/user/u/" + this.userId + "/home" )
+
+            pathRouter.openUserPage(this,this.userId)
         },
 
         /*

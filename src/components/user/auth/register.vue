@@ -75,7 +75,7 @@
 
     import Vue from 'vue'
     import axios from 'axios'
-    import slidingImage from '@/components/user/slidingImage.vue'
+    import slidingImage from '@/components/user/auth/slidingImage.vue'
     import formValidation from "@/components/user/formValidation.js"
   //  Vue.prototype.common = common
 

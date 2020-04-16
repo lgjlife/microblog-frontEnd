@@ -5,14 +5,22 @@
 
             <div class="square">
                 <div class="square-inner grid">
-                    <div @click.self="addPhiz" v-for="(item, index) in emojiList" :key="index">{{ item }}</div>
+                    <!--表情列表-->
+                    <div @click.self="addPhiz"
+                         v-for="(item, index) in emojiList"
+                         :index=index
+                         :class="{'emoj-active':curIndex==index}"
+                         @mouseover="curIndex=index"
+                         @mouseout="curIndex=-1"
+                    >{{ item }}</div>
                 </div>
             </div>
             <div>
+                <!--底部选项-->
                 <el-row class="selector" :gutter="20">
-                    <el-col :span="3" v-for="(value,index) in values"  >
+                    <el-col :span="3" v-for="(option,index) in options"  >
                         <div class="grid-content bg-purple" v-on:click="selectEmojiMenu(index)">
-                            {{ value }}
+                            {{ option }}
                         </div>
                     </el-col>
                 </el-row>
@@ -45,7 +53,11 @@
                 selectEmotion:"",
                 emojiList: [],
 
-                values:[
+                curIndex:'',
+
+                emojMouseOnFlag:[],
+
+                options:[
 
                     String.fromCodePoint('0x1F601'),
                     String.fromCodePoint('0x1F43C'),
@@ -57,10 +69,12 @@
         },
         components: {},
         methods: {
+
             selectEmojiMenu (flag) {
 
                // console.log('flag = ' + flag)
                 this.emojiList = []
+                this.emojMouseOnFlag  = []
                 switch (flag) {
                     case 0:
                         console.log('第一个菜单')
@@ -106,6 +120,8 @@
                     let emoji = String.fromCodePoint(i)
                     //console.log("emoji = " + emoji)
                     this.emojiList.push(emoji)
+
+                    this.emojMouseOnFlag.push(false)
                 }
             },
             addPhiz (ev) {
@@ -131,6 +147,9 @@
         outline-color: #e9e9e9  ;
         width: 250px;
     }
+    .emoj-active{
+        background-color: #66c523;
+    }
     .grid{
         display: grid;
         grid-template-columns: repeat(8, 1fr); /* 相当于 1fr 1fr 1fr */
@@ -140,11 +159,17 @@
     }
     .grid>div{
         color: #f5f2f0;
-        font-size: 20px;
-        width: 20px;
+        font-size: 18px;
+        width: 25px;
+        height: 35px;
+        margin-top: 0px;
+        padding-top: 0px;
+        text-align: center;
 
         line-height: 2;
         text-align: center;
+
+        cursor: default;
         /*background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);*/
     }
     .square{

@@ -11,18 +11,21 @@
                 <el-container>
 
                     <!--用户名显示-->
-                    <el-header style="background-color: #f57a7a">
-                        <span>{{blog.user.name}}</span>
+                    <el-header >
+                        <span
+                                @click="openUserPage(blog.user.userId)"
+                                style="cursor: default;color: black;font-weight: 800"
+                        >{{blog.user.name}}</span>
                         <span>
 
                         </span>
                     </el-header>
                     <!--内容显示-->
-                    <el-container style="width: 880px; background-color: red">
+                    <el-container >
                         <el-main>
                             <div >
                                 <!--文字内容显示-->
-                                <span>{{blog.content}}}</span>
+                                <span>{{blog.content}}</span>
                                 <!--图片显示-->
                                 <div class="square-inner grid" v-if="blog.imageFlag">
                                     <div @click.self="addPhiz" v-for="(url, index) in blog.images" :key="index">
@@ -91,6 +94,7 @@
 <script>
 
     import Video from '@/components/video/Video.vue'
+    import  * as pathRouter  from "@/apis/common/pathRouter.js"
 
 
     export default {
@@ -106,6 +110,7 @@
                         user:{
                             headerImgUrl: "/img/user/ori.png",
                             name: "李白",
+                            userId: "123",
                         },
                         content: "一早随郁荣誉主席到慈湖谒陵\n" +
                             "纪念先总统蒋介石先生逝世日\n" +
@@ -140,6 +145,7 @@
                         user:{
                             headerImgUrl: "/img/user/ori.png",
                             name: "李白",
+                            userId: "123",
                         },
                         content: "一早随郁荣誉主席到慈湖谒陵\n" +
                             "纪念先总统蒋介石先生逝世日\n" +
@@ -176,7 +182,9 @@
 
         },
         methods:{
-
+            openUserPage(userId){
+                pathRouter.openOtherUserPage(this,userId)
+            }
         },
 
         components:{
@@ -190,6 +198,7 @@
     .blog-content{
         margin-top: 20px;
         border: solid 1px red;
+        background-color: #fffdef;
 
     }
     .iconfont{

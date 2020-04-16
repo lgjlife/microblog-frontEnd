@@ -1,7 +1,7 @@
 <template>
     <div id="left-side-nav">
 
-        <div v-for="item in items">
+        <div v-for="item in items" class="item-list">
             <el-link>{{ item.name }}</el-link>
         </div>
     </div>
@@ -48,4 +48,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+    #left-side-nav{
+        background-color: #fffdef;
+        height: 100%;
+    }
+    .item-list{
+
+        text-align: center;
+
+    }
+    .item-list .el-link{
+        font-size: 16px;
+        font-weight: 900;
+    }
 </style>

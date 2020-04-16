@@ -40,7 +40,7 @@
 
 <script>
 
-import "@/components/user/assets/css/slidingImage.scss"
+import "@/components/user/assets/css/slidingImage.css"
 import axios from 'axios'
 
 //图片显示使用base64时的前缀,src=base64PrefixPath + imgBase64Value
@@ -278,7 +278,7 @@ export default {
    
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 
 /*@import "@/components/user/assets/css/slidingImage.css";*/
 

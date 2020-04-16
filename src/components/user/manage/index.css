@@ -1,0 +1,30 @@
+.left-container{
+    width: 100px;
+    background-color: #ffffff;
+    height: 800px;
+
+    position: relative;
+    float: left;
+
+    text-align: center;
+}
+
+.left-container ul{
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.left-container li{
+
+}
+
+
+
+.right-container{
+    width: 870px;
+    background-color: #ffffff;
+    height: 800px;
+
+    position: relative;
+    float: right;
+}

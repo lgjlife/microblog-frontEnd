@@ -1,21 +1,21 @@
-import register from '@/components/user/register.vue'
-import login from '@/components/user/login.vue'
+import register from '@/components/user/auth/register.vue'
+import login from '@/components/user/auth/login.vue'
 
 import user from '@/components/user'
 
-import UserHome from '@/components/user/home'
-import HomeBlog from '@/components/user/home/blog'
-import HomeFollow from '@/components/user/home/follow'
-import HomeFans from '@/components/user/home/fans'
+import UserHome from '@/components/user/common/home.vue'
+import HomeBlog from '@/components/user/common/home/blog.vue'
+import HomeFollow from '@/components/user/common/home/follow.vue'
+import HomeFans from '@/components/user/common/home/fans.vue'
 
 import UserManage from '@/components/user/manage'
-import UserPhoto from '@/components/user/photo'
+import UserPhoto from '@/components/user/common/photos.vue'
 
 import Chat from '@/components/chat/Chat.vue'
 
 let routers =[
     {
-        path: '/user',
+        path: '/user/:type/:userId',
         component: user,
         meta: {
             title: "用户"

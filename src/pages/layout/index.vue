@@ -3,14 +3,18 @@
 
         <el-container>
             <!--页首-->
-            <el-header><headerNav/></el-header>
+            <el-header style="padding: 0px">
+                <headerNav/>
+            </el-header>
+
             <el-container>
                 <!--最左侧-->
-                <el-aside width="200px">Aside</el-aside>
+                <el-aside width="200px"></el-aside>
                 <!--中间内容-->
                 <el-container>
                     <el-container>
                         <el-aside width="100px" >
+                            <!--左侧菜单-->
                             <LeftSideNav></LeftSideNav>
                         </el-aside>
                         <el-container>
@@ -28,14 +32,19 @@
 
                 </el-container>
 
-                <el-aside width="300px"  style=" margin: 2px; padding: 2px;" >
-                    <UserInfoNav></UserInfoNav>
-                    <HotTopicNav></HotTopicNav>
+                <!--右侧边-->
+                <el-aside >
+                    <RightSideNav/>
                 </el-aside>
-                <el-aside width="200px">Aside</el-aside>
+                <el-aside width="200px"></el-aside>
             </el-container>
             <el-footer>Footer</el-footer>
+
+
         </el-container>
+
+        <div style="clear:both"></div>
+
     </div>
 </template>
 
@@ -44,8 +53,9 @@
 import HeaderNav from './Header-nav.vue'
 import footerNav from './footer-nav.vue'
 import LeftSideNav from './LeftSideNav.vue'
-import UserInfoNav from './UserInfoNav.vue'
-import HotTopicNav from './HotTopicNav.vue'
+import RightSideNav from './RightSideNav.vue'
+
+
 
 import BlogPublish from '@/components/blog/BlogPublish'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
@@ -66,8 +76,10 @@ export default {
         footerNav,
         //左侧
         LeftSideNav,
-        UserInfoNav,
-        HotTopicNav,
+
+
+        //
+        RightSideNav,
 
         //微博发布
         BlogPublish,
@@ -85,7 +97,8 @@ export default {
         margin:0px;
         min-width: 1300px;
         height: 100%;
-        background-color: #e7e1cd;
+        /*min-height: 2000px;*/
+        background-image: url(/img/background/background.jpeg);
     }
 
 #layout{
@@ -95,16 +108,17 @@ export default {
     max-width:100%;
     height:100%;
 
-    background-color:#F0F0F0;
+
+
 }
 .el-aside{
-    background-color: bisque;
+    /*background-color: #fffdef;*/
 }
 .el-footer{
-    background-color: coral;
+    /*background-color: coral;*/
 }
 #display-content{
-    background-color:cyan;
+    /*background-color:cyan;*/
 }
 #BlogPublish{
     width: 100%;
@@ -114,8 +128,6 @@ export default {
     /*margin: 0px 0px 0px 0px;*/
 }
 .el-main{
-
-    background-color: #669900;
-    margin: 25px 1px 0px 1px;
+    margin: 0px 1px 0px 1px;
 }
 </style>

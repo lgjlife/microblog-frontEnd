@@ -58,7 +58,7 @@
     }
 </script>
 
-<style scoped src="./index.css">
+<style scoped src="./index.css"/>
 
 <style scoped>
 

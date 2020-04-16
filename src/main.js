@@ -38,7 +38,9 @@ import router from './router';
 
 
 
-
+//echarts
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 
 
 

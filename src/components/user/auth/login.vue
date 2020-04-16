@@ -80,7 +80,7 @@
 <script>
 
 import axios from 'axios'
-import slidingImage from '@/components/user/slidingImage.vue'
+import slidingImage from '@/components/user/auth/slidingImage.vue'
 
 export default {
 
