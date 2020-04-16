@@ -9,20 +9,23 @@
                     <div @click.self="addPhiz"
                          v-for="(item, index) in emojiList"
                          :index=index
-                         :class="{'emoj-active':curIndex==index}"
-                         @mouseover="curIndex=index"
-                         @mouseout="curIndex=-1"
+                         :class="{'emoj-active':curEmojIndex==index}"
+                         @mouseover="curEmojIndex=index"
+                         @mouseout="curEmojIndex=-1"
                     >{{ item }}</div>
                 </div>
             </div>
             <div>
                 <!--底部选项-->
                 <el-row class="selector" :gutter="20">
-                    <el-col :span="3" v-for="(option,index) in options"  >
-                        <div class="grid-content bg-purple" v-on:click="selectEmojiMenu(index)">
-                            {{ option }}
-                        </div>
-                    </el-col>
+
+                    <ul>
+                        <li v-for="(option,index) in options"
+                            :index=index
+                            :class="{'emoj-active':curEmojTypeIndex==index}"
+                            @click="selectEmojiMenu(index)"
+                        > {{ option }}</li>
+                    </ul>
                 </el-row>
             </div>
         </div>
@@ -34,108 +37,70 @@
 </template>
 
 <script>
-    import emoji from '@/assets/emoji/emoji.json'
+    // import emoji from '@/assets/emoji/emoji.json'
     export default {
-        props: {
-            showPhiz: {
-                default: true
-            },
-            index:{
-                default: 123
-            }
-
-
-        },
         data () {
             return {
-                phiz: emoji,
-
-                selectEmotion:"",
+                //表情列表
                 emojiList: [],
-
-                curIndex:'',
-
-                emojMouseOnFlag:[],
-
+                //当前鼠标所在表情位置
+                curEmojIndex:'',
+                //当前鼠标所在表情类型位置
+                curEmojTypeIndex: "",
+                //表情类型
                 options:[
-
                     String.fromCodePoint('0x1F601'),
                     String.fromCodePoint('0x1F43C'),
                     String.fromCodePoint('0x1F372'),
                     String.fromCodePoint('0x1F3F0'),
                     String.fromCodePoint('0x1F4E6'),
                 ],
+
+                /**
+                 * 表情范围
+                 */
+                emojiMenu: [
+                    {startUnicode: '0x1F601',endUnicode: '0x1F64F'} ,
+                    {startUnicode: '0x1F40C',endUnicode: '0x1F43C'} ,
+                    {startUnicode: '0x1F354',endUnicode: '0x1F372'} ,
+                    {startUnicode: '0x1F3E0',endUnicode: '0x1F3F0'} ,
+                    {startUnicode: '0x1F48B',endUnicode: '0x1F4E6'} ,
+                ],
             }
         },
-        components: {},
         methods: {
 
-            selectEmojiMenu (flag) {
-
-               // console.log('flag = ' + flag)
+            /*
+            表情类型选择
+            */
+            selectEmojiMenu (index) {
                 this.emojiList = []
-                this.emojMouseOnFlag  = []
-                switch (flag) {
-                    case 0:
-                        console.log('第一个菜单')
-                        this.initEmoji('0x1F64F', '0x1F601')
-                        break
-                    case 1:
-                        console.log('第二个菜单')
-                        this.initEmoji('0x1F40C', '0x1F43C', true)
-                        break
-                    case 2:
-                        console.log('第三个菜单')
-                        this.initEmoji('0x1F354', '0x1F372', true)
-                        break
-                    case 3:
-                        console.log('第四个菜单')
-                        this.initEmoji('0x1F3E0', '0x1F3F0', true)
-                        break
-                    case 4:
-                        console.log('第五个菜单')
-                        this.initEmoji('0x1F48B', '0x1F4E6', true)
-                        break
-                }
+                this.curEmojTypeIndex = index
+                this.initEmoji(this.emojiMenu[index].startUnicode, this.emojiMenu[index].endUnicode)
             },
             /**
              * 表情的unicode
              * https://apps.timwhitlock.info/emoji/tables/unicode#
              * startUnicode 开始的编码
-             * endUnicode 结束的编码
+             * endUnicode 结束编码
              * flag 相反
              */
-            initEmoji (startUnicode, endUnicode, flag) {
-                let start
-                let end
-                if (flag) {
-                    start = startUnicode
-                    end = endUnicode
-                } else {
-                    start = endUnicode
-                    end = startUnicode
-                }
-                for (let i = start; i <= end; i++) {
+            initEmoji (startUnicode, endUnicode) {
+                for (let i = startUnicode; i <= endUnicode; i++) {
                     // console.log(i)
                     let emoji = String.fromCodePoint(i)
                     //console.log("emoji = " + emoji)
                     this.emojiList.push(emoji)
-
-                    this.emojMouseOnFlag.push(false)
                 }
             },
             addPhiz (ev) {
                 console.log('添加表情' + ev.target.innerText)
                 this.selectEmotion = ev.target.innerText;
                 this.$emit('emotionChildSelect',this.selectEmotion,this.index);
-
-                //this.$electron.remote.getCurrentWebContents().insertText(ev.target.innerText)
             }
         },
         created () {
-            //this.initEmoji('0x1F64F', '0x1F601')
             this.selectEmojiMenu(0);
-
         }
     }
 </script>
@@ -149,6 +114,7 @@
     }
     .emoj-active{
         background-color: #66c523;
+        border: red 0px solid;
     }
     .grid{
         display: grid;
@@ -210,10 +176,25 @@
     .selector{
         position: relative;
         background-color: #FFDEAD;
-        left: 8px;
-        margin-top: 15px;
-        margin-left: 0px;
-        width: 100%;
         cursor: default;
+        text-align: center;
+        width: 100%;
+        left: 10px;
+        height: 35px;
+    }
+    .selector ul{
+        list-style: none;
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+    .selector li{
+        position: relative;
+        float: left;
+        margin: 0px 0px 0px 0px;
+        padding-top: 9px;
+        width: 30px;
+        height: 28px;
+
+        bottom: 15px;
     }
 </style>
