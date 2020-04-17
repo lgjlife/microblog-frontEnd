@@ -1,82 +1,87 @@
 <template>
     <div id="BlogPublish">
-        <h1>发布微博</h1>
+        <h3>发布内容</h3>
+
+        <!--输入框-->
         <el-input
             type="textarea"
             placeholder="请输入内容"
             v-model="blogData.content"
             maxlength="120"
             show-word-limit
-            rows="4"
+            rows="7"
 
         >
         </el-input>
 
-        <el-row :gutter="1">
-            <el-col :span="2" :offset=0>
+        <!--工具-->
+        <div class="tools-block">
+            <ul>
                 <!--表情-->
-                <div class="grid-content bg-purple">
+                <li>
+                    <div class="grid-content bg-purple">
 
-                    <svg class="iconfont" aria-hidden="true">
-                        <use xlink:href="#element-icon-alibiaoqing" @click="emotionDisplay = !emotionDisplay"></use>
-                    </svg>
+                        <svg class="iconfont" aria-hidden="true">
+                            <use xlink:href="#element-icon-alibiaoqing" @click="emotionDisplay = !emotionDisplay"></use>
+                        </svg>
 
-                </div>
-                <Emotion v-if="emotionDisplay" ref="emotionChild" style="position:absolute; z-index: 9999;" @emotionChildSelect="emotionChildSelect"></Emotion>
+                    </div>
+                    <Emotion v-if="emotionDisplay" ref="emotionChild" style="position:absolute; z-index: 9999;" @emotionChildSelect="emotionChildSelect"></Emotion>
+                </li>
 
-            </el-col>
+                <!--图片-->
+                <li>
+                    <div class="grid-content bg-purple">
+                        <svg class="iconfont" aria-hidden="true">
+                            <use xlink:href="#element-icon-alitupian1" @click="uploadDisplay = !uploadDisplay"></use>
+                        </svg>
+                    </div>
+                    <Upload v-if="uploadDisplay" style="position:absolute; z-index: 9999;"></Upload>
+                </li>
 
+                <!--视频-->
+                <li>
+                    <div class="grid-content bg-purple">
+                        <svg class="iconfont" aria-hidden="true">
+                            <use xlink:href="#element-icon-alishipin1"></use>
+                        </svg>
+                    </div>
+                </li>
 
-            <!--图片-->
-            <el-col :span="2" :offset=0>
-                <div class="grid-content bg-purple">
-                    <svg class="iconfont" aria-hidden="true">
-                        <use xlink:href="#element-icon-alitupian1" @click="uploadDisplay = !uploadDisplay"></use>
-                    </svg>
-                </div>
-                <Upload v-if="uploadDisplay" style="position:absolute; z-index: 9999;"></Upload>
-            </el-col>
-            <!--视频-->
-            <el-col :span="2" :offset=0>
-                <div class="grid-content bg-purple">
-                    <svg class="iconfont" aria-hidden="true">
-                        <use xlink:href="#element-icon-alishipin1"></use>
-                    </svg>
-                </div>
+                <!--话题-->
+                <li>
+                    <div class="grid-content bg-purple">
+                        <svg class="iconfont" aria-hidden="true">
+                            <use xlink:href="#element-icon-alichuangjianhuati" @click="hotTopicDisplay = !hotTopicDisplay"></use>
+                        </svg>
+                    </div>
+                    <HotTopic v-if="hotTopicDisplay" ref="topicChild" style="position:absolute; z-index: 9999;" @submit="topicChildSubmit"></HotTopic>
+                </li>
 
-            </el-col>
-            <!--话题-->
-            <el-col :span="2" :offset=0>
-                <div class="grid-content bg-purple">
-                    <svg class="iconfont" aria-hidden="true">
-                        <use xlink:href="#element-icon-alichuangjianhuati" @click="hotTopicDisplay = !hotTopicDisplay"></use>
-                    </svg>
-                </div>
-                <HotTopic v-if="hotTopicDisplay" ref="topicChild" style="position:absolute; z-index: 9999;" @submit="topicChildSubmit"></HotTopic>
-            </el-col>
-            <!--微博类型-->
-            <el-col :span="2" :offset="0">
-                <div class="grid-content bg-purple">
-                    <el-dropdown @command="handleBlogTypeSelectCommand" style="margin-top: 10px">
+                <!--微博类型-->
+                <li>
+                    <div >
+                        <el-dropdown @command="handleBlogTypeSelectCommand" >
                         <span class="el-dropdown-link">
                             {{ blogData.type.name }}
                             <i class="el-icon-arrow-down el-icon--right"></i>
                         </span>
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item command="公开">公开</el-dropdown-item>
-                            <el-dropdown-item command="私密">私密</el-dropdown-item>
-                        </el-dropdown-menu>
-                    </el-dropdown>
-                </div>
-            </el-col>
-            <!--发布按钮-->
-            <el-col :span="1" :offset="0">
-                <div class="grid-content bg-purple">
-                    <el-button type="success">发布</el-button>
-                </div>
-            </el-col>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item command="公开">公开</el-dropdown-item>
+                                <el-dropdown-item command="私密">私密</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </div>
+                </li>
+            </ul>
 
-        </el-row>
+            <!--发布按钮-->
+            <div >
+                <el-button type="success">发布</el-button>
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -170,9 +175,24 @@ export default {
     background-color: #fffdef;
 }
 
-.iconfont{
-    width: 30px;
-    height: 30px;
-    margin-top: 10px;
-}
+    .iconfont{
+        width: 30px;
+        height: 30px;
+
+    }
+
+    .tools-block{
+
+    }
+    .tools-block ul{
+        margin-left: 0px;
+        padding-left: 0px;
+
+        list-style: none;
+    }
+    .tools-block li{
+        float: left;
+        width: 40px;
+    }
+
 </style>

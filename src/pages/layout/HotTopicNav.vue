@@ -1,5 +1,5 @@
 <template>
-    <div id="left-side-nav">
+    <div id="hot-topic-container">
 
         <div>
             <span>热门话题</span>
@@ -57,7 +57,17 @@
                         name: "#瑞幸咖啡道歉#",
                         link: "/",
                         count: "4327万",
-                    }
+                    },{
+                        name: "#你为追星做过最拼的事#",
+                        link: "/",
+                        count: "4127万",
+                    },
+
+                    {
+                        name: "#钟南山呼吁续保...#",
+                        link: "/",
+                        count: "4227万",
+                    },
                 ],
             }
         },
@@ -72,6 +82,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+    #hot-topic-container{
+        background-color: #fffdef;
+        margin: 10px 0px 10px 0px;
+
+    }
 
     .iconfont{
         width: 20px;

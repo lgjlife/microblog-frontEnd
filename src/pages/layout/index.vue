@@ -1,47 +1,35 @@
 <template>
     <div id="layout">
 
-        <el-container>
-            <!--页首-->
-            <el-header style="padding: 0px">
-                <headerNav/>
-            </el-header>
+        <!--页首-->
+        <div class="header-block">
+            <headerNav/>
+        </div>
 
-            <el-container>
-                <!--最左侧-->
-                <el-aside width="200px"></el-aside>
-                <!--中间内容-->
-                <el-container>
-                    <el-container>
-                        <el-aside width="100px" >
-                            <!--左侧菜单-->
-                            <LeftSideNav></LeftSideNav>
-                        </el-aside>
-                        <el-container>
-                            <!--微博编辑-->
-                            <el-header width="100%" height="200px" >
-                                <BlogPublish/>
-                            </el-header>
-                            <!--微博显示-->
-                            <el-main >
-                                <BlogSearch></BlogSearch>
-                                <BlogDisplay></BlogDisplay>
-                            </el-main>
-                        </el-container>
-                    </el-container>
+        <!--中间部分-->
+        <div class="center-block">
+            <!--左侧边栏-->
+            <div class="center-left-block">
+                <UserInfoNav/>
 
-                </el-container>
+                <BlogPublish/>
 
-                <!--右侧边-->
-                <el-aside >
-                    <RightSideNav/>
-                </el-aside>
-                <el-aside width="200px"></el-aside>
-            </el-container>
-            <el-footer>Footer</el-footer>
+                <HotTopicNav/>
+            </div>
+
+            <!--右侧编栏-->
+            <div class="center-right-block">
+                <BlogSearch></BlogSearch>
+                <BlogDisplay></BlogDisplay>
+            </div>
+        </div>
+
+        <!--底部-->
+        <div class="footer-block">
+
+        </div>
 
 
-        </el-container>
 
         <div style="clear:both"></div>
 
@@ -50,6 +38,8 @@
 
 <script>
 
+import UserInfoNav from './UserInfoNav.vue'
+import HotTopicNav from './HotTopicNav.vue'
 import HeaderNav from './Header-nav.vue'
 import footerNav from './footer-nav.vue'
 import LeftSideNav from './LeftSideNav.vue'
@@ -88,6 +78,9 @@ export default {
         //微博显示
         BlogDisplay,
 
+        UserInfoNav,
+        HotTopicNav,
+
     }
 }
 </script>
@@ -101,33 +94,31 @@ export default {
         background-image: url(/img/background/background.jpeg);
     }
 
-#layout{
-    margin:0px;
-    width:100%;
-    min-width:1500px;
-    max-width:100%;
-    height:100%;
+    #layout{
+        margin:0px;
+        width:100%;
+        min-width:1500px;
+        max-width:100%;
+        height:100%;
+    }
+    .header-container{
 
+    }
+    .center-block{
+        margin-top: 30px;
+    }
+    .center-left-block{
+        width: 20%;
+        float: left;
+        margin-left: 10px;
+    }
+    .center-right-block{
+        width: 70%;
+        float: left;
+        margin-left: 20px;
+    }
+    .footer-block{
 
+    }
 
-}
-.el-aside{
-    /*background-color: #fffdef;*/
-}
-.el-footer{
-    /*background-color: coral;*/
-}
-#display-content{
-    /*background-color:cyan;*/
-}
-#BlogPublish{
-    width: 100%;
-    padding: 0px;
-    border-style:solid;
-    border-color: antiquewhite;
-    /*margin: 0px 0px 0px 0px;*/
-}
-.el-main{
-    margin: 0px 1px 0px 1px;
-}
 </style>

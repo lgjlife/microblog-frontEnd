@@ -1,10 +1,16 @@
 <template>
     <div  style="background-color: #fffdef;margin: 0px;margin: 0px;">
 
-         <el-row :gutter="0">
 
+
+
+         <el-row :gutter="0">
+             <!--天气预报-->
+             <el-col :span="6">
+                 <span> 北京</span><span>多云</span><span>8-17</span>
+             </el-col>
              <!--搜索-->
-            <el-col :span="6"　:offset="4">
+            <el-col :span="6">
                 <div class="grid-content bg-purple-light">
                     <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchData"
                               @keyup.enter.native="searchRequest"

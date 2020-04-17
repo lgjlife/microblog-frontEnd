@@ -1,39 +1,37 @@
+<!--
+组件名称表情选择组件
+
+* 表情对应的unicode表: https://apps.timwhitlock.info/emoji/tables/unicode
+* String.fromCodePoint(unicode)  即可获得unicode对应的表情
+
+* 父组件中使用:
+
+-->
 <template>
-    <div @click.stop>
-
-        <div class="emotion">
-
-            <div class="square">
-                <div class="square-inner grid">
-                    <!--表情列表-->
-                    <div @click.self="addPhiz"
-                         v-for="(item, index) in emojiList"
-                         :index=index
-                         :class="{'emoj-active':curEmojIndex==index}"
-                         @mouseover="curEmojIndex=index"
-                         @mouseout="curEmojIndex=-1"
-                    >{{ item }}</div>
-                </div>
-            </div>
-            <div>
-                <!--底部选项-->
-                <el-row class="selector" :gutter="20">
-
-                    <ul>
-                        <li v-for="(option,index) in options"
-                            :index=index
-                            :class="{'emoj-active':curEmojTypeIndex==index}"
-                            @click="selectEmojiMenu(index)"
-                        > {{ option }}</li>
-                    </ul>
-                </el-row>
+    <div class="emotion">
+        <div class="square">
+            <div class="square-inner grid">
+                <!--表情列表-->
+                <div @click.self="addPhiz"
+                     v-for="(item, index) in emojiList"
+                     :index=index
+                     :class="{'emoj-active':curEmojIndex==index}"
+                     @mouseover="curEmojIndex=index"
+                     @mouseout="curEmojIndex=-1"
+                >{{ item }}</div>
             </div>
         </div>
-
+        <!--底部选项-->
+        <div class="selector">
+            <ul>
+                <li v-for="(option,index) in options"
+                    :index=index
+                    :class="{'emoj-active':curEmojTypeIndex==index}"
+                    @click="selectEmojiMenu(index)"
+                > {{ option }}</li>
+            </ul>
+        </div>
     </div>
-
-
-
 </template>
 
 <script>
@@ -179,7 +177,6 @@
         cursor: default;
         text-align: center;
         width: 100%;
-        left: 10px;
         height: 35px;
     }
     .selector ul{
@@ -195,6 +192,5 @@
         width: 30px;
         height: 28px;
 
-        bottom: 15px;
     }
 </style>
