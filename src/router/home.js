@@ -2,6 +2,7 @@ import index from '@/pages/layout/index.vue'
 
 import notFoundPage from '@/common/error/404.vue'
 
+import weather from "@/pages/layout/weather.vue"
 
 let routers =[
     {
@@ -19,6 +20,15 @@ let routers =[
             title: "找不到页面"
         }
     },
+
+    {
+        path: '/weather',
+        component: weather,
+        meta: {
+            title: "weather"
+        }
+    },
+
 
 ]
 

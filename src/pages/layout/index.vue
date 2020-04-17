@@ -6,6 +6,7 @@
             <headerNav/>
         </div>
 
+
         <!--中间部分-->
         <div class="center-block">
             <!--左侧边栏-->
@@ -38,40 +39,39 @@
 
 <script>
 
+
+
+
+
 import UserInfoNav from './UserInfoNav.vue'
 import HotTopicNav from './HotTopicNav.vue'
 import HeaderNav from './Header-nav.vue'
 import footerNav from './footer-nav.vue'
-import LeftSideNav from './LeftSideNav.vue'
-import RightSideNav from './RightSideNav.vue'
-
-
 
 import BlogPublish from '@/components/blog/BlogPublish'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 import BlogSearch from '@/components/blog/BlogSearch.vue'
 
-///import { mapState } from 'vuex'
 export default {
     data() {
         return {}
     },
-    computed: {
-        //...mapState(['isSidebarNavCollapse'])
+
+    create(){
+
     },
+
+    mounted() {
+
+    },
+
+
     components: {
         //头部菜单组件
         HeaderNav,
         //页底组件
         footerNav,
-        //左侧
-        LeftSideNav,
-
-
-        //
-        RightSideNav,
-
-        //微博发布
+         //微博发布
         BlogPublish,
         //
         BlogSearch,
@@ -80,6 +80,7 @@ export default {
 
         UserInfoNav,
         HotTopicNav,
+
 
     }
 }
@@ -91,7 +92,7 @@ export default {
         min-width: 1300px;
         height: 100%;
         /*min-height: 2000px;*/
-        background-image: url(/img/background/background.jpeg);
+        /*background-image: url(/img/background/background.jpeg);*/
     }
 
     #layout{

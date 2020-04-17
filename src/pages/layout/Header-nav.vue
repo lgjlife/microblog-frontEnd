@@ -7,8 +7,11 @@
          <el-row :gutter="0">
              <!--天气预报-->
              <el-col :span="6">
-                 <span> 北京</span><span>多云</span><span>8-17</span>
+                 <weather/>
+
              </el-col>
+
+
              <!--搜索-->
             <el-col :span="6">
                 <div class="grid-content bg-purple-light">
@@ -141,7 +144,7 @@
             </el-col>
 
         </el-row>
-        
+        <!--<div id='weather-view-he' style="z-index: 9999"></div>-->
     </div>
 </template>
 
@@ -156,7 +159,7 @@ import {trim} from "@/util/str/str.js"
 //import { mapState } from 'vuex'
 
 import  * as pathRouter  from "@/apis/common/pathRouter.js"
-
+import weather from './weather'
 
 
 export default {
@@ -308,10 +311,24 @@ export default {
 
         this.init();
     },
+    mounted() {
+
+        window.WIDGET = {FID: 'C4su5aev9H'}
+        var d = document;
+        var cs = d.createElement("link");
+        cs.rel = "stylesheet";
+        cs.href = "https://apip.weatherdt.com/view/static/css/tqw_widget_view.css?v=0101";
+        var s = d.createElement("script");
+        s.src = "https://apip.weatherdt.com/float/static/js/r.js?v=1111";
+        var sn = d.getElementsByTagName("script")[0];
+        sn.parentNode.insertBefore(cs, sn);
+        sn.parentNode.insertBefore(s, sn);
+    },
     components: {
         login,
         register,
         share,
+        weather,
       
     }
 }
