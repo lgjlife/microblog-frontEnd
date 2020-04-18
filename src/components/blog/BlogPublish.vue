@@ -31,21 +31,24 @@
 
                 <!--图片-->
                 <li>
-                    <div class="grid-content bg-purple" @click="uploadDisplay = !uploadDisplay">
+                    <div class="grid-content bg-purple" @click="uploadImageDisplay = !uploadImageDisplay">
                         <svg class="iconfont" aria-hidden="true">
                             <use xlink:href="#element-icon-alitupian1" ></use>
                         </svg>
                     </div>
-                    <UploadImg v-show="uploadDisplay" ref="UploadImgRef"></UploadImg>
+                    <UploadImg v-show="uploadImageDisplay" ref="UploadImgRef"></UploadImg>
                 </li>
 
                 <!--视频-->
                 <li>
-                    <div class="grid-content bg-purple">
+                    <div class="grid-content bg-purple" @click="uploadVideoDisplay = !uploadVideoDisplay">
                         <svg class="iconfont" aria-hidden="true">
                             <use xlink:href="#element-icon-alishipin1"></use>
                         </svg>
                     </div>
+
+                    <UploadVideo v-show="uploadVideoDisplay" ref="UploadVideoRef"></UploadVideo>
+
                 </li>
 
                 <!--话题-->
@@ -91,6 +94,7 @@
 
 import Emotion from '@/components/common/Emotion.vue'
 import UploadImg from '@/components/common/UploadImg.vue'
+import UploadVideo from '@/components/common/UploadVideo.vue'
 import HotTopic from '@/components/blog/HotTopic.vue'
 
 var blogType = {
@@ -112,7 +116,8 @@ export default {
         return{
 
             emotionDisplay: false,
-            uploadDisplay: false,
+            uploadImageDisplay: false,
+            uploadVideoDisplay: false,
             hotTopicDisplay: false,
 
             blogData:{
@@ -163,6 +168,8 @@ export default {
         UploadImg,
         //热门话题
         HotTopic,
+        //视频上传
+        UploadVideo,
     }
 
 }

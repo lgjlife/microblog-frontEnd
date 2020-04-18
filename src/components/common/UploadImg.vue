@@ -133,11 +133,18 @@ fileList[
 
                 var fd = new FormData();
 
+                var files = []
+
                 for(file in fileList){
                     var fileBlogData = this.base64ToFormBlog(file.data);
-                    //FormData对象接受三个参数，第三个参数为文件名，通常我们只传前两个参数，第三个参数不传则使用默认文件名，这里使用的Blob对象，所以需要一个文件名，用时间戳代替。
-                    fd.append('file',fileBlogData.blob, Date.now() + fileBlogData.suffix);
+
+                    files.push(fileBlogData.blob)
+
                 }
+                //FormData对象接受三个参数，第三个参数为文件名，通常我们只传前两个参数，第三个参数不传则使用默认文件名，这里使用的Blob对象，所以需要一个文件名，用时间戳代替。
+                fd.append('imges',files);
+
+                return fd;
 
             }
 

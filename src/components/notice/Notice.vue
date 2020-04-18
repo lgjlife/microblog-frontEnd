@@ -17,9 +17,6 @@
                 <a href="http://home.cnblogs.com/u/lgjlife/">我的博客</a>
             </div>
 
-            <div class="up_add_bg">
-                <input type="file" class="up_add" @change="change" id="exampleInputFile">
-            </div>
         </div>
     </div>
 
@@ -35,33 +32,7 @@
         },
 
         methods:{
-            change(ev){
-                console.log(ev.target.files[0]);
 
-                var reader = new FileReader();
-                reader.onload = (function (file) {
-                    return function (e) {
-                        console.info(this);
-
-                        // console.info(this.result); //这个就是base64的数据了
-                        // var sss=$("#showImage");
-                        // $("#showImage")[0].src=this.result;
-                    };
-                })(ev.target.files[0]);
-                reader.readAsDataURL(ev.target.files[0]);
-
-                },
-            dd(ex){
-
-                reader.onload = (function (file) {
-                    return function (e) {
-                        console.info(this.result); //这个就是base64的数据了
-                        // var sss=$("#showImage");
-                        // $("#showImage")[0].src=this.result;
-                    };
-                })(ev.target.files[0]);
-                reader.readAsDataURL(ev.target.files[0]);
-            }
 
         }
     }
@@ -88,15 +59,5 @@
         margin: 5px 5px 5px 5px ;
     }
 
-    .up_add {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-    .up_add_bg {
-        width: 100px;
-        height: 100px;
-        background-image: url(/img/test/1.jpg);
-    }
 
 </style>
