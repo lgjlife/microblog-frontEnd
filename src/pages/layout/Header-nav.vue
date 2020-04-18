@@ -1,143 +1,124 @@
 <template>
     <div  style="background-color: #fffdef;margin: 0px;height: 50px">
 
+        <div class="header-item header-search">
+            <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchData"
+                      @keyup.enter.native="searchRequest"
+                      @focus="searchHistoryVisable =true"
+                      @blur="searchInputBlur"
+                      class="search-input"
 
+            ></el-input>
+            <div class="search-btn">
+                <!--搜索按钮-->
+                <svg class="iconfont" aria-hidden="true">
+                    <use xlink:href="#element-icon-alisousuo" ></use>
+                </svg>
+            </div>
+            <!--搜索历史-->
+            <div class="search-history" v-if="searchHistoryVisable">
 
-
-         <el-row :gutter="0">
-            <!--搜索-->
-            <el-col :span="6">
-                <div class="grid-content bg-purple-light">
-                    <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchData"
-                              @keyup.enter.native="searchRequest"
-                              @focus="searchHistoryVisable =true"
-                              @blur="searchInputBlur"
-                    ></el-input>
+                <div class="search-history-title" >
+                    <span>搜索历史</span>
+                    <span @click="cleanSearchHistoryData" class="search-history-title-clean">清空</span>
                 </div>
-                <!--搜索历史-->
-                <div class="search-history" v-if="searchHistoryVisable">
 
-                    <div class="search-history-nav" style="width: 100%">
-                        <span>搜索历史</span>
-                        <span @click="cleanSearchHistoryData"
-                        style="position:absolute;right: 0px">清空</span>
-                    </div>
-
-                    <div v-for="(item,index) in searchHistoryDatas"
-                         class="search-history-item"
-                         :item=item
-                         :index=index
-                         @click="searchData=item;searchHistoryVisable =false"
-                         @mouseenter="curSearchHistoryItemMouseOn = index"
-                         :class="{'search-history-item-active': curSearchHistoryItemMouseOn == index}"
-                    >
+                <div v-for="(item,index) in searchHistoryDatas"
+                     class="search-history-item"
+                     :item=item
+                     :index=index
+                     @click="searchData=item;searchHistoryVisable =false"
+                     @mouseenter="curSearchHistoryItemMouseOn = index"
+                     :class="{'search-history-item-active': curSearchHistoryItemMouseOn == index}"
+                >
                         <span  >
                             {{item}}
                         </span>
-                    </div>
                 </div>
+            </div>
+        </div>
 
-            </el-col>
-             <!--搜索输入  @blur="searchHistoryVisable =false"
-              @click="searchData=item;searchHistoryVisable =false"
-             -->
-            <el-col :span="1" 　:offset="-2">
-                <div class="grid-content bg-purple">
-                    <i  class="search-input"></i>
-                </div>
-            </el-col>
+        <!--主页-->
+        <div class="header-item header-home">
+            <router-link to="/">
+                <svg class="iconfont" aria-hidden="true">
+                    <use xlink:href="#element-icon-alihome-ative" ></use>
+                </svg>
+            </router-link>
+        </div>
 
-             <!--搜索按钮-->
-            <el-col :span="1"　:offset="-2" style="margin-top: 10px">
-                <div class="grid-content bg-purple-light">
-                    <i class="el-icon-search" @click="searchRequest"></i>
-                </div>
-            </el-col>
-             <!--主页图标-->
-             <el-col :span="0.5" >
-                 <router-link to="/">
-                     <svg class="iconfont" aria-hidden="true">
-                         <use xlink:href="#element-icon-alihome-ative" ></use>
-                     </svg>
-                 </router-link>
-             </el-col>
+        <!-- 用户姓名-->
+        <div class="header-item">
+            <div class="header-user-icon">
+                <svg class="iconfont" aria-hidden="true">
+                    <use xlink:href="#element-icon-alitouxiang"></use>
+                </svg>
+            </div>
+            <div v-if="userName == ''" class="header-user-btn">
 
+                <!--登录按钮-->
+                <span :class="{'header-user-btn-active':curlogRegBtnIndex==1}"
+                      @mouseover="curlogRegBtnIndex=1"
+                      @mouseout="curlogRegBtnIndex=-1"
+                      @click="logRegBtnClick('login')"
 
+                >登录</span>
+                <!--注册按钮-->
+                <span :class="{'header-user-btn-active':curlogRegBtnIndex==2}"
+                      @mouseover="curlogRegBtnIndex=2"
+                      @mouseout="curlogRegBtnIndex=-1"
+                      @click="logRegBtnClick('register')"
+                >注册</span>
+            </div>
+            <div v-else class="header-user-name">
+                <!--用户名称-->
+                <span @click="gotoUserPage">{{userName}}</span>
+            </div>
+        </div>
 
-             <!--用户头像-->
-             <el-col :span="0.5" >
-                 <svg class="iconfont" aria-hidden="true">
-                     <use xlink:href="#element-icon-alitouxiang"></use>
-                 </svg>
-
-             </el-col>
-             <el-col :span="1.9" style="margin-top: 14px">
-                    <div v-if="userName == ''">
-                         <!--登录按钮-->
-                         <el-col :span="1.5">
-                             <router-link to="/login">登录</router-link>
-                         </el-col>
-                        <!--注册按钮-->
-                         <el-col :span="1.5">
-                             <!--@click="registerDialogVisible = true"-->
-                             <router-link to="/register">注册</router-link>
-                         </el-col>
-                     </div>
-                     <div v-else>
-                         <!--用户头像-->
-                         <el-link @click="gotoUserPage">{{userName}}</el-link>
-                     </div>
-             </el-col>
-
-
-             <!--消息-->
-             <el-col :span="1"　:offset="-2">
-                 <div class="grid-content bg-purple-light">
-                     <el-dropdown>
-                        <span class="el-dropdown-link">
-                                <svg class="iconfont" aria-hidden="true">
-                         <use xlink:href="#element-icon-alixiaoxi" ></use>
-                         </svg>
-                         <div id="message-notice">
-                             {{messageNums}}
-                         </div>
+        <!--信息-->
+        <div class="header-item">
+            <div class="grid-content bg-purple-light">
+                <el-dropdown>
+                        <span class="el-dropdown-link message-notice-div">
+                            <svg class="iconfont message-notice-icon" aria-hidden="true">
+                                <use xlink:href="#element-icon-alixiaoxi" ></use>
+                             </svg>
+                             <div class="message-notice-num">
+                                 {{messageNums}}
+                             </div>
                         </span>
-                         <el-dropdown-menu slot="dropdown">
-                             <el-dropdown-item
-                                     v-for="(option,index) in messageOptions" @click.native="messageOptionSelect(index)"
-                             >
-                                 {{option.name}}
-                             </el-dropdown-item>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item
+                                v-for="(option,index) in messageOptions" @click.native="messageOptionSelect(index)"
+                        >
+                            {{option.name}}
+                        </el-dropdown-item>
 
-                         </el-dropdown-menu>
-                     </el-dropdown>
-                 </div>
-             </el-col>
-
-
-             <!--设置-->
-            <el-col :span="1"　:offset="-2">
-                <div class="grid-content bg-purple-light">
-                    <el-dropdown>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+        </div>
+        <!--设置-->
+        <div class="header-item">
+            <div class="grid-content bg-purple-light">
+                <el-dropdown>
                         <span class="el-dropdown-link">
                                 <svg class="iconfont" aria-hidden="true">
                                     <use xlink:href="#element-icon-alishezhi" ></use>
                                 </svg>
                         </span>
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item
-                                    v-for="(option,index) in setOptions" @click.native="setOptionSelect(index)"
-                            >
-                                {{option.name}}
-                            </el-dropdown-item>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item
+                                v-for="(option,index) in setOptions" @click.native="setOptionSelect(index)"
+                        >
+                            {{option.name}}
+                        </el-dropdown-item>
 
-                        </el-dropdown-menu>
-                    </el-dropdown>
-                </div>
-            </el-col>
-
-        </el-row>
-        <!--<div id='weather-view-he' style="z-index: 9999"></div>-->
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -160,6 +141,8 @@ export default {
         return {
             dialogVisible: false,
 
+            curlogRegBtnIndex: -1,
+
             messageNums: "12",
             searchData: '',
             loginDialogVisible: false,
@@ -169,11 +152,11 @@ export default {
             //
             searchHistoryDatas:[1],
             //当前鼠标位于的item
-            curSearchHistoryItemMouseOn: "",
+            curSearchHistoryItemMouseOn: "-1",
 
 
             userId: "1001",
-            userName: "的身份和节点间了看见大",
+            userName: "",
 
             //消息的选项
             messageOptions: [
@@ -234,6 +217,16 @@ export default {
             }, 400);
 
 
+        },
+
+        logRegBtnClick(type){
+
+            if(type == "login"){
+                this.$router.push('/login')
+            }
+            else if(type == "register"){
+                this.$router.push('/register')
+            }
         },
 
         

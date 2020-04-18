@@ -1,14 +1,22 @@
 //整个页面是个弹窗 visible 控制弹窗的显示关闭 默认打开
 
 <template>
-    <div id="captchaContainer" >
+    <div id="sliding-image" >
 
 
         <!-- 标题栏　-->
-        <div class="header">
-            <span class="headerText">图片滑动验证</span>
-            <span class="closeIcon" @click="closeCaptchaContainer()"/>
-            <span class="refreshIcon" @click="refreshImage"/>
+        <div class="header-block">
+            <span class="header-text">图片滑动验证</span>
+
+            <svg class=" close-icon" aria-hidden="true" @click="closeCaptchaContainer()">
+                <use xlink:href="#element-icon-aliguanbi1"></use>
+            </svg>
+
+            <svg class=" refresh-icon" aria-hidden="true" @click="refreshImage">
+                <use xlink:href="#element-icon-alirefresh" ></use>
+            </svg>
+
+
         </div> 
 
         <!-- 图片显示区域　-->
@@ -17,7 +25,7 @@
             <img id="cutImg" :src="imageMsg.cutImageSrc" alt="抠图" :style="cutImgStyle"/>
         </div>
         <!--滑块显示区域-->
-            <div class="sliderContainer" 
+        <div class="sliderContainer"
             :class='{"sliderContainer_success":verifiFlag === "success",
             sliderContainer_fail:verifiFlag === "fail"}'>
             <div class="sliderMask">
@@ -40,7 +48,7 @@
 
 <script>
 
-import "@/components/user/assets/css/slidingImage.css"
+
 import axios from 'axios'
 
 //图片显示使用base64时的前缀,src=base64PrefixPath + imgBase64Value
@@ -278,6 +286,7 @@ export default {
    
 </script>
 
+<style scoped src="./sliding-image.css"/>
 <style lang="css" scoped>
 
 /*@import "@/components/user/assets/css/slidingImage.css";*/

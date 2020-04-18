@@ -1,78 +1,40 @@
 <template>
     <div id="login">
 
-      <el-form :label-position="right = 'right'" label-width="80px" :model="login">
+        <!--输入-->
+       <div class="input-block">
+           <label>登录帐号:</label>
+           <el-input v-model="login.name" placeholder="邮箱/会员帐号/手机号"></el-input>
+           <label>登录密码:</label>
+           <el-input v-model="login.password" placeholder="密码" show-password></el-input>
+       </div>
 
-          <el-form-item label="登录帐号">
-            <el-input v-model="login.name" placeholder="邮箱/会员帐号/手机号"></el-input>
-          </el-form-item>
-          <el-form-item label="登录密码">
-            <el-input v-model="login.password" placeholder="密码" show-password></el-input>
-          </el-form-item>
-          <el-form-item >
-              <el-row :gutter="20" style="margin-bottom: 0px;">
+        <!--滑动图片验证-->
+        <div style="width: 100%;text-align: center">
+            <el-checkbox v-model="login.checked" >记住我</el-checkbox>
+            <el-button type="text" @click="dialogVisible = !dialogVisible" style="margin-left: 50px">点击图片验证</el-button>
+            <slidingImage v-if="dialogVisible" ref="slidingImage"  @imageclose="dialogVisible = false;handleImageVerifyClose()"/>
+        </div>
 
-                  <el-col :span="30" :offset="3">
-                      <el-button type="text" @click="dialogVisible = true" >点击图片验证</el-button>
-                  
-                      <el-dialog
-                        title="提示"
-                        :visible.sync="dialogVisible"
-                        @open="handleImageVerifyOpen"
 
-                        width="300px"
-                        height="300px"
-                        :modal-append-to-body='false'
-                        >                        
-                        <slidingImage ref="slidingImage"  @imageclose="dialogVisible = false;handleImageVerifyClose()"/>
-                    　</el-dialog>
-                  </el-col>
-              </el-row> 
+        <div  style="width: 100%;text-align: center">
+            没有帐号?<router-link to="/register">注册</router-link>    <router-link to="/">返回首页</router-link>
+        </div>
 
-              <el-row :gutter="2">
-                <el-col :span="6">
-                  <div class="grid-content bg-purple"><el-checkbox v-model="login.checked">记住我</el-checkbox></div>
-                </el-col>
-                <el-col :span="12">
-                  <div class="grid-content bg-purple">
-                      <i>没有帐号?<el-link type="primary">注册</el-link></i>    <router-link to="/">返回首页</router-link>
-                  </div>
-                </el-col>
+        <div style="width: 100%;text-align: center">
+            <el-button type="primary" @click="loginSubmit">登录</el-button>
+        </div>
+        <div style="color: red;width: 100%;text-align: center" >
+            <span 　>{{ warning}}</span>
+        </div>
+        <div style="width: 100%;text-align: center">
+            <span class="grid-content bg-purple">其他登录方式:</span>
+            <img src="@/assets/icon/qq.png" style="margin-left: 10px" height="15px" width="15px" v-on:click="qqLogin"/>
+            <img src="@/assets/icon/wx.png" style="margin-left: 10px" height="15px" width="15px" v-on:click="wxLogin"/>
+        </div>
 
-              </el-row>
 
-              <!--登录按钮-->
-          </el-form-item>
-          <el-row :gutter="20" style="margin-bottom: 5px;">
-              <el-col :span="12" :offset="8">
-                <div class="grid-content bg-purple">
-                    <el-button type="primary" style="display: block" @click="loginSubmit">登录</el-button>
-                    <span 　style="color: red" >{{ warning}}</span>
-                </div>
-              </el-col>
-              <el-col :span="12" :offset="5">
-                  <!--警告-->
 
-              </el-col>
-          </el-row>
-
-            <!--其他登录方式-->
-          <el-row :gutter="2">
-              <el-col :span="7">
-                <div class="grid-content bg-purple">其他登录方式:</div>
-              </el-col>
-              <el-col :span="2">
-                <div class="grid-content bg-purple">
-                  <img src="@/assets/icon/qq.png" height="15px" width="15px" v-on:click="qqLogin"/>
-                </div>
-              </el-col>
-              <el-col :span="2">
-                <div class="grid-content bg-purple">
-                  <img src="@/assets/icon/wx.png" height="15px" width="15px" v-on:click="wxLogin"/>
-                </div>
-              </el-col>
-            </el-row>
-        </el-form>
     </div>
     
 </template>
@@ -80,7 +42,7 @@
 <script>
 
 import axios from 'axios'
-import slidingImage from '@/components/user/auth/slidingImage.vue'
+import SlidingImage from '@/components/user/auth/SlidingImage.vue'
 
 export default {
 
@@ -192,7 +154,7 @@ export default {
      * 注册组件
      */
     components: {
-        slidingImage,
+        SlidingImage,
     }
 
 }
@@ -200,14 +162,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
-  
+<style  scoped src="./login.css">
+
 <style  scoped>
 
 
-.el-form{
-    position: absolute;
-    top: 50px;
-    left: 35%;
-    width: 400px;
-}
 </style>

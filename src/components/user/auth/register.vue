@@ -75,7 +75,7 @@
 
     import Vue from 'vue'
     import axios from 'axios'
-    import slidingImage from '@/components/user/auth/slidingImage.vue'
+    import SlidingImage from '@/components/user/auth/SlidingImage.vue'
     import formValidation from "@/components/user/formValidation.js"
   //  Vue.prototype.common = common
 
@@ -293,7 +293,7 @@
          * 注册组件
          */
         components: {
-            slidingImage,
+            SlidingImage,
 
         }
 

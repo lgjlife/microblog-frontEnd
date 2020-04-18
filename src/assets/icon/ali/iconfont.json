@@ -6,6 +6,55 @@
   "description": "element-icon",
   "glyphs": [
     {
+      "icon_id": "8993581",
+      "name": "关 闭",
+      "font_class": "guanbi",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "9235476",
+      "name": "删  除",
+      "font_class": "shanchu",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "10201027",
+      "name": "刷新",
+      "font_class": "refresh",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "10707782",
+      "name": "关 闭",
+      "font_class": "guanbi1",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "8360603",
+      "name": "搜索--1",
+      "font_class": "sousuo",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "9911496",
+      "name": "搜索--1",
+      "font_class": "soushuo",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "10823314",
+      "name": "搜索--1",
+      "font_class": "suosou",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
       "icon_id": "5151460",
       "name": "刷新",
       "font_class": "shuaxin",

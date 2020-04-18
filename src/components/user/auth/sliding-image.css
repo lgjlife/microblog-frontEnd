@@ -1,30 +1,35 @@
-#captchaContainer{
+#sliding-image{
     position: absolute;
-    top: 0px;
-    left: 0px;
-    /*  background-color: #f57a7a;*/
+    background-color: #ffffff;
     height: 340px;
-    width: 260px;
-}
-.header{
-
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: rgb(245, 236, 236);
-    height: 40px;
     width: 300px;
+    z-index: 999;
 }
+.header-block{
+    position: relative;
+    background-color: #FAEBD7;
+    height: 40px;
+
+}
+.refresh-icon{
+    position: relative;
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-left: 3px;
+}
+.close-icon{
+    position: relative;
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-left: 3px;
+
+}
+
 .headerText{
     position: absolute;
-    top: 13px;
-    left: 90px;
-    height: 40px;
-
-    color:#66c523;
-    font:18px/14px Georgia, "Times New Roman", Times, serif;
-
-
+    float: left;
 }
 
 #captchaImg{

@@ -1,0 +1,14 @@
+#login{
+    background-color: #ffffff;
+    width: 400px;
+    min-height: 350px;
+    position: relative;
+    left: 35%;
+    top: 15%;
+
+
+
+}
+.input-block label{
+    color: #FF8C69;
+}
