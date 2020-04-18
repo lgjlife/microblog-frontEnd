@@ -1,72 +1,41 @@
 <template>
-    <div id="login">
-
-        <el-form :label-position="right = 'right'" label-width="80px" :model="register">
-
+    <div id="register-container">
+        <!--选项-->
+        <div class="register-header">
             <el-tabs v-model="activeName" @tab-click="handleClick">
                 <el-tab-pane label="用户名注册" name="name"></el-tab-pane>
                 <el-tab-pane label="手机注册" name="phone"></el-tab-pane>
                 <el-tab-pane label="邮箱注册" name="email"></el-tab-pane>
             </el-tabs>
+        </div>
 
-            <el-form-item :label="register.nameLabel">
-                <el-input v-model="register.name" placeholder="邮箱/会员帐号/手机号"></el-input>
-            </el-form-item>
-            <el-form-item label="登录密码">
-                <el-input v-model="register.password" placeholder="密码" show-password @change="passwordChange"></el-input>
-            </el-form-item>
-            <el-form-item label="确认密码">
-                <el-input v-model="register.passwordAgain" placeholder="密码" show-password></el-input>
-                <p type="success"disable>{{ register.complicated }}</p>
-            </el-form-item>
+        <!--输入-->
+        <div class="input-block">
+            <label>登录帐号:</label>
+            <el-input v-model="register.name" placeholder="邮箱/会员帐号/手机号"></el-input>
+            <label>登录密码:</label>
+            <el-input v-model="register.password" placeholder="密码" show-password @change="passwordChange"></el-input>
+            <label>重复密码:</label>
+            <el-input v-model="register.passwordAgain" placeholder="重复密码" show-password></el-input>
 
-            <el-form-item label="验证码" v-if="activeName != 'name'">
-                <el-input v-model="register.verifyCode" placeholder="验证码"></el-input>
-            </el-form-item>
+            <el-input  v-model="register.verifyCode" placeholder="验证码" v-if="(activeName != 'name')" style="width: 270px;margin-top: 10px"></el-input>
+            <el-button type="text" @click="requestVerifyCode" v-if="(activeName != 'name') && (timerValue == 0)">获取验证码</el-button>
+            <el-button type="warning" @click="requestVerifyCode"    v-if="(activeName != 'name') && (timerValue != 0)" disabled>{{ timerValue }}S</el-button>
+        </div>
+        <div style="width: 100%;text-align: center">
+            <el-button type="text" @click="dialogVisible = !dialogVisible" >点击图片验证</el-button>
+            <slidingImage v-if="dialogVisible" ref="slidingImage"  @imageclose="dialogVisible = false;handleImageVerifyClose()"/>
+        </div>
+        <div style="width: 100%;text-align: center">
+            <i>已经注册帐号?<router-link to="/login">登录</router-link></i>　 <router-link to="/">返回首页</router-link>
 
-
-            <el-form-item >
-                <el-row :gutter="20" style="margin-bottom: 0px;">
-
-                    <el-col :span="30" :offset="3">
-                        <el-button type="text" @click="requestVerifyCode" v-if="(activeName != 'name') && (timerValue == 0)">获取验证码</el-button>
-                        <el-button type="warning" @click="requestVerifyCode"    v-if="(activeName != 'name') && (timerValue != 0)" disabled>{{ timerValue }}S</el-button>
-                        <el-button type="text" @click="dialogVisible = true" >点击图片验证</el-button>
-
-                        <el-dialog
-                                title="提示"
-                                :visible.sync="dialogVisible"
-                                @open="handleImageVerifyOpen"
-
-                                width="300px"
-                                height="300px"
-                                :modal-append-to-body='false'
-                        >
-                            <slidingImage ref="slidingImage"  @imageclose="dialogVisible = false;handleImageVerifyClose()"/>
-                            　</el-dialog>
-                    </el-col>
-                </el-row>
-
-                <el-row :gutter="2">
-                    <el-col :span="16">
-                        <div class="grid-content bg-purple">
-                            <i>已经注册帐号?<router-link to="/login">登录</router-link></i>　 <router-link to="/">返回首页</router-link>
-                        </div>
-                    </el-col>
-
-                </el-row>
-
-                <!--登录按钮-->
-            </el-form-item>
-            <el-row :gutter="20" style="margin-bottom: 5px;">
-                <el-col :span="12" :offset="8">
-                    <div class="grid-content bg-purple">
-                        <el-button type="primary" style="display: block" @click="registerSubmit">注册</el-button>
-                        <span 　style="color: red" >{{ warning}}</span>
-                    </div>
-                </el-col>
-            </el-row>
-        </el-form>
+        </div>
+        <div style="width: 100%;text-align: center;padding-bottom: 30px">
+            <el-button type="primary"  @click="registerSubmit">注册</el-button>
+            <div style="color: red">
+               {{ warning}}
+            </div>
+        </div>
     </div>
 
 </template>
@@ -302,15 +271,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
-
+<style  scoped src="./register.css">
 <style  scoped>
 
-.el-form{
-    position: absolute;
-    top: 50px;
-    left: 35%;
-    width: 400px;
-}
+
 
 
 </style>
