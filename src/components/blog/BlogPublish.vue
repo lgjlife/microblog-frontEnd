@@ -9,7 +9,7 @@
             v-model="blogData.content"
             maxlength="120"
             show-word-limit
-            rows="7"
+            autosize
 
         >
         </el-input>
@@ -31,12 +31,12 @@
 
                 <!--图片-->
                 <li>
-                    <div class="grid-content bg-purple">
+                    <div class="grid-content bg-purple" @click="uploadDisplay = !uploadDisplay">
                         <svg class="iconfont" aria-hidden="true">
-                            <use xlink:href="#element-icon-alitupian1" @click="uploadDisplay = !uploadDisplay"></use>
+                            <use xlink:href="#element-icon-alitupian1" ></use>
                         </svg>
                     </div>
-                    <Upload v-if="uploadDisplay" style="position:absolute; z-index: 9999;"></Upload>
+                    <UploadImg v-show="uploadDisplay" ref="UploadImgRef"></UploadImg>
                 </li>
 
                 <!--视频-->
@@ -90,7 +90,7 @@
 <script>
 
 import Emotion from '@/components/common/Emotion.vue'
-import Upload from '@/components/common/Upload.vue'
+import UploadImg from '@/components/common/UploadImg.vue'
 import HotTopic from '@/components/blog/HotTopic.vue'
 
 var blogType = {
@@ -160,7 +160,7 @@ export default {
         //表情包
         Emotion,
         //上传
-        Upload,
+        UploadImg,
         //热门话题
         HotTopic,
     }

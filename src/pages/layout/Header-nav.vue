@@ -1,18 +1,11 @@
 <template>
-    <div  style="background-color: #fffdef;margin: 0px;margin: 0px;">
+    <div  style="background-color: #fffdef;margin: 0px;height: 50px">
 
 
 
 
          <el-row :gutter="0">
-             <!--天气预报-->
-             <el-col :span="6">
-                 <weather/>
-
-             </el-col>
-
-
-             <!--搜索-->
+            <!--搜索-->
             <el-col :span="6">
                 <div class="grid-content bg-purple-light">
                     <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchData"

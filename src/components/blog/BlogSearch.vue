@@ -23,6 +23,7 @@
     export default {
         data(){
             return{
+                activeIndex: '1',
                 searchData: "",
             }
         },

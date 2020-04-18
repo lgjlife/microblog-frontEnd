@@ -1,6 +1,6 @@
 <template>
     <div class="hot-topic">
-        <h1>热门话题</h1>
+        <span>热门话题</span>
         <div class="input">
             <el-input placeholder="请输入内容" v-model="topic">
                 <div slot="append" @click="submit">确认</div>
@@ -16,7 +16,14 @@
             </el-menu>
         </div>
         <div>
-            <div v-for="(item,index) in topicList" @click="topicSelect">{{item}}</div>
+            <div class="topic-item"
+                 v-for="(item,index) in topicList"
+                 @click="topicSelect"
+                 :index="index"
+                 :class="{'topic-item-active':curItemIndex==index}"
+                 @mouseover="curItemIndex=index"
+                 @mouseout="curItemIndex=-1"
+            >{{item}}</div>
         </div>
 
 
@@ -31,6 +38,8 @@
                 topic: "",
                 activeIndex: '1',
                 topicList: "",
+
+                curItemIndex: "",
                 topics:{
                     latelyUseTopics: ["鸡腿","鸭腿"],
                     hotTopics: ["鸡腿1","鸭腿1"],
@@ -101,6 +110,15 @@
 <style scoped>
 
 .hot-topic{
-    background-color: #f57a7a;
+    background-color: #fffdef;
+    border: #ee9900 solid 1px;
 }
+
+    .topic-item{
+        cursor: default;
+    }
+
+    .topic-item-active{
+        background-color: burlywood;
+    }
 </style>

@@ -3,7 +3,21 @@
 
         <div>
             <span>热门话题</span>
-            <i class="el-icon-refresh-right iconfont"></i>
+            <i
+            ></i>
+
+            <svg class="iconfont refresh"
+                 aria-hidden="true"
+                 @click="refresh"
+                 :class="{'refresh-active':refreshActive}"
+                 @mouseover="refreshActive=true"
+                 @mouseout="refreshActive=false"
+            >
+                <use xlink:href="#element-icon-alishuaxin"
+
+                ></use>
+            </svg>
+
         </div>
         <div >
             <div v-for="item in items" class="hot-item">
@@ -11,7 +25,7 @@
                 <el-row :gutter="20">
                     <el-col :span="18">
                         <div class="grid-content bg-purple">
-                            <el-link :href=item.link>{{item.name}}</el-link>
+                            <el-link >{{item.name}}</el-link>
 
                         </div>
                     </el-col>
@@ -34,6 +48,8 @@
 
         data(){
             return{
+
+                refreshActive: false,
                 items:[
                     {
                         name: "#成年人常见潜台词#",
@@ -72,6 +88,12 @@
             }
         },
 
+        methods:{
+            refresh(){
+                console.log("刷新");
+            }
+        },
+
         props: {
             msg: String,
 
@@ -89,13 +111,19 @@
 
     }
 
-    .iconfont{
-        width: 20px;
-        height: 20px;
+    .refresh{
+        width: 25px;
+        height: 25px;
 
         position: relative;
         float: right;
         right: 20px;
+
+
+    }
+
+    .refresh-active{
+        background-color: #D2B48C;
     }
     .hot-item{
         width: 300px;

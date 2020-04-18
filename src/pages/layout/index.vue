@@ -18,19 +18,23 @@
                 <HotTopicNav/>
             </div>
 
-            <!--右侧编栏-->
-            <div class="center-right-block">
+            <!--内容显示-->
+            <div class="center-content-block">
                 <BlogSearch></BlogSearch>
                 <BlogDisplay></BlogDisplay>
             </div>
+            <!--右侧栏-->
+            <div class="center-right-block">
+                <Notice/>
+            </div>
         </div>
+
+
 
         <!--底部-->
         <div class="footer-block">
 
         </div>
-
-
 
         <div style="clear:both"></div>
 
@@ -51,6 +55,10 @@ import footerNav from './footer-nav.vue'
 import BlogPublish from '@/components/blog/BlogPublish'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 import BlogSearch from '@/components/blog/BlogSearch.vue'
+import axios from 'axios'
+
+
+import Notice from '@/components/notice/Notice.vue'
 
 export default {
     data() {
@@ -62,7 +70,9 @@ export default {
     },
 
     mounted() {
-
+        axios.get("/data/sk/101010100.html").then(data=>{
+            console.log("data = " + JSON.stringify(data));
+        })
     },
 
 
@@ -80,6 +90,7 @@ export default {
 
         UserInfoNav,
         HotTopicNav,
+        Notice,
 
 
     }
@@ -92,7 +103,7 @@ export default {
         min-width: 1300px;
         height: 100%;
         /*min-height: 2000px;*/
-        /*background-image: url(/img/background/background.jpeg);*/
+        background-image: url(/img/background/background.jpeg);
     }
 
     #layout{
@@ -113,10 +124,15 @@ export default {
         float: left;
         margin-left: 10px;
     }
-    .center-right-block{
-        width: 70%;
+    .center-content-block{
+        width: 50%;
         float: left;
         margin-left: 20px;
+    }
+    .center-right-block{
+        width: 20%;
+        float: left;
+        margin-left: 10px;
     }
     .footer-block{
 

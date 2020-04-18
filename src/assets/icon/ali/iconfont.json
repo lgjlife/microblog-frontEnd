@@ -6,6 +6,13 @@
   "description": "element-icon",
   "glyphs": [
     {
+      "icon_id": "5151460",
+      "name": "刷新",
+      "font_class": "shuaxin",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
       "icon_id": "12676834",
       "name": "首 页 (2)",
       "font_class": "home-ative",

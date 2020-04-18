@@ -38,8 +38,6 @@
                         <span>微博:</span><span>{{blogsCount}}</span>
                     </li>
                 </ul>
-
-                <div id="weather-view-he">sssss</div>
             </div>
             <div style="clear:both"></div>
 

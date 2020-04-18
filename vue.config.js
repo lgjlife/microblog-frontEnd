@@ -41,61 +41,62 @@ console.log(pages)
 
 // 以下开始配置
 module.exports = {
- lintOnSave: false, // 关掉eslint
- /**
-  * baseUrl 从 3.3起废用，使用pubilcPath代替
-  * 默认情况下，Vue CLI 会假设你的应用是被部署在一个域名的根路径上，例如 https://www.my-app.com/。如果应用被部署在一个子路径上，你就需要用这个选项指定这个子路径。例如，如果你的应用被部署在 https://www.my-app.com/my-app/，则设置 publicPath 为 /my-app/。
-  * 这个值也可以被设置为空字符串 ('') 或是相对路径 ('./')，这样所有的资源都会被链接为相对路径，这样打出来的包可以被部署在任意路径，也可以用在类似 Cordova hybrid 应用的文件系统中。
-  */
- publicPath: process.env.NODE_ENV === "production" ? "./" : "/",
- productionSourceMap: false,
- // 入口设置
- //pages,
- // webpack配置 - 简单配置方式
- configureWebpack: {
-  resolve: {
-   alias: {
-    // 别名
-    vue$: "vue/dist/vue.esm.js", //加上这一句
-    "@api": path.resolve(__dirname, "./src/api"),
-    "@utils": path.resolve(__dirname, "./src/utils")
-   }
-  }
- },
- runtimeCompiler: true,
+    lintOnSave: false, // 关掉eslint
+    /**
+     * baseUrl 从 3.3起废用，使用pubilcPath代替
+     * 默认情况下，Vue CLI 会假设你的应用是被部署在一个域名的根路径上，例如 https://www.my-app.com/。如果应用被部署在一个子路径上，你就需要用这个选项指定这个子路径。例如，如果你的应用被部署在 https://www.my-app.com/my-app/，则设置 publicPath 为 /my-app/。
+     * 这个值也可以被设置为空字符串 ('') 或是相对路径 ('./')，这样所有的资源都会被链接为相对路径，这样打出来的包可以被部署在任意路径，也可以用在类似 Cordova hybrid 应用的文件系统中。
+     */
+    publicPath: process.env.NODE_ENV === "production" ? "./" : "/",
+    productionSourceMap: false,
+     // 入口设置
+     //pages,
+     // webpack配置 - 简单配置方式
+     configureWebpack: {
+      resolve: {
+       alias: {
+        // 别名
+        vue$: "vue/dist/vue.esm.js", //加上这一句
+        "@api": path.resolve(__dirname, "./src/api"),
+        "@utils": path.resolve(__dirname, "./src/utils")
+       }
+      }
+     },
+     runtimeCompiler: true,
 
 
 
- devServer: {
-  //index: '/aa', // 运行时，默认打开application1页面
-  // 告诉dev-server在服务器启动后打开浏览器，将其设置true为打开默认浏览器
-  open: true,
-  host: 'localhost',
-  port: 8066,
-  https: false,
-  hotOnly: false,
-  // 配置首页 入口链接
-
-  // proxy: {
-  //  '/api':{
-  //   target: 'https://www.baidu.com',
-  //   changeOrigin: true,
-  //   pathRewrite:{
-  //    '^/api': "/api"
-  //   }
-  //  }
-  // },
-/*
-  before: app => {
-   app.get('/', (req, res, next) => {
-    for (let i in pages) {
-     res.write(`<a target="_self" href="/${i}">/${i}</a></br>`);
-    }
-    res.end() 
-
-   });
-  
-  } */
- } 
+ // devServer: {
+ //    //index: '/aa', // 运行时，默认打开application1页面
+ //    // 告诉dev-server在服务器启动后打开浏览器，将其设置true为打开默认浏览器
+ //    open: true,
+ //    host: 'localhost',
+ //    port: 8066,
+ //    https: false,
+ //    hotOnly: false,
+ //    // 配置首页 入口链接
+ //
+ //
+ //    }
+     devServer: {
+         open: true,
+         host: 'localhost',
+         port: 8081,
+         https: false,
+         hotOnly: false,
+         proxy: { // 配置跨域
+          '/data': {
+           //要访问的跨域的api的域名 // http://www.weather.com.cn/data/sk/101010100.html
+           target: 'http://www.weather.com.cn',
+           ws: true,
+           changOrigin: true,
+           // pathRewrite: {
+           //  '^/data': ''
+           //
+           // }
+          }
+         },
+         before: app => { }
+     }
 }
 
