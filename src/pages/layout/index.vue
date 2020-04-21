@@ -12,7 +12,7 @@
             <!--左侧边栏-->
             <div class="center-left-block">
                 <UserInfoNav/>
-
+                <Calendar style="width: 100%"/>
                 <BlogPublish/>
 
                 <HotTopicNav/>
@@ -43,9 +43,7 @@
 
 <script>
 
-
-
-
+import Calendar from '@/components/calendar/Calendar.vue'
 
 import UserInfoNav from './UserInfoNav.vue'
 import HotTopicNav from './HotTopicNav.vue'
@@ -91,6 +89,7 @@ export default {
         UserInfoNav,
         HotTopicNav,
         Notice,
+        Calendar,
 
 
     }

@@ -9,6 +9,31 @@
 
 
 }
+.login-header{
+    height: 40px;
+    background-color: #b3d4fc;
+}
+
+.login-header .el-tabs{
+    text-align: center;
+    margin-left: 100px;
+    width: 153px;
+}
+
 .input-block label{
     color: #FF8C69;
+}
+
+.scancode-mode-block{
+
+    background-color: #9a6e3a;
+    width: 100%;
+    height: 310px;
+    text-align: center;
+
+}
+
+.scancode-mode-block img{
+    width: 200px;
+    margin-top: 50px;
 }
