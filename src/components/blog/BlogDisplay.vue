@@ -184,6 +184,10 @@
             blogHandle(type){
 
                 console.log("type = " + type);
+
+                if(type == "comment"){
+                    this.$router.push("/blog/"+1 + "/"  + "123")
+                }
             },
 
             openUserPage(userId){

@@ -70,6 +70,4 @@ export  function TIME_CHANGE(time){
             return timeDate.format("hh:mm:ss")
         }
     }
-
-
 }
