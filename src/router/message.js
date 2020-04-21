@@ -6,28 +6,32 @@ import comment from "@/components/message/comment"
 let routers =[
     {
         path: '/message',
-        component: message,
+         component: resolve => require(['@/components/message'],resolve),
+       // component: message,
         meta: {
             title: "消息"
         },
         children: [
             {
                 path: "at",
-                component: at,
+                component: resolve => require(['@/components/message/at'],resolve),
+                //component: at,
                 meta: {
                     title: "@我的微博"
                 },
             },
             {
                 path: "comment",
-                component: comment,
+                component: resolve => require(['@/components/message/comment'],resolve),
+                // component: comment,
                 meta: {
                     title: "我的评论"
                 },
             },
             {
                 path: "like",
-                component: like,
+                 component: resolve => require(['@/components/message/like'],resolve),
+                //component: like,
                 meta: {
                     title: "我的点赞"
                 },

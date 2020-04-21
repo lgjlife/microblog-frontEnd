@@ -13,7 +13,8 @@ import SettingUserPrivater from '@/components/setting/SettingUserPrivater.vue'
 let routers =  [
     {
         path: '/setting',
-        component: setting,
+        component: resolve => require(['@/components/setting/Setting.vue'],resolve),
+        //component: setting,
         meta: {
             title: "帐号设置"
         },
@@ -21,38 +22,46 @@ let routers =  [
 
             {
                 path: 'bind',
-                component: SettingAccountBinding,
+                 component: resolve => require(['@/components/setting/SettingAccountBinding.vue'],resolve),
+                //component: SettingAccountBinding,
             },
             {
                 path: 'preference',
-                component: SettingPreference,
+                component: resolve => require(['@/components/setting/SettingPreference.vue'],resolve),
+                //component: SettingPreference,
             },
             {
                 path: 'screen',
-                component: SettingScreen,
+                component: resolve => require(['@/components/setting/SettingScreen.vue'],resolve),
+                //component: SettingScreen,
             },
             {
                 path: 'header/img',
+                //component: resolve => require(['@/components/setting/SettingUserHeaderImg.vue'],resolve),
                 component: SettingUserHeaderImg,
             },
             {
                 path: 'user/info',
                 name: "info",
-                component: SettingUserInfo,
+                component: resolve => require(['@/components/setting/SettingUserInfo.vue'],resolve),
+                // component: SettingUserInfo,
             },
             {
                 path: 'user/message',
-                component: SettingUserMessage,
+                component: resolve => require(['@/components/setting/SettingUserMessage.vue'],resolve),
+                // component: SettingUserMessage,
             },
             {
                 path: 'user/privater',
-                component: SettingUserPrivater,
+                component: resolve => require(['@/components/setting/SettingUserPrivater.vue'],resolve),
+                //component: SettingUserPrivater,
             },
         ],
     },
     {
         path: '/security',
-        component: security,
+        component: resolve => require(['@/components/setting/security.vue'],resolve),
+        // component: security,
         meta: {
             title: "帐号与安全"
         }

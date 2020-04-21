@@ -7,7 +7,8 @@ import weather from "@/pages/layout/weather.vue"
 let routers =[
     {
         path: '/',
-        component: index,
+        component: resolve => require(['@/pages/layout/index.vue'],resolve),
+        //component: index,
         meta: {
             title: "首页"
         }
@@ -15,7 +16,8 @@ let routers =[
 
     {
         path: '/404',
-        component: notFoundPage,
+         component: resolve => require(['@/common/error/404.vue'],resolve),
+        //component: notFoundPage,
         meta: {
             title: "找不到页面"
         }
@@ -23,7 +25,8 @@ let routers =[
 
     {
         path: '/weather',
-        component: weather,
+         component: resolve => require(['@/pages/layout/weather.vue'],resolve),
+       // component: weather,
         meta: {
             title: "weather"
         }

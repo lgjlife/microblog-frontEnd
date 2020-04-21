@@ -16,7 +16,8 @@ import Chat from '@/components/chat/Chat.vue'
 let routers =[
     {
         path: '/user/:type/:userId',
-        component: user,
+        component: resolve => require(['@/components/user'],resolve),
+        //component: user,
         meta: {
             title: "用户"
         },
@@ -24,28 +25,32 @@ let routers =[
 
             {
                 path: 'home',
-                component: UserHome,
+                component: resolve => require(['@/components/user/common/home.vue'],resolve),
+                //component: UserHome,
                 meta: {
                     title: "用户主页"
                 },
                 children :[
                     {
                         path: 'blog',
-                        component: HomeBlog,
+                        component: resolve => require(['@/components/user/common/home.vue'],resolve),
+                        //component: HomeBlog,
                         meta: {
                             title: "用户"
                         },
                     },
                     {
                         path: 'follow',
-                        component: HomeFollow,
+                        component: resolve => require(['@/components/user/common/home/follow.vue'],resolve),
+                        //component: HomeFollow,
                         meta: {
                             title: "关注"
                         },
                     },
                     {
                         path: 'fans',
-                        component: HomeFans,
+                        component: resolve => require(['@/components/user/common/home/fans.vue'],resolve),
+                        //component: HomeFans,
                         meta: {
                             title: "粉丝"
                         },
@@ -54,25 +59,26 @@ let routers =[
             },
             {
                 path: 'manage',
-                component: UserManage,
+                component: resolve => require(['@/components/user/manage'],resolve),
+                //component: UserManage,
                 meta: {
                     title: "用户管理"
                 },
             },
             {
                 path: 'photo',
-                component: UserPhoto,
+                component: resolve => require(['@/components/user/common/photos.vue'],resolve),
+                //component: UserPhoto,
                 meta: {
                     title: "用户相片"
                 },
             },
         ]
     },
-
-
     {
         path: '/register',
-        component: register,
+        component: resolve => require(['@/components/user/auth/register.vue'],resolve),
+        //component: register,
         meta: {
             title: "注册"
         }
@@ -80,14 +86,16 @@ let routers =[
 
     {
         path: '/login',
-        component: login,
+        component: resolve => require(['@/components/user/auth/login.vue'],resolve),
+        //component: login,
         meta: {
             title: "登录"
         }
     },
     {
         path: '/chat',
-        component: Chat,
+        component: resolve => require(['@/components/chat/Chat.vue'],resolve),
+        //component: Chat,
         meta: {
             title: "私信"
         }

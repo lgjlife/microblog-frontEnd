@@ -123,7 +123,6 @@
                    for (let i = 0; i < offset; i++) {
                        this.dateDatas.push('')
                    }
-
                    let day = 1;
                    for (let i = offset; i < 42; i++) {
                        this.dateDatas.push(day)
@@ -132,12 +131,8 @@
                        if(day > maxDay){
                            return
                        }
-
                    }
                }
-
-
-
             },
 
             calActDateIndex(){
