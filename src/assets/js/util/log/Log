@@ -16,9 +16,12 @@ function log(level,tag,text,params) {
     var style = ['color:#8B4513;font-size:14px','color:black;font-size:14px','color:red;font-size:14px'];
 
 
-    for (var index = 0; index < params.length;index++){
-        text =  text.replace('[]',params[index])
+    if((params != null)||(params != undefined)){
+        for (var index = 0; index < params.length;index++){
+            text =  text.replace('[]',params[index])
+        }
     }
+
     var date = new Date();
     var msg = '%c [' + level + ']' + ' %c ' + date.format("yyyy-MM-dd hh:mm:ss") + " %c " + tag + " %c " + text;
 

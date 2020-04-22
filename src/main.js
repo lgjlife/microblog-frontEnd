@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import Log from '@/assets/js/util/log/Log'
+
+
 Vue.config.productionTip = false
 
 //
@@ -24,7 +27,20 @@ VueRouter.prototype.push = function push(location) {
     return routerPush.call(this, location).catch(error=> error)
 }
 
+//mock
+true && require('@/mock')
 
+
+/*
+npm run serve时会把process.env.NODE_ENV设置为‘development’；
+npm run build 时会把process.env.NODE_ENV设置为‘production’；
+此时只要根据process.env.NODE_ENV设置不同请求url就可以很简单的区分出本地和线上环境。
+ */
+Log.info("main.js","环境=[]",[process.env.NODE_ENV])
+
+/**
+ * 引入阿里icon的文件
+ */
 import "@/assets/icon/ali/iconfont.css"
 import "@/assets/icon/ali/iconfont.js"
 

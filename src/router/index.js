@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import Log from '@/assets/js/util/log/Log'
 
 import home from "./home"
 import message from "./message"
@@ -29,8 +30,7 @@ const router = new VueRouter({
  */
 router.beforeEach((to,from,next)=>{
 
-    console.log("from path = " + from.path);
-    console.log("即将访问" + to.path);
+    Log.debug("router.index.js","路由: []--->[]",[from.path,to.path]);
 
 
 

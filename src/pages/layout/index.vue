@@ -47,8 +47,8 @@ import Calendar from '@/components/calendar/Calendar.vue'
 
 import UserInfoNav from './UserInfoNav.vue'
 import HotTopicNav from './HotTopicNav.vue'
-import HeaderNav from './Header-nav.vue'
-import footerNav from './footer-nav.vue'
+import HeaderNav from './HeaderNav.vue'
+import footerNav from './FooterNav.vue'
 
 import BlogPublish from '@/components/blog/BlogPublish'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
@@ -57,6 +57,9 @@ import axios from 'axios'
 
 
 import Notice from '@/components/notice/Notice.vue'
+import UserInfo from "@/apis/modules/user/userInfo.js"
+import Log from '@/assets/js/util/log/Log'
+
 
 export default {
     data() {
@@ -65,12 +68,24 @@ export default {
 
     create(){
 
+
+
+
     },
 
     mounted() {
-        axios.get("/data/sk/101010100.html").then(data=>{
-            console.log("data = " + JSON.stringify(data));
-        })
+        Log.info("Layout","请求用户信息")
+
+        UserInfo.getUserInfo().then(function (response) {
+
+            Log.info("Layout","请求成功")
+            console.log(response);
+        }).catch(function (error) {
+
+            Log.error("Layout","请求出错")
+
+            console.log(error);
+        });
     },
 
 

@@ -72,10 +72,10 @@
                 this.curPageDate= this.actDate
                 this.curPageWeedDay= this.actWeedDay
 
-                console.log("actYear = "+this.actYear);
-                console.log("actMonth = "+ this.actMonth);
-                console.log("actDate = "+ this.actDate);
-                console.log("actDay = "+ this.actWeedDay);
+                // console.log("actYear = "+this.actYear);
+                // console.log("actMonth = "+ this.actMonth);
+                // console.log("actDate = "+ this.actDate);
+                // console.log("actDay = "+ this.actWeedDay);
 
                 this.calDateData()
                 this.calActDateIndex();
@@ -93,13 +93,12 @@
                 //当前月的天数
                 //由于JavaScript中day的范围为1~31中的值，所以当设为0时，会向前 一天，也即表示上个月的最后一天。
                 let maxDay = new Date(this.curPageYear,this.curPageMonth,0).getDate()
-
-                console.log("calDateData 当前月的天数:" + maxDay);
+                //console.log("calDateData 当前月的天数:" + maxDay);
 
 
                 let msg ="calDateData--" +  this.curPageYear+"年"+this.curPageMonth + "月"+"第一天是周" +  offset
-                console.log(msg);
-               console.log("calDateData-- offset = " + offset);
+                //console.log(msg);
+               //console.log("calDateData-- offset = " + offset);
 
 
                if(offset == -1){
@@ -139,15 +138,15 @@
 
                 if((this.curPageYear != this.actYear) || (this.curPageMonth != this.actMonth)){
                     this.actDateIndex = null
-                    console.log(" this.actDateIndex = " +  this.actDateIndex);
+                   // console.log(" this.actDateIndex = " +  this.actDateIndex);
                     return
                 }
 
                 let offset =  new Date(this.curPageYear,this.curPageMonth-1,1).getDay()-1;
                 let index =  new Date(this.actYear,this.actMonth-1,this.actDate).getDate();
 
-                let msg  = "offset = " + offset +  " index = " + index;
-                console.log(msg);
+               // let msg  = "offset = " + offset +  " index = " + index;
+              //  console.log(msg);
 
                 this.actDateIndex = offset + index - 1;
 

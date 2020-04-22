@@ -38,7 +38,7 @@
 <script>
 
 
-import footerNav from '@/pages/layout/footer-nav.vue'
+import footerNav from '@/pages/layout/FooterNav.vue'
 import LeftSideNav from '@/pages/layout/LeftSideNav.vue'
 import UserInfoNav from '@/pages/layout/UserInfoNav.vue'
 import HotTopicNav from '@/pages/layout/HotTopicNav.vue'
@@ -46,7 +46,7 @@ import HotTopicNav from '@/pages/layout/HotTopicNav.vue'
 import BlogPublish from '@/components/blog/BlogPublish'
 import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 import Cache from "@/common/cache/Cache.js"
-import headerNav from '@/pages/layout/Header-nav.vue'
+import headerNav from '@/pages/layout/HeaderNav.vue'
 
 export default {
 

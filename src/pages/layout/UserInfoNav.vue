@@ -50,7 +50,7 @@
 
 <script>
 
-    import  {openUserPage}  from "@/apis/common/pathRouter.js"
+    import  {openUserPage}  from "@/apis/modules/common/pathRouter.js"
 
 
     export default {

@@ -43,11 +43,11 @@
 </template>
 
 <script>
-    import HeaderNav from '@/pages/layout/Header-nav.vue'
+    import HeaderNav from '@/pages/layout/HeaderNav.vue'
 
-    import at from "./at"
-    import like from "./like"
-    import comment from "./comment"
+    import At from "./At"
+    import Like from "./Like"
+    import Comment from "./Comment"
 
     export default {
         data(){
@@ -95,9 +95,9 @@
 
         components:{
             HeaderNav,
-            at,
-            like,
-            comment,
+            At,
+            Like,
+            Comment,
         }
 
 

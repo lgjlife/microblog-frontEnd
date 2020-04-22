@@ -82,9 +82,9 @@
 </template>
 
 <script>
-    import {TIME_CHANGE} from "@/util/time/time.js"
+    import {TIME_CHANGE} from "@/assets/js/util/time/time.js"
     import Video from '@/components/video/Video.vue'
-    import  * as pathRouter  from "@/apis/common/pathRouter.js"
+    import  * as pathRouter  from "@/apis/modules/common/pathRouter.js"
 
 
     export default {

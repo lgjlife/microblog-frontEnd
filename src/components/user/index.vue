@@ -49,7 +49,7 @@
 </template>
 
 <script>
-    import HeaderNav from '@/pages/layout/Header-nav.vue'
+    import HeaderNav from '@/pages/layout/HeaderNav.vue'
 
 
     export default {

@@ -1,7 +1,7 @@
 <template>
 
     <div style="margin: 0px ;width: 100% ;padding: 0px; margin-left: 0px">
-        <titleNav title="@我的微博" ></titleNav>
+        <TitleNav title="@我的微博" ></TitleNav>
         <BlogDisplay></BlogDisplay>
     </div>
 </template>
@@ -9,9 +9,9 @@
 
 <script>
 
-    import titleNav from "./title.vue"
+    import TitleNav from "./Title.vue"
     import Emotion from '@/components/common/Emotion.vue'
-    import {TIME_CHANGE} from "@/util/time/time.js"
+    import {TIME_CHANGE} from "@/assets/js/util/time/time.js"
 
     import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 

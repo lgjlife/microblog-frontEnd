@@ -1,15 +1,15 @@
-import register from '@/components/user/auth/register.vue'
-import login from '@/components/user/auth/login.vue'
+import register from '@/components/user/auth/Register.vue'
+import login from '@/components/user/auth/Login.vue'
 
 import user from '@/components/user'
 
-import UserHome from '@/components/user/common/home.vue'
-import HomeBlog from '@/components/user/common/home/blog.vue'
-import HomeFollow from '@/components/user/common/home/follow.vue'
-import HomeFans from '@/components/user/common/home/fans.vue'
+import UserHome from '@/components/user/common/Home.vue'
+import HomeBlog from '@/components/user/common/home/Blog.vue'
+import HomeFollow from '@/components/user/common/home/Follow.vue'
+import HomeFans from '@/components/user/common/home/Fans.vue'
 
 import UserManage from '@/components/user/manage'
-import UserPhoto from '@/components/user/common/photos.vue'
+import UserPhoto from '@/components/user/common/Photos.vue'
 
 import Chat from '@/components/chat/Chat.vue'
 
@@ -25,7 +25,7 @@ let routers =[
 
             {
                 path: 'home',
-                component: resolve => require(['@/components/user/common/home.vue'],resolve),
+                component: resolve => require(['@/components/user/common/Home.vue'],resolve),
                 //component: UserHome,
                 meta: {
                     title: "用户主页"
@@ -33,7 +33,7 @@ let routers =[
                 children :[
                     {
                         path: 'blog',
-                        component: resolve => require(['@/components/user/common/home.vue'],resolve),
+                        component: resolve => require(['@/components/user/common/Home.vue'],resolve),
                         //component: HomeBlog,
                         meta: {
                             title: "用户"
@@ -41,15 +41,15 @@ let routers =[
                     },
                     {
                         path: 'follow',
-                        component: resolve => require(['@/components/user/common/home/follow.vue'],resolve),
+                        component: resolve => require(['@/components/user/common/home/Follow.vue'],resolve),
                         //component: HomeFollow,
                         meta: {
                             title: "关注"
                         },
                     },
                     {
-                        path: 'fans',
-                        component: resolve => require(['@/components/user/common/home/fans.vue'],resolve),
+                        path: 'Fans.vue',
+                        component: resolve => require(['@/components/user/common/home/Fans.vue'],resolve),
                         //component: HomeFans,
                         meta: {
                             title: "粉丝"
@@ -67,7 +67,7 @@ let routers =[
             },
             {
                 path: 'photo',
-                component: resolve => require(['@/components/user/common/photos.vue'],resolve),
+                component: resolve => require(['@/components/user/common/Photos.vue'],resolve),
                 //component: UserPhoto,
                 meta: {
                     title: "用户相片"
@@ -77,7 +77,7 @@ let routers =[
     },
     {
         path: '/register',
-        component: resolve => require(['@/components/user/auth/register.vue'],resolve),
+        component: resolve => require(['@/components/user/auth/Register.vue'],resolve),
         //component: register,
         meta: {
             title: "注册"
@@ -86,7 +86,7 @@ let routers =[
 
     {
         path: '/login',
-        component: resolve => require(['@/components/user/auth/login.vue'],resolve),
+        component: resolve => require(['@/components/user/auth/Login.vue'],resolve),
         //component: login,
         meta: {
             title: "登录"

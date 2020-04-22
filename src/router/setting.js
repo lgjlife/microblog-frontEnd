@@ -1,4 +1,4 @@
-import security from '@/components/setting/security.vue'
+import security from '@/components/setting/Security.vue'
 
 import setting from '@/components/setting/Setting.vue'
 import SettingAccountBinding from '@/components/setting/SettingAccountBinding.vue'
@@ -60,7 +60,7 @@ let routers =  [
     },
     {
         path: '/security',
-        component: resolve => require(['@/components/setting/security.vue'],resolve),
+        component: resolve => require(['@/components/setting/Security.vue'],resolve),
         // component: security,
         meta: {
             title: "帐号与安全"

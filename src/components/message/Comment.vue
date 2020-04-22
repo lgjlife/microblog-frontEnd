@@ -1,7 +1,7 @@
 <template>
     <div style="margin: 0px ;width: 100% ;padding: 0px; margin-left: 0px">
 
-        <titleNav title="收到的评论" ></titleNav>
+        <TitleNav title="收到的评论" ></TitleNav>
 
         <div v-for="(item,index) in likeList"
              :index="index"
@@ -40,10 +40,10 @@
 
             </div>
 
-            <replyTimeLine  v-bind:dialogVisible=item.replyTimeLineVisable v-bind:index="index"
+            <ReplyTimeLine  v-bind:dialogVisible=item.replyTimeLineVisable v-bind:index="index"
                             @closeReplyTimeLine="closeReplyTimeLine"
 
-            ></replyTimeLine>
+            ></ReplyTimeLine>
 
             <!--评论扩展部分-->
             <div class="extend" v-if="item.replyBlockVisable == true">
@@ -77,9 +77,9 @@
 <script>
 
     import Emotion from '@/components/common/Emotion.vue'
-    import {TIME_CHANGE} from "@/util/time/time.js"
-    import replyTimeLine from "./replyTimeLine.vue"
-    import titleNav from "./title.vue"
+    import {TIME_CHANGE} from "@/assets/js/util/time/time.js"
+    import ReplyTimeLine from "./ReplyTimeLine.vue"
+    import TitleNav from "./Title.vue"
 
     export default {
         data(){
@@ -273,8 +273,8 @@
 
         components:{
             Emotion,
-            titleNav,
-            replyTimeLine,
+            TitleNav,
+            ReplyTimeLine,
         }
 
 

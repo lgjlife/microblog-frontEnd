@@ -106,7 +106,7 @@
 
 <script>
 
-    import HeaderNav from '@/pages/layout/Header-nav.vue'
+    import HeaderNav from '@/pages/layout/HeaderNav.vue'
     import axios from 'axios'
     import "./security.css"
     import formValidation from "@/components/user/formValidation.js"

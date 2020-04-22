@@ -12,10 +12,10 @@
 </template>
 
 <script>
-    import HeaderNav from '@/pages/layout/Header-nav.vue'
+    import HeaderNav from '@/pages/layout/HeaderNav.vue'
     import BlogDisplay from '@/components/blog/BlogDisplay.vue'
 
-    import Log from "@/util/log/Log";
+    import Log from "@/assets/js/util/log/Log";
 
     export default {
 

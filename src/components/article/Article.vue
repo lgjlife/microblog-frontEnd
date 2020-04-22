@@ -70,12 +70,12 @@
 
     import UploadImg from '@/components/common/UploadImg.vue'
 
-    import HeaderNav from '@/pages/layout/Header-nav.vue'
+    import HeaderNav from '@/pages/layout/HeaderNav.vue'
 
     import Editor from "@/components/edit/Edit.vue";
 
-    import Log from "@/util/log/Log";
-    import Acticle from "@/apis/acticle/acticle.js"
+    import Log from "@/assets/js/util/log/Log";
+    import ActicleAPI from "@/apis/modules/acticle/acticle.js"
 
     export default {
 
@@ -124,7 +124,7 @@
             //初始化
             init(){
 
-                Acticle.GetActicleList().;
+               // Acticle.GetActicleList().;
             },
         },
         created(){

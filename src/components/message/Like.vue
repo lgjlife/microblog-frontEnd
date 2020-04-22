@@ -65,11 +65,11 @@
 
 
 <script>
-    import HeaderNav from '@/pages/layout/Header-nav.vue'
-    import Emotion from '@/components/common/Emotion.vue'
-    import {TIME_CHANGE} from "@/util/time/time.js"
 
-    import titleNav from "./title.vue"
+    import Emotion from '@/components/common/Emotion.vue'
+    import {TIME_CHANGE} from "@/assets/js/util/time/time.js"
+
+    import TitleNav from "./Title.vue"
 
     export default {
         data(){
@@ -212,7 +212,7 @@
 
         components:{
             Emotion,
-            titleNav,
+            TitleNav,
         }
 
 

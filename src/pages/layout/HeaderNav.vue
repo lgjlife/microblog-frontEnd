@@ -123,17 +123,17 @@
 </template>
 
 <script>
-import login from '@/components/user/auth/login.vue'
-import register from '@/components/user/auth/register.vue'
+import login from '@/components/user/auth/Login.vue'
+import register from '@/components/user/auth/Register.vue'
 import share from '@/components/blog/share.vue'
-import Cache from "@/common/cache/Cache.js"
-import {KEY} from "@/common/cache/Cache.js"
+import Cache from "@/assets/js/util/cache/Cache.js"
+import {KEY} from "@/assets/js/util/cache/Cache.js"
 
-import {trim} from "@/util/str/str.js"
+import {trim} from "@/assets/js/util/str/str.js"
 //import { mapState } from 'vuex'
 
-import  * as pathRouter  from "@/apis/common/pathRouter.js"
-import weather from './weather'
+import  * as pathRouter  from "@/apis/modules/common/pathRouter.js"
+
 
 
 export default {
@@ -298,23 +298,12 @@ export default {
         this.init();
     },
     mounted() {
-
-        window.WIDGET = {FID: 'C4su5aev9H'}
-        var d = document;
-        var cs = d.createElement("link");
-        cs.rel = "stylesheet";
-        cs.href = "https://apip.weatherdt.com/view/static/css/tqw_widget_view.css?v=0101";
-        var s = d.createElement("script");
-        s.src = "https://apip.weatherdt.com/float/static/js/r.js?v=1111";
-        var sn = d.getElementsByTagName("script")[0];
-        sn.parentNode.insertBefore(cs, sn);
-        sn.parentNode.insertBefore(s, sn);
     },
     components: {
         login,
         register,
         share,
-        weather,
+
       
     }
 }

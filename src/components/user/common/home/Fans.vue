@@ -23,22 +23,22 @@
                 <!--left-->
                 <div class="left-container">
                     <el-avatar :size="60">
-                        <img :src="fans.headerImageUrl"/>
+                        <img :src="Fans.headerImageUrl"/>
                     </el-avatar>
                 </div>
                 <!--right-->
                 <div class="right-container">
-                    <span>{{fans.userName}}</span>
+                    <span>{{Fans.userName}}</span>
                     <div>
                         <ul>
                             <li>
-                                <span>关注:</span><span style="color: #CD853F">{{fans.followCount}}</span>
+                                <span>关注:</span><span style="color: #CD853F">{{Fans.followCount}}</span>
                             </li>
                             <li>
-                                <span>粉丝:</span><span style="color: #CD853F">{{fans.fansCount}}</span>
+                                <span>粉丝:</span><span style="color: #CD853F">{{Fans.fansCount}}</span>
                             </li>
                             <li>
-                                <span>微博:</span><span style="color: #CD853F">{{fans.blogCount}}</span>
+                                <span>微博:</span><span style="color: #CD853F">{{Fans.blogCount}}</span>
                             </li>
                         </ul>
                     </div>

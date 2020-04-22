@@ -5,7 +5,7 @@ import axios from 'axios'
 基础配置
  */
 const instance = axios.create({
-    baseURL: '/api',
+    //baseURL: '/api',
     timeout: 1000,
     responseType: "json",
     withCredentials: true, // 是否允许带cookie这些

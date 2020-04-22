@@ -57,6 +57,9 @@ npm install --save-dev mockjs
                 ├─── 阿里表情文件
             ├─── /js
                 ├─── /util       公共js文件　
+                    ├─── /log   日志工具
+                    ├─── /str   字符串工具
+                    ├─── /time  时间处理
                     
         ├─── /components　　　　　各个模块的组件
             ├─── article
@@ -83,11 +86,7 @@ npm install --save-dev mockjs
             ├─── user.js
         ├─── /store
             ├─── /modules　状态管理的各个模块文件
-            ├─── store.js　状态管理总文件
-        ├─── /util
-            ├─── /log   日志工具
-            ├─── /str   字符串工具
-            ├─── /time  时间处理
+            ├─── store.js　状态管理总文件            
         ├─── App.vue  主组件，页面入口文件
         ├─── main.js  程序入口文件,初始化vue实例并使用需要的插件,加载各种公共组件.
     ├─── vue.config.js　　vue 项目配置文件
