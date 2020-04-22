@@ -1,0 +1,76 @@
+#acticle-container{
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.left-container{
+    width: 20%;
+    position: relative;
+    float: left;
+    height: 100%;
+    margin-top: 20px;
+    background-color: #ffffff;
+}
+
+.article-list{
+
+}
+
+.article-list ul{
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.right-container{
+    width: 70%;
+    position: relative;
+    float: left;
+
+    height: auto;
+    margin-top: 20px;
+    margin-left: 20px;
+
+    background-color: #ffffff;
+
+    min-height: 800px;
+
+}
+
+.setting{
+    height: 200px;
+}
+
+.pre-view-block{
+    position: sticky;
+    float: left;
+    width: inherit;
+    min-height: 500px;
+    height: auto;
+    background-color: burlywood;
+    text-align: center;
+    cursor: default;
+    width: auto;
+
+    z-index: 100;
+}
+
+.pre-view-title{
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.pre-view-return-icon{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    float: right;
+    right: 0px;
+    margin-right: 0px;
+    cursor: default;
+}
+.pre-view-content{
+    text-align: left;
+    margin: 15px;
+}

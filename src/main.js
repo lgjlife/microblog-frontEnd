@@ -19,6 +19,12 @@ import store from "./store/store.js"
 import VueRouter from 'vue-router';
 Vue.use(VueRouter); //挂载属性
 
+const routerPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+    return routerPush.call(this, location).catch(error=> error)
+}
+
+
 import "@/assets/icon/ali/iconfont.css"
 import "@/assets/icon/ali/iconfont.js"
 

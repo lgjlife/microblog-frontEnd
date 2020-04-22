@@ -4,7 +4,7 @@ let routers =[
 
     {
         path: '/blog/:userId/:blogId',
-        component: resolve => require(['@/components/blog/BlogComment.vue'],resolve),
+        component: resolve => require(['@/components/blog/BlogDetails.vue'],resolve),
        // component: Echarts,
         meta: {
             title: "图标"
