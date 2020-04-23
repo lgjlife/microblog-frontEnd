@@ -1,76 +1,146 @@
 #acticle-container{
 
     position: relative;
+    min-width: 1200px;
     width: 100%;
     height: 100%;
-}
+    text-align: center;
 
-.left-container{
-    width: 20%;
+}
+/**
+文章内容框
+ */
+.article-block{
     position: relative;
-    float: left;
-    height: 100%;
-    margin-top: 20px;
+    width: 1200px;
+    left: 10%;
+    min-height: 800px;
+
+    border: #9a6e3a 1px solid;
+
+    margin-top: 30px;
+
     background-color: #ffffff;
 }
 
-.article-list{
+/*标题*/
+.title-block{
+    width: inherit;
+    background-color: #52CCBA;
 
 }
-
-.article-list ul{
+.title-block ul{
+    width: inherit;
+    height: 40px;
     list-style: none;
     margin-left: 0px;
     padding-left: 0px;
+
 }
-.right-container{
-    width: 70%;
-    position: relative;
+.title-ul li{
     float: left;
-
-    height: auto;
-    margin-top: 20px;
-    margin-left: 20px;
-
-    background-color: #ffffff;
-
-    min-height: 800px;
-
+    /*width: 100px;*/
+}
+.title-ul li:nth-child(1){
+    width: 52%;
+}
+.title-ul li:nth-child(2){
+    width: 8%;
 }
 
-.setting{
-    height: 200px;
+.title-ul li:nth-child(3){
+    width: 8%;
+}
+.title-ul li:nth-child(4){
+    width: 8%;
+}
+.title-ul li:nth-child(5){
+    width: 8%;
+}
+.title-ul li:nth-child(6){
+    width: 8%;
+}
+.title-ul li:nth-child(6){
+    width: 8%;
 }
 
-.pre-view-block{
-    position: sticky;
-    float: left;
+
+/*列表*/
+.article-list-block{
     width: inherit;
-    min-height: 500px;
-    height: auto;
-    background-color: burlywood;
-    text-align: center;
+}
+.article-list-block ul{
+    width: inherit;
+    height: 40px;
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 0px;
+
+    border: #b3d4fc 1px solid;
+
+}
+.article-list-block ul li{
+
     cursor: default;
-    width: auto;
+    width: inherit;
+    margin-top: 5px;
+    text-align: center;
 
-    z-index: 100;
+    /*float: left;*/
+    /*width: 100px;*/
+}
+.article-list-item:nth-child(1){
+    width: 52%;
+}
+.article-list-item:nth-child(2){
+    width: 8%;
 }
 
-.pre-view-title{
-    font-size: 30px;
-    margin-bottom: 15px;
+.article-list-item:nth-child(3){
+    width: 8%;
+}
+.article-list-item:nth-child(4){
+    width: 8%;
+}
+.article-list-item:nth-child(5){
+    width: 8%;
+}
+.article-list-item:nth-child(6){
+    width: 8%;
+}
+.article-list-item:nth-child(6){
+    width: 8%;
 }
 
-.pre-view-return-icon{
-    width: 30px;
+
+.tips{
     height: 30px;
-    position: absolute;
+}
+/***/
+.pre-view-block{
+    width: inherit;
+    background-color: #ffffff;
+    min-height: 800px;
+}
+.pre-view-title{
+    width: inherit;
+    height: 40px;
+    background-color: #52CCBA;
+    /*margin-bottom: 0px;*/
+}
+.pre-view-return-icon{
     float: right;
     right: 0px;
-    margin-right: 0px;
-    cursor: default;
+    margin-top: 5px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    z-index: 100;
 }
 .pre-view-content{
+
+    margin-top: 0px;
     text-align: left;
-    margin: 15px;
+    min-height: inherit;
+    background-color: #ffffff;
 }

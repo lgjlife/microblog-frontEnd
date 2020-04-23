@@ -37,7 +37,7 @@ npm install --save-dev mockjs
 * 路由管理器: [Vue Router](https://router.vuejs.org/zh/)
 * UI框架: [element-ui](https://element.eleme.cn/#/zh-CN/component/installation)
 * 网络请求: [axios](http://www.axios-js.com/)
-* Mock框架: [mockjs](https://github.com/nuysoft/Mock/wiki]())
+* Mock框架: [mockjs](https://github.com/nuysoft/Mock/wiki)
 * 富文本编辑: [wangeditor](http://www.wangeditor.com/)
 * 阿里图标: [iconfont](https://www.iconfont.cn/)
 
@@ -54,7 +54,7 @@ npm install --save-dev mockjs
                 ├─── modules    各个模块的api文件
         ├─── /assets　　　　　　　公共静态文件
             ├─── /icon
-                ├─── 阿里表情文件
+                ├─── ali        阿里ico文件
             ├─── /js
                 ├─── /util       公共js文件　
                     ├─── /log   日志工具

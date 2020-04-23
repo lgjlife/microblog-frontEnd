@@ -1,5 +1,6 @@
 // 将所有的mock文件引入
 require('@/mock/user-mock')
+require('@/mock/article-mock')
 
 
 // 在这里可以做一些通用的配置

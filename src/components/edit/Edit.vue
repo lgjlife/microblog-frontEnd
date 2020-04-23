@@ -93,9 +93,9 @@
             }
 
             this.editor.create()     // 创建富文本实例
-            if (!this.content) {
-                this.editor.txt.html('请编辑内容1')
-            }
+            // if (!this.content) {
+            //   this.editor.txt.html('请编辑内容')
+            // }
         }
     }
 </script>

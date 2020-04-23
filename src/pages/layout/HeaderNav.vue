@@ -1,5 +1,5 @@
 <template>
-    <div  style="background-color: #fffdef;margin: 0px;height: 50px">
+    <div  class="header-container" style="background-color: #fffdef;margin: 0px;height: 50px">
 
         <div class="header-item header-search">
             <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchData"
