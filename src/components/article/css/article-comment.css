@@ -1,0 +1,38 @@
+#article-comment-container{
+    border: #52CCBA 1px solid;
+    margin: 10px 0px 5px 0px;
+    width: 100%;
+    min-height: 100px;
+
+    cursor: default;
+
+}
+
+/********标题**********/
+.comment-header{
+    border-bottom: #9a6e3a 1px solid;
+}
+    /*用户名*/
+.comment-header .user-name{
+
+    color: mediumblue;
+    margin-right: 20px;
+}
+
+/*时间*/
+.comment-header .time{
+
+    color: #9a6e3a;
+
+}
+/**/
+.comment-header .btn{
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn-active{
+    color: blue;
+}
+/**********内容******************/

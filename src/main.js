@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import Log from '@/assets/js/util/log/Log'
-
-
 Vue.config.productionTip = false
 
 //
@@ -30,6 +27,12 @@ VueRouter.prototype.push = function push(location) {
 //mock
 true && require('@/mock')
 
+
+//自定义工具
+
+import  TimeUtil from '@/assets/js/util/time/time.js'
+import  Log from '@/assets/js/util/log/Log'
+Vue.prototype.$Log = Log
 
 /*
 npm run serve时会把process.env.NODE_ENV设置为‘development’；

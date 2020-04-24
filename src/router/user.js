@@ -1,17 +1,4 @@
-import register from '@/components/user/auth/Register.vue'
-import login from '@/components/user/auth/Login.vue'
 
-import user from '@/components/user'
-
-import UserHome from '@/components/user/common/Home.vue'
-import HomeBlog from '@/components/user/common/home/Blog.vue'
-import HomeFollow from '@/components/user/common/home/Follow.vue'
-import HomeFans from '@/components/user/common/home/Fans.vue'
-
-import UserManage from '@/components/user/manage'
-import UserPhoto from '@/components/user/common/Photos.vue'
-
-import Chat from '@/components/chat/Chat.vue'
 
 let routers =[
     {

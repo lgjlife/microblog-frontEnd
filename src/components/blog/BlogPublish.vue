@@ -19,47 +19,46 @@
             <ul>
                 <!--表情-->
                 <li>
-                    <div class="grid-content bg-purple">
-
-                        <svg class="iconfont" aria-hidden="true">
-                            <use xlink:href="#element-icon-alibiaoqing" @click="emotionDisplay = !emotionDisplay"></use>
-                        </svg>
-
-                    </div>
+                    <svg class="iconfont" aria-hidden="true">
+                        <use xlink:href="#element-icon-alibiaoqing" @click="emotionDisplay = !emotionDisplay"></use>
+                    </svg>
                     <Emotion v-if="emotionDisplay" ref="emotionChild" style="position:absolute; z-index: 9999;" @emotionChildSelect="emotionChildSelect"></Emotion>
                 </li>
 
                 <!--图片-->
                 <li>
-                    <div class="grid-content bg-purple" @click="uploadImageDisplay = !uploadImageDisplay">
-                        <svg class="iconfont" aria-hidden="true">
-                            <use xlink:href="#element-icon-alitupian1" ></use>
-                        </svg>
-                    </div>
+                    <svg class="iconfont" aria-hidden="true" @click="uploadImageDisplay = !uploadImageDisplay">
+                        <use xlink:href="#element-icon-alitupian1" ></use>
+                    </svg>
+
                     <UploadImg v-show="uploadImageDisplay" ref="UploadImgRef"></UploadImg>
                 </li>
 
                 <!--视频-->
                 <li>
-                    <div class="grid-content bg-purple" @click="uploadVideoDisplay = !uploadVideoDisplay">
-                        <svg class="iconfont" aria-hidden="true">
-                            <use xlink:href="#element-icon-alishipin1"></use>
-                        </svg>
-                    </div>
-
+                    <svg class="iconfont" aria-hidden="true"  @click="uploadVideoDisplay = !uploadVideoDisplay">
+                        <use xlink:href="#element-icon-alishipin1"></use>
+                    </svg>
                     <UploadVideo v-show="uploadVideoDisplay" ref="UploadVideoRef"></UploadVideo>
 
                 </li>
 
                 <!--话题-->
                 <li>
-                    <div class="grid-content bg-purple">
-                        <svg class="iconfont" aria-hidden="true">
-                            <use xlink:href="#element-icon-alichuangjianhuati" @click="hotTopicDisplay = !hotTopicDisplay"></use>
-                        </svg>
-                    </div>
+                    <svg class="iconfont" aria-hidden="true">
+                        <use xlink:href="#element-icon-alichuangjianhuati" @click="hotTopicDisplay = !hotTopicDisplay"></use>
+                    </svg>
                     <HotTopic v-if="hotTopicDisplay" ref="topicChild" style="position:absolute; z-index: 9999;" @submit="topicChildSubmit"></HotTopic>
                 </li>
+
+                <!--文章-->
+                <li>
+                    <svg class="iconfont" aria-hidden="true" @click="articleIconClick">
+                        <use xlink:href="#element-icon-aliwenzhang2-copy-copy"></use>
+                    </svg>
+                    <HotTopic v-if="hotTopicDisplay" ref="topicChild" style="position:absolute; z-index: 9999;" @submit="topicChildSubmit"></HotTopic>
+                </li>
+
 
                 <!--微博类型-->
                 <li>
@@ -159,6 +158,13 @@ export default {
         topicChildSubmit(){
             this.hotTopicDisplay = false;
             this.blogData.content += this.$refs.topicChild.topic;
+        },
+
+        /*
+        *点击文章图标，跳转到文章页面
+        */
+        articleIconClick(){
+            this.$router.push('/article')
         }
     },
     components:{

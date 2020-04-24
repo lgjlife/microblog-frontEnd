@@ -6,6 +6,34 @@
   "description": "element-icon",
   "glyphs": [
     {
+      "icon_id": "5511105",
+      "name": "成功",
+      "font_class": "chenggong",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "7155854",
+      "name": "文章",
+      "font_class": "wenzhang2-copy-copy",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "9646813",
+      "name": "成功",
+      "font_class": "chenggong2",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "13297467",
+      "name": "失败",
+      "font_class": "shibai",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
       "icon_id": "8993581",
       "name": "关 闭",
       "font_class": "guanbi",

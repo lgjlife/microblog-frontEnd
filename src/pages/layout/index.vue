@@ -135,6 +135,7 @@ export default {
     }
     .center-left-block{
         width: 20%;
+        min-width: 310px;
         float: left;
         margin-left: 10px;
     }

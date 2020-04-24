@@ -107,11 +107,12 @@
     import UploadImg from '@/components/common/UploadImg.vue'
 
     import HeaderNav from '@/pages/layout/HeaderNav.vue'
-
-    import Editor from "@/components/edit/Edit.vue";
-
     import Log from "@/assets/js/util/log/Log";
     import ActicleAPI from "@/apis/modules/acticle/acticle-api.js"
+    import Editor from "@/components/edit/Edit.vue";
+
+
+
 
     export default {
 
@@ -402,6 +403,10 @@
 
             },
 
+            /**
+             * 分页页码改变事件
+             * @param page
+             */
             pageChange(page){
 
                 let articleType = ''

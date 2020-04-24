@@ -8,7 +8,9 @@ let routers =[
        // component: Echarts,
         meta: {
             title: "图标"
-        }
+        },
+
+
     },
 
 

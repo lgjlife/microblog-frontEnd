@@ -71,3 +71,7 @@ export  function TIME_CHANGE(time){
         }
     }
 }
+
+export default {
+    TIME_CHANGE,
+}

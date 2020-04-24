@@ -1,0 +1,61 @@
+.article-display-container{
+
+    width: 100%;
+    height: 100%;
+
+}
+
+/*******************************/
+.left-container{
+
+    position: relative;
+
+    width: 200px;
+    height: 500px;
+
+    float: left;
+
+    margin: 20px 0px 0px 0px;
+    background-color: #52CCBA;
+}
+
+
+/*******************************/
+/*主内容*/
+.main-container{
+
+    position: relative;
+    float: left;
+    width: 800px;
+    height: 500px;
+    margin: 20px 0px 0px 20px;
+
+}
+
+/*标题*/
+.article-title-block{
+
+    color: #ee9900;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 30px;
+    text-align: left;
+}
+
+/*主内容*/
+.article-content-block{
+    margin-bottom: 50px;
+}
+.article-other-info span{
+
+    margin: 20px;
+    color: #66c523;
+}
+
+.article-comment-edit-block{
+
+}
+
+.article-comment-list-block{
+    margin-top: 50px;
+}
