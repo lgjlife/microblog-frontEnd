@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service dev",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "startb": "nodemon --watch src -e html,vue,js,scss build/build.js"
   },
   "dependencies": {
     "core-js": "^3.6.4",

@@ -11,7 +11,7 @@
 #安装element-ui
 npm install element-ui -S
 
-#安装axios
+#安装axios;
 npm install axios --save
 
 #视频播放

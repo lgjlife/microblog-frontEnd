@@ -1,0 +1,10 @@
+.left-menu{
+
+    width: 20%;
+    float: left;
+}
+
+.right-display{
+    width: 80%;
+    float: right;
+}

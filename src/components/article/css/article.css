@@ -1,0 +1,39 @@
+/*
+总
+*/
+
+.article-container{
+
+    width: 100%;
+}
+
+/*头选项*/
+.article-title{
+
+    margin: 30px 30px 30px  30px;
+
+
+}
+
+.left-block{
+
+    min-height: 800px;
+    width: 300px;
+
+    position: relative;
+
+    float: left;
+    margin-left: 10px;
+}
+
+.right-blog{
+
+    border: #9a6e3a solid 1px;
+    min-height: 800px;
+    width: 800px;
+    position: relative;
+
+    float: left;
+
+    margin-left: 20px;
+}

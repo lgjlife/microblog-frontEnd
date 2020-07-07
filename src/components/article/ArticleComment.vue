@@ -8,6 +8,7 @@
 
     <div id="article-comment-container">
         <div class="comment-header">
+            <span></span>
             <!--用户名-->
             <span class="user-name" @click="commentUserNameClick">{{comment.userName}}</span>
 
@@ -44,7 +45,6 @@
         <div class="comment-content">
             <span>{{comment.content}}</span>
         </div>
-
 
     </div>
 </template>
@@ -137,7 +137,14 @@
             * 点击引用
             */
             quoteClick(){
-                var text ='@'+this.comment.userName + '<p></p>' + this.comment.content +   '<p></p>' + '--------------------------------------' +   '<p><br></p>'
+                var text = "<div style='background-color: #E1FFFF'>"
+                    + '@'+this.comment.userName
+                    + '<p></p>'
+                    + this.comment.content
+                    +   '<p></p>'
+                    + '--------------------------------------'
+                    + '</div>'
+                    +   '<p><br></p>'
                 this.testText1 = text
                 this.$emit('replyEvent',text)
 

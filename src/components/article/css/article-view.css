@@ -50,9 +50,12 @@
 
     margin: 20px;
     color: #66c523;
+    cursor: default;
 }
 
 .article-comment-edit-block{
+
+    margin-top: 30px;
 
 }
 

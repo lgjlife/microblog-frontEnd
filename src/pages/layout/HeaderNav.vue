@@ -15,9 +15,11 @@
                     <use xlink:href="#element-icon-alisousuo" ></use>
                 </svg>
             </div>
+
+          
             <!--搜索历史-->
             <div class="search-history" v-if="searchHistoryVisable">
-
+                fdafd
                 <div class="search-history-title" >
                     <span>搜索历史</span>
                     <span @click="cleanSearchHistoryData" class="search-history-title-clean">清空</span>
@@ -62,7 +64,7 @@
                       @mouseout="curlogRegBtnIndex=-1"
                       @click="logRegBtnClick('login')"
 
-                >登录</span>
+                >登录ffds</span>
                 <!--注册按钮-->
                 <span :class="{'header-user-btn-active':curlogRegBtnIndex==2}"
                       @mouseover="curlogRegBtnIndex=2"
@@ -139,12 +141,14 @@ import  * as pathRouter  from "@/apis/modules/common/pathRouter.js"
 export default {
     data() {
         return {
+
+            demo: 123444,
             dialogVisible: false,
 
             curlogRegBtnIndex: -1,
 
             messageNums: "12",
-            searchData: '',
+            searchData: 'ddssss',
             loginDialogVisible: false,
             registerDialogVisible: false,
             //搜索历史记录框

@@ -65,6 +65,8 @@ module.exports = {
      runtimeCompiler: true,
 
      devServer: {
+         disableHostCheck: true,
+         hot: true,
          open: true,
          host: 'localhost',
          port: 8081,
