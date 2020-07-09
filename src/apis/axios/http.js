@@ -1,6 +1,9 @@
 import axios from 'axios'
 
+import Log from "@/assets/js/util/log/Log";
 
+import store from "@/store/store.js"
+import managerAuth from "@/manager/util/managerAuth.js"
 /*
 基础配置
  */
@@ -11,29 +14,45 @@ const instance = axios.create({
     withCredentials: true, // 是否允许带cookie这些
     headers: {
         "Content-Type": "application/json;charset=utf-8"
-    }
-
+    },    
 });
 /*
 定义请求拦截器
  */
 instance.interceptors.request.use(
     config =>{
-        config.headers['Auth'] = "token"
+        //这些路径不需要添加token
+        let patts = [
+            /^\/api\/auth\/oauth\/token/
+        ];
 
-        let Authorization = localStorage.getItem('Authorization')
+  
+        for(var patt of patts){
 
-        if(Authorization != 1);
+            var flag =  patt.test(config.url);
+            console.log("----flagaaa　＝　"+flag)
+            if(flag == true){
+                Log.info("src/apis/axios/http.js","匹配路径[]，不添加header[Authorization]",[config.url]) 
+                return config;  
+            }            
+        }
 
-        return config;
+        
+        let Authorization = store.getters["auth/getAccessToken"]
+        if(Authorization != null){
+            Log.info("src/apis/axios/http.js","不匹配路径[]，添加header[Authorization]",[config.url])
+            config.headers['Authorization'] = Authorization
+            Log.info("src/apis/axios/http.js","axios请求拦截[]",[config.url,Authorization])
+            return config;
+        }    
+        return config;    
+        
     },
     error => {
+
+        
         // 对请求错误做些什么，自己定义
-        Message({                  //使用element-ui的message进行信息提示
-            showClose: true,
-            message: error,
-            type: "warning"
-        });
+        Log.info("src/apis/axios/http.js","请求拦截器错误")
         return Promise.reject(error);
     }
 )
@@ -46,8 +65,12 @@ instance.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
     // Do something with response error
-
-    console.log(error);
+    console.log(error.response)
+    Log.info("src/apis/axios/http.js","返回拦截器错误[]-[]",[error.response.status,error.response.statusText])
+    if(error.response.status == "401"){
+        managerAuth.RefreshToken();
+    }
+    
     return Promise.reject(error);
 });
 

@@ -39,7 +39,7 @@
         </div>
 
         <button @click="vuexClick">vuex-{{token}}</button>
-
+        <button @click="needAuth">needAuth</button>
        
     </div>
 </template>
@@ -53,6 +53,8 @@ import ManagerAuth from "@/manager/util/managerAuth.js";
 
 import store from "@/store/store.js"
 import { mapActions,mapGetters } from 'vuex'
+
+import req from '@/apis/axios/http.js'
 
 export default {
     data() {
@@ -79,6 +81,7 @@ export default {
         //warn　是否可见，登录错误才会显示一段时间
         warnVisible: false,
         warnContent: "",
+        countTime: 0,
         loginForm: {
           password: 'my-password1',
           username: 'my-username',
@@ -93,11 +96,48 @@ export default {
         ...mapActions('auth',['authDataSave']),
         ...mapGetters('auth',['getAccessToken','getRefreshToken']),
 
+        needAuth(){
+            var that = this
+            that.countTime = 0
+            that.createTask()
+        },
+
+        createTask(){
+            var that = this 
+
+            req("get","/api/needauth").then(function (response) {
+                    that.countTime++;
+                    
+                    Log.debug("src/manager/components/login/login.vue","/api/needauth成功;[]--[]s",
+                    [response.data,that.countTime]);
+
+                    //that.createTask()
+                })
+                .catch(function (error) {
+                    that.countTime = 0
+                    Log.debug("src/manager/components/login/login.vue","/api/needauth出错");
+                    that.warnHandler("请求出现错误:"+error.response.status);
+                });
+
+            // setTimeout(function(){
+            //     req("get","/api/needauth").then(function (response) {
+            //         that.countTime++;
+                    
+            //         Log.debug("src/manager/components/login/login.vue","/api/needauth成功;[]--[]s",
+            //         [response.data,that.countTime]);
+
+            //         that.createTask()
+            //     })
+            //     .catch(function (error) {
+            //         that.countTime = 0
+            //         Log.debug("src/manager/components/login/login.vue","/api/needauth出错");
+            //         that.warnHandler("请求出现错误:"+error.response.status);
+            //     });
+            // },1000)
+        },
 
         vuexClick(){
-            //this.increment();
-    
-            console.log(this.token)
+            ManagerAuth.RefreshToken()
         },
 
         /*
@@ -116,13 +156,8 @@ export default {
         登录请求
         */
         submitForm(formName) {
-            Log.debug("src/manager/components/login/login.vue","username=[],password=[]",[this.loginForm.username,this.loginForm.password]);
-
-            
 
             var loginData = ManagerAuth.getLoginData(this.loginForm.username,this.loginForm.password);
-
-            console.log(loginData)
             Log.debug("src/manager/components/login/login.vue","loginData=[]",[JSON.stringify(loginData)]);
 
             if((this.loginForm.username === "test") && (this.loginForm.password === "123456789")){
@@ -131,50 +166,39 @@ export default {
                 return;
             }
 
-            // this.$axios.post("/api/auth/oauth/token", null, {
-            //     params:loginData
-            // }).then(function (response) {
-            //     Log.debug("src/manager/components/login/login.vue","登录成功");
-            //     console.log(JSON.stringify(response));
-            // })
-            // .catch(function (error) {
-            //     Log.debug("src/manager/components/login/login.vue","登录出错");
-            //     that.warnHandler("请求出现错误:"+error.response.status);
-            // });
-
-            //return
-
-
             let that =  this
             this.$refs[formName].validate((valid) => {
 
                 if (valid) {
                     ManagerHTTP.Login(loginData)
                     .then(function (response) {
-                        Log.debug("src/manager/components/login/login.vue","登录成功");
-                        var tokenPayload = response.data;
-
-                        var access_token = response.data.access_token;
-                        var token_type = response.data.token_type;
-                        var refresh_token = response.data.refresh_token;
-                        var expires_in = response.data.expires_in;
-                        var scope = response.data.scope;
-                        var jti = response.data.jti;
-                   
-                       // console.log(JSON.stringify(response));
-                        console.log("1111111111")
-                        that.authDataSave(tokenPayload);
-                        console.log("22222222222")
-                        var readToken = that.getAccessToken();
-                        console.log("readToken = " + readToken)
+                       
+                        console.log(JSON.stringify(response));
+                        if(response.data.code == null){
+                            var tokenPayload = response.data; 
+                             //保存到vuex
+                            that.authDataSave(tokenPayload);                 
+                            var readToken = that.getAccessToken();
+                            Log.debug("src/manager/components/login/login.vue","登录成功:expires_in＝[]s",[tokenPayload.expires_in]);
+                            //跳转到管理页面
+                            that.$router.push({path: "/manager"})
+                        
+                        }
+                        else{
+                            that.warnHandler("请求出现错误:"+response.data.msg);
+                        }       
+                       
+                       
                     })
                     .catch(function (error) {
+                        
                         Log.debug("src/manager/components/login/login.vue","登录出错");
-                        that.warnHandler("请求出现错误:"+JSON.stringify(error));
+                        console.log(error)
+                        console.log(error.response)
+                        //that.warnHandler("请求出现错误:"+error.response.status);
                     });
 
                 } else {
-                    console.log('error submit!!');
                     return false;
                 }
             });

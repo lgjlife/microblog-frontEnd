@@ -7,6 +7,10 @@ let MANAGER_APIPATH = {
         path: BASE_URL + "/api/auth/oauth/token",
         method: "postparams",
     },
+    refreshToken: {
+        path: BASE_URL + "/api/auth/oauth/token",
+        method: "postparams",
+    },
 }
 
 export default {
