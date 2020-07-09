@@ -59,11 +59,18 @@ instance.interceptors.response.use(function (response) {
  * @param {Object} data    请求的参数
  * @returns {Promise}     返回一个promise对象，其实就相当于axios请求数据的返回值
  */
-export default function (method, url, data = null) {
+export default function (method, url, data) {
     method = method.toLowerCase();
     if (method == 'post') {
+        console.log("post......................")
         return instance.post(url, data)
-    } else if (method == 'get') {
+    } 
+    //参数是放在url后面
+    else if (method == 'postparams') {
+        console.log("postparams......................")
+        console.log(data)
+        return instance.post(url, null,{ params: data })
+    }else if (method == 'get') {
         return instance.get(url, { params: data })
     } else if (method == 'delete') {
         return instance.delete(url, { params: data })

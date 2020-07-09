@@ -1,6 +1,11 @@
+<!-- 
+名称: 后台管理页面
+
+
+ -->
 <template>
     <div class="manage-container">
-
+        <!-- 左侧菜单 -->
         <div class="left-menu">
             <el-menu
                 default-active="2"
@@ -10,16 +15,17 @@
                 background-color="#545c64"
                 text-color="#fff"
                 active-text-color="#ffd04b">
-
+                <!-- 一级菜单 -->
                 <div v-for="(item,index) in menus">
                     <el-submenu v-bind:index="index+''">
                         <template slot="title">
                             <i class="el-icon-location"></i>
                             <span>{{item.title}}</span>
                         </template>
+                        <!-- 二级菜单 -->
                        <el-menu-item-group v-for="(menuItem,menuItemIndex) in item.menuItems">            
                             <el-menu-item :index="menuItem.name" 
-                                @click="menuItemClick(index,menuItemIndex)">
+                                @click="menuItemClick(index,menuItemIndex,menuItem.type)">
                                 {{menuItem.name}}
                             </el-menu-item>
                         </el-menu-item-group>             
@@ -27,36 +33,48 @@
                 </div>
                </el-menu> 
         </div>
+        <!-- 右侧显示 -->
         <div class="right-display">
-            <div>
+            <!-- 标题栏 -->
+            <div class="breadcrum-title">
                 <el-breadcrumb separator-class="el-icon-arrow-right">
                     <el-breadcrumb-item :to="{ path: '/' }">主菜单</el-breadcrumb-item>
                     <el-breadcrumb-item>{{breadcrumbMenu.oneLevel}}</el-breadcrumb-item>
                     <el-breadcrumb-item>{{breadcrumbMenu.twoLevel}}</el-breadcrumb-item>
                 </el-breadcrumb>
-            </div>
-            <router-view class="interface" :menuItemIndex='menuItemIndex'></router-view>
-           
-        </div>
-
-        
+            </div>        
+    　　     <!-- router-view -->
+            <router-view class="interface" :menuItemIndex='menuItemIndex'></router-view>           
+        </div>        
     </div>
 </template>
 
 <script>
 
 import Log from "@/assets/js/util/log/Log";
+import ConstData from "@/manager/util/const.js"
+
     export default {
         data(){
             return{
                 menus: [
                     {   title: "服务监控",
                         path: "/manager/monitor",
-                        menuItems:[ {name: "注册中心",path: "/manager/"},
-                            {name: "Druid监控",path: ""},
-                            {name: "Spring Boot Admin",path: "/manager/",},
-                            {name: "RocketMQ",path: "/manager/"},
-                            {name: "接口查询",path: "/manager/"},
+                        menuItems:[ {name: "注册中心",path: "/manager/",
+                                type: ConstData.menuItem.monitor.REGISTER_CENTER_MONITOR
+                            },
+                            {name: "Druid监控",path: "",
+                                type: ConstData.menuItem.monitor.DRUID_MONITOR
+                            },
+                            {name: "Spring Boot Admin",path: "/manager/",
+                                type: ConstData.menuItem.monitor.SPRING_BOOT_ADMIN_MONITOR
+                            },
+                            {name: "RocketMQ",path: "/manager/",
+                                type: ConstData.menuItem.monitor.ROCKETMQ_MONITOR_MONITOR
+                            },
+                            {name: "接口查询",path: "/manager/",
+                                type: ConstData.menuItem.monitor.API_LIST
+                            },
                         ]
                     },
                     {   title: "任务中心",
@@ -91,7 +109,7 @@ import Log from "@/assets/js/util/log/Log";
                     twoLevel: "",
                 },
 
-                menuItemIndex: "",
+                menuItemIndex: ConstData.menuItem.monitor.REGISTER_CENTER_MONITOR,
             }
         },
         components:{
@@ -117,14 +135,14 @@ import Log from "@/assets/js/util/log/Log";
                 console.log(key, keyPath);
             },
 
-            menuItemClick(index,menuItemIndex){
+            menuItemClick(index,menuItemIndex,type){
          
                 Log.info("src/manager/index.vue","menu oneLevel=[] twoLevel=[] path=[],index=[]",
                 [index,menuItemIndex]);
 
                 this.$router.push({path: this.menus[index].path})
 
-                this.menuItemIndex = menuItemIndex
+                this.menuItemIndex = type
 
                 this.breadcrumbMenu.oneLevel = this.menus[index].title;
                 this.breadcrumbMenu.twoLevel = this.menus[index].menuItems[menuItemIndex].name;

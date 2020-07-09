@@ -16,6 +16,10 @@
             <div>
                 <a href="http://home.cnblogs.com/u/lgjlife/">我的博客</a>
             </div>
+            <div>
+                <a href="http://localhost:8081/manager">后台管理</a>
+            </div>
+
 
         </div>
     </div>

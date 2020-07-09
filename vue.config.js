@@ -73,9 +73,9 @@ module.exports = {
          https: false,
          hotOnly: false,
          proxy: { // 配置跨域
-          '/data': {
+          '/api': {
            //要访问的跨域的api的域名 // http://www.weather.com.cn/data/sk/101010100.html
-           target: 'http://www.weather.com.cn',
+           target: 'http://localhost:8010',
            ws: true,
            changOrigin: true,
            // pathRewrite: {

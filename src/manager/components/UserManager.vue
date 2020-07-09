@@ -1,5 +1,5 @@
 <template>
-    <div class="service-monitor-container">
+    <div class="user-manager-container">
         <h1>用户管理</h1>
        
 

@@ -36,6 +36,13 @@ let routers =[
                 },
             }
         ]
+    },
+    {
+        path: '/manager/login',
+        component: resolve => require(['@/manager/components/login/login.vue'],resolve),
+        meta: {
+            title: "后台管理系统登录"
+        },
     }
 ]
 

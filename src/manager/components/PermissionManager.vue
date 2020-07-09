@@ -1,5 +1,5 @@
 <template>
-    <div class="service-monitor-container">
+    <div class="permission-manager-container">
 
         <h1>权限管理</h1>
     

@@ -3,9 +3,12 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
+
+//import store from "./store/store.js"
+import store from "@/store/store.js"
 //
-// import axios from '@/util/axios/http.js'
-// Vue.prototype.$axios = axios
+import axios from 'axios'
+Vue.prototype.$axios = axios
 
 Vue.prototype.$appName = 'My App'
 
@@ -13,7 +16,6 @@ Vue.prototype.$appName = 'My App'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-import store from "./store/store.js"
 
 //VueRouter
 import VueRouter from 'vue-router';

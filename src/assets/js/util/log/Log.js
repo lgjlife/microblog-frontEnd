@@ -9,7 +9,7 @@
  */
 
 function log(level,tag,text,params) {
-
+ 
     var levels = ["debug","info","error"]
     var levelIndex = levels.indexOf(level);
 
