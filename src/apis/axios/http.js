@@ -36,8 +36,10 @@ instance.interceptors.request.use(
                 return config;  
             }            
         }
-
-        
+        console.log("==============config==============")
+        console.log(config)
+        console.log(JSON.stringify(config))
+        console.log("==============config==============")
         let Authorization = store.getters["auth/getAccessToken"]
         if(Authorization != null){
             Log.info("src/apis/axios/http.js","不匹配路径[]，添加header[Authorization]",[config.url])

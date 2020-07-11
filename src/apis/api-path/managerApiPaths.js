@@ -11,6 +11,11 @@ let MANAGER_APIPATH = {
         path: BASE_URL + "/api/auth/oauth/token",
         method: "postparams",
     },
+    getPublickey: {
+        path: BASE_URL + "/api/auth/login/publickey",
+        method: "get",
+    },
+
 }
 
 export default {

@@ -29,6 +29,11 @@ npm install vue-quill-editor --save
 # mockjs
 npm install --save-dev mockjs
 
+# base64
+npm install --save js-base64
+
+# 
+
 ```
 
 ## 技术栈

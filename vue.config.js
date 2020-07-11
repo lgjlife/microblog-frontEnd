@@ -82,7 +82,14 @@ module.exports = {
            //  '^/data': ''
            //
            // }
-          }
+          },
+          '/webflux': {
+            target: 'http://localhost:8080',
+            ws: true,
+            changOrigin: true,
+       
+           },
+
          },
          before: app => { }
      }
