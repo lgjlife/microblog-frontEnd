@@ -1,12 +1,14 @@
 <!-- 
 名称: 后台管理页面
-
-
  -->
 <template>
     <div class="manage-container">
         <!-- 左侧菜单 -->
         <div class="left-menu">
+            
+            <div>
+                李白　2020-06-15　12：00
+            </div>
             <el-menu
                 default-active="2"
                 class="el-menu-vertical-demo"
@@ -31,7 +33,7 @@
                         </el-menu-item-group>             
                     </el-submenu>
                 </div>
-               </el-menu> 
+            </el-menu> 
         </div>
         <!-- 右侧显示 -->
         <div class="right-display">
@@ -44,7 +46,7 @@
                 </el-breadcrumb>
             </div>        
     　　     <!-- router-view -->
-            <router-view class="interface" :menuItemIndex='menuItemIndex'></router-view>           
+            <router-view class="interface" ref="routerView" :menuItemIndex='menuItemIndex'></router-view>           
         </div>        
     </div>
 </template>
@@ -134,11 +136,14 @@ import ConstData from "@/manager/util/const.js"
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
             },
+            /*
+            * 菜单点击事件
 
+            */
             menuItemClick(index,menuItemIndex,type){
          
-                Log.info("src/manager/index.vue","menu oneLevel=[] twoLevel=[] path=[],index=[]",
-                [index,menuItemIndex]);
+                Log.info("src/manager/index.vue","index =[] menuItemIndex=[] type=[]",
+                [index,menuItemIndex,type]);
 
                 this.$router.push({path: this.menus[index].path})
 
@@ -146,6 +151,8 @@ import ConstData from "@/manager/util/const.js"
 
                 this.breadcrumbMenu.oneLevel = this.menus[index].title;
                 this.breadcrumbMenu.twoLevel = this.menus[index].menuItems[menuItemIndex].name;
+
+                this.$refs.routerView.chickMenu(type)
             }
 
         }

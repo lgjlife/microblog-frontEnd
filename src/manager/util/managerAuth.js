@@ -6,8 +6,8 @@ import Log from "@/assets/js/util/log/Log";
 
 let GRANT_TYPE="password";
 let GRANT_TYPE_REFRESH_TOKEN="refresh_token"
-let CLIENT_ID="test-client";
-let CLIENT_SECRET="test-secret";
+let CLIENT_ID="manager-client";
+let CLIENT_SECRET="manager-secret";
 
 /**
  * 通过账户名称和密码获取tokken 
@@ -51,6 +51,7 @@ export const RefreshToken =()=>{
 
     Log.debug("src/manager/util/managerAuth.js","RefreshToken........");
 
+    return 
     ManagerHTTP.RefreshToken(getRefreshTokenRequestData()).then(function (response) {
                        
         console.log(JSON.stringify(response));

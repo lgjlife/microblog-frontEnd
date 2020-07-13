@@ -22,7 +22,7 @@ export const encrypt  =(param,publicKey)=>{
     console.log("正在加密.........")
     let encrypt = new JsEncrypt();
     encrypt.setPublicKey(publicKey);
-    return Base64.encode(encrypt.encrypt(param));
+    return encrypt.encrypt(param);
 }
 
 export const dencrypt  =(param,privateKey)=>{

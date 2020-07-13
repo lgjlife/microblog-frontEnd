@@ -85,8 +85,8 @@ export default {
         warnContent: "",
         countTime: 0,
         loginForm: {
-          password: 'my-password1',
-          username: 'my-username',
+          password: '123456',
+          username: '李白',
         },
         rules: {
           password: [{ validator: validatePassword, trigger: 'blur' }],
@@ -184,8 +184,8 @@ export default {
 
             var loginData = ManagerAuth.getLoginData(this.loginForm.username,this.loginForm.password);
             Log.debug("src/manager/components/login/login.vue","loginData=[]",[JSON.stringify(loginData)]);
-           this.requestLogin(loginData)
-           return
+           //this.requestLogin(loginData)
+           //return
             //测试帐号
             if((this.loginForm.username === "test") && (this.loginForm.password === "123456789")){
 
@@ -221,12 +221,12 @@ export default {
 
                         }
                         else{
-                            that.warnHandler("请求失败1");
+                            that.warnHandler("获取公钥内部发生错误");
                         }
                        
 
                     }).catch(function (error) {
-                        that.warnHandler("请求失败2");
+                        that.warnHandler("获取公钥请求失败:" + error.status);
                       
                     })
                     
@@ -240,7 +240,7 @@ export default {
         //获取公钥
 
         requestPublicKey(username){
-            
+            Log.debug("src/manager/components/login/login.vue","获取公钥....");
            return ManagerHttpRequest.GetPublicKey({username:username})
         },
 
@@ -263,7 +263,7 @@ export default {
                 
                 }
                 else{
-                    that.warnHandler("请求出现错误:..."+response.data.msg);
+                    that.warnHandler("请求出现错误:"+response.data.msg);
                 }       
                 
                 

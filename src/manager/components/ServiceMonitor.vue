@@ -11,11 +11,15 @@
         
         <div v-if="menuItemIndex == menuItemConst.REGISTER_CENTER_MONITOR">
             <h1>服务注册中心</h1>
-            <iframe height="1000px" width="100%" src="http://localhost:8001"></iframe>
+            <!-- <iframe height="1000px" width="100%" src="http://localhost:8001"></iframe> -->
+            <ServiceList ref="serviceListRef"/>
         </div>
 
         <div v-else-if="menuItemIndex == menuItemConst.DRUID_MONITOR">
-            <h1>Ｄruid监控</h1>           
+            <h1>Druid监控</h1>  
+            
+            <iframe height="1000px" width="100%" src="/api/auth/druid/index.html"></iframe>
+            
         </div>
 
         <div v-else-if="menuItemIndex == menuItemConst.SPRING_BOOT_ADMIN_MONITOR">
@@ -40,6 +44,9 @@
 
 import ConstData from "@/manager/util/const.js"
 import Log from "@/assets/js/util/log/Log";
+import ServiceList from "@/manager/components/ServiceList.vue"
+import ManagerHttpRequest from "@/apis/modules/manager/manager-api.js"
+
     export default {
         props:{
             menuItemIndex: "",
@@ -53,28 +60,46 @@ import Log from "@/assets/js/util/log/Log";
                     ROCKETMQ_MONITOR_MONITOR: ConstData.menuItem.monitor.ROCKETMQ_MONITOR_MONITOR,
                     API_LIST: ConstData.menuItem.monitor.API_LIST
                 },
+
+                serviceAppInfoList:  "",
+
+                serviceListClickCount: 0,
             }
         },
 
 
         watch:{
+            
             menuItemIndex:function(value){
-                console.log(value)
-                this.curItem = this.menuItemIndex
-                Log.info("src/manager/components/ServiceMonitor.vue","menuItemIndex=[] ",[this.menuItemIndex])
 
+                let that =this
+
+                Log.info("src/manager/components/ServiceMonitor.vue","menuItemIndex=[] ",[this.menuItemIndex])
+                if(value == this.menuItemConst.REGISTER_CENTER_MONITOR){
+                    this.serviceListClickCount++;
+
+                    console.log("....................")
+                    
+                }
             }
         },
 
         components:{
-
+            ServiceList,
         },
         created(){
             this.init()
         },
         methods:{
 
-           
+            chickMenu(type){
+
+                console.log("chickMenu ......" + type)
+                if(type == ConstData.menuItem.monitor.REGISTER_CENTER_MONITOR){
+                    
+                }
+            
+            }
         },
         created(){
             this.menuItem = this.$route.query.menuItem;

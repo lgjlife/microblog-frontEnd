@@ -23,14 +23,16 @@ instance.interceptors.request.use(
     config =>{
         //这些路径不需要添加token
         let patts = [
-            /^\/api\/auth\/oauth\/token/
+            /^\/api\/auth\/oauth\/token/,
+            /^\/api\/auth\/login\/publickey/
         ];
 
   
         for(var patt of patts){
 
+            console.log("patt = " + patt)
             var flag =  patt.test(config.url);
-            console.log("----flagaaa　＝　"+flag)
+            console.log("patt　＝　"+flag)
             if(flag == true){
                 Log.info("src/apis/axios/http.js","匹配路径[]，不添加header[Authorization]",[config.url]) 
                 return config;  
